@@ -47,6 +47,9 @@ const currentAccountSchema = accountSchema.extend({
 export type PersistedCurrentAccount = z.infer<typeof currentAccountSchema>
 
 const schema = z.object({
+  // Enable using a secondary logged-in account to fetch content when blocked
+  secondaryFetchEnabled: z.boolean().optional(),
+  secondaryFetchDid: z.string().optional(),
   colorMode: z.enum(['system', 'light', 'dark']),
   darkTheme: z.enum(['dim', 'dark']).optional(),
   session: z.object({
@@ -131,8 +134,10 @@ const schema = z.object({
 export type Schema = z.infer<typeof schema>
 
 export const defaults: Schema = {
-  colorMode: 'system',
-  darkTheme: 'dim',
+  secondaryFetchEnabled: false,
+  secondaryFetchDid: undefined,
+  colorMode: 'dark',
+  darkTheme: 'dark',
   session: {
     accounts: [],
     currentAccount: undefined,

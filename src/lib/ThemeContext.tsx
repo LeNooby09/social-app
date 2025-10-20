@@ -88,7 +88,7 @@ export interface ThemeProviderProps {
   theme: ThemeName
 }
 
-export const ThemeContext = createContext<Theme>(defaultTheme)
+export const ThemeContext = createContext<Theme>(darkTheme)
 ThemeContext.displayName = 'ThemeContext'
 
 export const useTheme = () => useContext(ThemeContext)

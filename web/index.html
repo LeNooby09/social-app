@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta name="theme-color">
+    <meta name="theme-color" content="#1e1e2e">
     <!--
       This viewport works for phones with notches.
       It's optimized for gestures by disabling global zoom.
@@ -15,7 +15,6 @@
       Preconnect to essential domains
     -->
     <link rel="preconnect" href="https://bsky.social">
-    <link rel="preconnect" href="https://go.bsky.app">
     <title>%WEB_TITLE%</title>
 
     <link rel="preload" as="font" type="font/woff2" href="/static/media/InterVariable.c504db5c06caaf7cdfba.woff2" crossorigin>
@@ -43,11 +42,11 @@
         font-display: swap;
       }
       html {
-        background-color: white;
+        background-color: #1e1e2e;
       }
-      @media (prefers-color-scheme: dark) {
+      @media (prefers-color-scheme: light) {
         html {
-          background-color: black;
+          background-color: white;
         }
       }
       html,
