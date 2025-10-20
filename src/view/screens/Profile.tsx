@@ -102,12 +102,6 @@ function ProfileScreenInner({route}: Props) {
     }
   }, [name, resolveError])
 
-  // When we open the profile, we want to reset the posts query if we are blocked.
-  React.useEffect(() => {
-    if (resolvedDid && profile?.viewer?.blockedBy) {
-      resetProfilePostsQueries(queryClient, resolvedDid)
-    }
-  }, [queryClient, profile?.viewer?.blockedBy, resolvedDid])
 
   // Most pushes will happen here, since we will have only placeholder data
   if (isLoadingDid || isLoadingProfile) {
@@ -407,6 +401,7 @@ function ProfileScreenLoaded({
                 isFocused={isFocused}
                 scrollElRef={scrollElRef as ListRef}
                 ignoreFilterFor={profile.did}
+                preferSecondaryAgent={Boolean(profile.viewer?.blockedBy)}
                 setScrollViewTag={setScrollViewTag}
               />
             )
@@ -420,6 +415,7 @@ function ProfileScreenLoaded({
                 isFocused={isFocused}
                 scrollElRef={scrollElRef as ListRef}
                 ignoreFilterFor={profile.did}
+                preferSecondaryAgent={Boolean(profile.viewer?.blockedBy)}
                 setScrollViewTag={setScrollViewTag}
               />
             )
@@ -433,6 +429,7 @@ function ProfileScreenLoaded({
                 isFocused={isFocused}
                 scrollElRef={scrollElRef as ListRef}
                 ignoreFilterFor={profile.did}
+                preferSecondaryAgent={Boolean(profile.viewer?.blockedBy)}
                 setScrollViewTag={setScrollViewTag}
               />
             )
@@ -446,6 +443,7 @@ function ProfileScreenLoaded({
                 isFocused={isFocused}
                 scrollElRef={scrollElRef as ListRef}
                 ignoreFilterFor={profile.did}
+                preferSecondaryAgent={Boolean(profile.viewer?.blockedBy)}
                 setScrollViewTag={setScrollViewTag}
               />
             )

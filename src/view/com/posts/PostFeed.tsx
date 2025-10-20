@@ -180,6 +180,7 @@ let PostFeed = ({
   feed,
   feedParams,
   ignoreFilterFor,
+  preferSecondaryAgent,
   style,
   enabled,
   pollInterval,
@@ -202,6 +203,7 @@ let PostFeed = ({
   feed: FeedDescriptor
   feedParams?: FeedParams
   ignoreFilterFor?: string
+  preferSecondaryAgent?: boolean
   style?: StyleProp<ViewStyle>
   enabled?: boolean
   pollInterval?: number
@@ -249,8 +251,8 @@ let PostFeed = ({
 
   const feedCacheKey = feedParams?.feedCacheKey
   const opts = useMemo(
-    () => ({enabled, ignoreFilterFor}),
-    [enabled, ignoreFilterFor],
+    () => ({enabled, ignoreFilterFor, preferSecondaryAgent}),
+    [enabled, ignoreFilterFor, preferSecondaryAgent],
   )
   const {
     data,

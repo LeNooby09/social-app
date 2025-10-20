@@ -284,8 +284,21 @@ let UserAvatar = ({
     ]
   }, [size, style])
 
+  const hasNonBlockBlur = useMemo(
+    () =>
+      Boolean(
+        moderation?.blurs?.some(
+          cause =>
+            cause.type !== 'blocking' &&
+            cause.type !== 'blocked-by' &&
+            cause.type !== 'block-other',
+        ),
+      ),
+    [moderation],
+  )
+
   return avatar &&
-    !((moderation?.blur && isAndroid) /* android crashes with blur */) ? (
+    !((hasNonBlockBlur && isAndroid) /* android crashes with blur */) ? (
     <View style={containerStyle}>
       {usePlainRNImage ? (
         <Image
@@ -296,7 +309,7 @@ let UserAvatar = ({
           source={{
             uri: hackModifyThumbnailPath(avatar, size < 90),
           }}
-          blurRadius={moderation?.blur ? BLUR_AMOUNT : 0}
+          blurRadius={hasNonBlockBlur ? BLUR_AMOUNT : 0}
           onLoad={onLoad}
         />
       ) : (
@@ -307,7 +320,7 @@ let UserAvatar = ({
           source={{
             uri: hackModifyThumbnailPath(avatar, size < 90),
           }}
-          blurRadius={moderation?.blur ? BLUR_AMOUNT : 0}
+          blurRadius={hasNonBlockBlur ? BLUR_AMOUNT : 0}
           onLoad={onLoad}
         />
       )}

@@ -45,6 +45,7 @@ import {getMaybeDetachedQuoteEmbed} from '#/state/queries/postgate/util'
 import {
   useProfileBlockMutationQueue,
   useProfileMuteMutationQueue,
+  useProfileFollowMutationQueue,
 } from '#/state/queries/profile'
 import {
   InvalidInteractionSettingsError,
@@ -80,6 +81,8 @@ import {SpeakerVolumeFull_Stroke2_Corner0_Rounded as UnmuteIcon} from '#/compone
 import {SpeakerVolumeFull_Stroke2_Corner0_Rounded as Unmute} from '#/components/icons/Speaker'
 import {Trash_Stroke2_Corner0_Rounded as Trash} from '#/components/icons/Trash'
 import {Warning_Stroke2_Corner0_Rounded as Warning} from '#/components/icons/Warning'
+import {PlusLarge_Stroke2_Corner0_Rounded as Plus} from '#/components/icons/Plus'
+import {PeopleRemove2_Stroke2_Corner0_Rounded as UserMinus} from '#/components/icons/PeopleRemove2'
 import {Loader} from '#/components/Loader'
 import * as Menu from '#/components/Menu'
 import {
@@ -167,6 +170,10 @@ let PostMenuItems = ({
 
   const [queueBlock] = useProfileBlockMutationQueue(postAuthor)
   const [queueMute, queueUnmute] = useProfileMuteMutationQueue(postAuthor)
+  const [queueFollow, queueUnfollow] = useProfileFollowMutationQueue(
+    postAuthor,
+    'PostMenu',
+  )
 
   const prefetchPostInteractionSettings = usePrefetchPostInteractionSettings({
     postUri: post.uri,
@@ -423,6 +430,25 @@ let PostMenuItems = ({
     }
   }
 
+  const onToggleFollowAuthor = async () => {
+    requireSignIn(async () => {
+      try {
+        if (postAuthor.viewer?.following) {
+          await queueUnfollow()
+          Toast.show(_(msg({message: 'Account unfollowed', context: 'toast'})))
+        } else {
+          await queueFollow()
+          Toast.show(_(msg({message: 'Account followed', context: 'toast'})))
+        }
+      } catch (e: any) {
+        if (e?.name !== 'AbortError') {
+          logger.error('Failed to toggle follow', {message: e})
+          Toast.show(_(msg`There was an issue! ${e.toString()}`), 'xmark')
+        }
+      }
+    })
+  }
+
   const onReportMisclassification = () => {
     const url = `https://docs.google.com/forms/d/e/1FAIpQLSd0QPqhNFksDQf1YyOos7r1ofCLvmrKAH1lU042TaS3GAZaWQ/viewform?entry.1756031717=${toShareUrl(
       href,
@@ -652,6 +678,25 @@ let PostMenuItems = ({
             <Menu.Group>
               {!isAuthor && (
                 <>
+                  <Menu.Item
+                    testID="postDropdownFollowBtn"
+                    label={
+                      postAuthor.viewer?.following
+                        ? _(msg`Unfollow account`)
+                        : _(msg`Follow account`)
+                    }
+                    onPress={onToggleFollowAuthor}>
+                    <Menu.ItemText>
+                      {postAuthor.viewer?.following
+                        ? _(msg`Unfollow account`)
+                        : _(msg`Follow account`)}
+                    </Menu.ItemText>
+                    <Menu.ItemIcon
+                      icon={postAuthor.viewer?.following ? UserMinus : Plus}
+                      position="right"
+                    />
+                  </Menu.Item>
+
                   <Menu.Item
                     testID="postDropdownMuteBtn"
                     label={

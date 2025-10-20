@@ -42,8 +42,8 @@ export type Alf = {
  * Context
  */
 export const Context = React.createContext<Alf>({
-  themeName: 'light',
-  theme: themes.light,
+  themeName: 'dark',
+  theme: themes.dark,
   themes,
   fonts: {
     scale: getFontScale(),

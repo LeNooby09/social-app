@@ -87,6 +87,16 @@ let ProfileHeaderStandard = ({
   const onPressFollow = () => {
     playHaptic()
     requireAuth(async () => {
+      // Do not attempt to actively use a secondary account. If this user has blocked
+      // the current account, warn and do not show a misleading success state.
+      if (profile.viewer?.blockedBy) {
+        Toast.show(
+          _(msg`You can’t follow this account because they have blocked you.`),
+          'exclamation-circle',
+        )
+        return
+      }
+
       setShowSuggestedFollows(true)
       try {
         await queueFollow()
@@ -219,7 +229,7 @@ let ProfileHeaderStandard = ({
                   </ButtonText>
                 </Button>
               )
-            ) : !profile.viewer?.blockedBy ? (
+            ) : (
               <>
                 {hasSession && subscriptionsAllowed && (
                   <SubscribeProfileButton
@@ -229,37 +239,39 @@ let ProfileHeaderStandard = ({
                 )}
                 {hasSession && <MessageProfileButton profile={profile} />}
 
-                <Button
-                  testID={
-                    profile.viewer?.following ? 'unfollowBtn' : 'followBtn'
-                  }
-                  size="small"
-                  color={profile.viewer?.following ? 'secondary' : 'primary'}
-                  variant="solid"
-                  label={
-                    profile.viewer?.following
-                      ? _(msg`Unfollow ${profile.handle}`)
-                      : _(msg`Follow ${profile.handle}`)
-                  }
-                  onPress={
-                    profile.viewer?.following ? onPressUnfollow : onPressFollow
-                  }
-                  style={[a.rounded_full]}>
-                  {!profile.viewer?.following && (
-                    <ButtonIcon position="left" icon={Plus} />
-                  )}
-                  <ButtonText>
-                    {profile.viewer?.following ? (
-                      <Trans>Following</Trans>
-                    ) : profile.viewer?.followedBy ? (
-                      <Trans>Follow back</Trans>
-                    ) : (
-                      <Trans>Follow</Trans>
+                {hasSession && !profile.viewer?.blockedBy && (
+                  <Button
+                    testID={
+                      profile.viewer?.following ? 'unfollowBtn' : 'followBtn'
+                    }
+                    size="small"
+                    color={profile.viewer?.following ? 'secondary' : 'primary'}
+                    variant="solid"
+                    label={
+                      profile.viewer?.following
+                        ? _(msg`Unfollow ${profile.handle}`)
+                        : _(msg`Follow ${profile.handle}`)
+                    }
+                    onPress={
+                      profile.viewer?.following ? onPressUnfollow : onPressFollow
+                    }
+                    style={[a.rounded_full]}>
+                    {!profile.viewer?.following && (
+                      <ButtonIcon position="left" icon={Plus} />
                     )}
-                  </ButtonText>
-                </Button>
+                    <ButtonText>
+                      {profile.viewer?.following ? (
+                        <Trans>Following</Trans>
+                      ) : profile.viewer?.followedBy ? (
+                        <Trans>Follow back</Trans>
+                      ) : (
+                        <Trans>Follow</Trans>
+                      )}
+                    </ButtonText>
+                  </Button>
+                )}
               </>
-            ) : null}
+            )}
             <ProfileMenu profile={profile} />
           </View>
           <View

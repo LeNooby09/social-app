@@ -35,6 +35,7 @@ import {useAgeAssuranceContext} from '#/state/ageAssurance'
 import {STALE} from '#/state/queries'
 import {DEFAULT_LOGGED_OUT_PREFERENCES} from '#/state/queries/preferences/const'
 import {useAgent} from '#/state/session'
+import {getSecondaryAgentIfEnabled} from '#/state/session'
 import * as userActionHistory from '#/state/userActionHistory'
 import {KnownError} from '#/view/com/posts/PostFeedErrorMessage'
 import {useFeedTuners} from '../preferences/feed-tuners'
@@ -130,7 +131,7 @@ const MIN_POSTS = 30
 export function usePostFeedQuery(
   feedDesc: FeedDescriptor,
   params?: FeedParams,
-  opts?: {enabled?: boolean; ignoreFilterFor?: string},
+  opts?: {enabled?: boolean; ignoreFilterFor?: string; preferSecondaryAgent?: boolean},
 ) {
   const feedTuners = useFeedTuners(feedDesc)
   const moderationOpts = useModerationOpts()
@@ -198,7 +199,15 @@ export function usePostFeedQuery(
               feedDesc,
               feedParams: params || {},
               feedTuners,
-              agent,
+              agent: (await (async () => {
+                try {
+                  if (opts?.preferSecondaryAgent && feedDesc.startsWith('author')) {
+                    const sec = await getSecondaryAgentIfEnabled()
+                    return sec || agent
+                  }
+                } catch {}
+                return agent
+              })()),
               // Not in the query key because they don't change:
               userInterests,
               // Not in the query key. Reacting to it switching isn't important:

@@ -54,7 +54,7 @@ export function useModerationCauseDescription(
           icon: CircleBanSign,
           name: _(msg`User Blocked by "${cause.source.list.name}"`),
           description: _(
-            msg`You have blocked this user. You cannot view their content.`,
+            msg`You have blocked this user.`,
           ),
         }
       } else {
@@ -62,7 +62,7 @@ export function useModerationCauseDescription(
           icon: CircleBanSign,
           name: _(msg`User Blocked`),
           description: _(
-            msg`You have blocked this user. You cannot view their content.`,
+            msg`You have blocked this user.`,
           ),
         }
       }
@@ -72,7 +72,7 @@ export function useModerationCauseDescription(
         icon: CircleBanSign,
         name: _(msg`User Blocking You`),
         description: _(
-          msg`This user has blocked you. You cannot view their content.`,
+          msg`This user has blocked you.`,
         ),
       }
     }

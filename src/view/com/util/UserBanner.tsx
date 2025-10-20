@@ -51,6 +51,15 @@ export function UserBanner({
   const [rawImage, setRawImage] = useState<ComposerImage | undefined>()
   const editImageDialogControl = useDialogControl()
 
+  const hasNonBlockBlur = Boolean(
+    moderation?.blurs?.some(
+      cause =>
+        cause.type !== 'blocking' &&
+        cause.type !== 'blocked-by' &&
+        cause.type !== 'block-other',
+    ),
+  )
+
   const onOpenCamera = useCallback(async () => {
     if (!(await requestCameraAccessIfNeeded())) {
       return
@@ -205,13 +214,13 @@ export function UserBanner({
       />
     </>
   ) : banner &&
-    !((moderation?.blur && isAndroid) /* android crashes with blur */) ? (
+    !((hasNonBlockBlur && isAndroid) /* android crashes with blur */) ? (
     <Image
       testID="userBannerImage"
       style={[styles.bannerImage, t.atoms.bg_contrast_25]}
       contentFit="cover"
       source={{uri: banner}}
-      blurRadius={moderation?.blur ? 100 : 0}
+      blurRadius={hasNonBlockBlur ? 100 : 0}
       accessible={true}
       accessibilityIgnoresInvertColors
     />

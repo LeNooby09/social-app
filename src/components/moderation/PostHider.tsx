@@ -65,7 +65,14 @@ export function PostHider({
     precacheProfile(queryClient, profile)
   }, [queryClient, profile])
 
-  if (!blur || (disabled && !modui.noOverride)) {
+  const isBlockingBlur = Boolean(
+    blur &&
+      (blur.type === 'blocking' ||
+        blur.type === 'blocked-by' ||
+        blur.type === 'block-other'),
+  )
+
+  if (!blur || isBlockingBlur || (disabled && !modui.noOverride)) {
     return (
       <Link
         testID={testID}

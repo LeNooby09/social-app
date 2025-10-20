@@ -124,7 +124,15 @@ let ProfileHeaderShell = ({
     } else {
       const modui = moderation.ui('avatar')
       const avatar = profile.avatar
-      if (avatar && !(modui.blur && modui.noOverride)) {
+      const hasNonBlockBlur = Boolean(
+        modui.blurs?.some(
+          cause =>
+            cause.type !== 'blocking' &&
+            cause.type !== 'blocked-by' &&
+            cause.type !== 'block-other',
+        ),
+      )
+      if (avatar && !(hasNonBlockBlur && modui.noOverride)) {
         runOnUI(() => {
           'worklet'
           const rect = measure(aviRef)

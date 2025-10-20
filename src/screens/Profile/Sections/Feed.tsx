@@ -24,6 +24,7 @@ interface FeedSectionProps {
   isFocused: boolean
   scrollElRef: ListRef
   ignoreFilterFor?: string
+  preferSecondaryAgent?: boolean
   setScrollViewTag: (tag: number | null) => void
 }
 export function ProfileFeedSection({
@@ -33,6 +34,7 @@ export function ProfileFeedSection({
   isFocused,
   scrollElRef,
   ignoreFilterFor,
+  preferSecondaryAgent,
   setScrollViewTag,
 }: FeedSectionProps) {
   const {_} = useLingui()
@@ -83,6 +85,7 @@ export function ProfileFeedSection({
         progressViewOffset={ios(0)}
         renderEndOfFeed={isVideoFeed ? undefined : ProfileEndOfFeed}
         ignoreFilterFor={ignoreFilterFor}
+        preferSecondaryAgent={preferSecondaryAgent}
         initialNumToRender={
           shouldUseAdjustedNumToRender ? adjustedInitialNumToRender : undefined
         }
