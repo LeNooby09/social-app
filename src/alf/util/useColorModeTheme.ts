@@ -46,11 +46,23 @@ function updateDocument(theme: ThemeName) {
     // @ts-ignore web only
     const meta = window.document.querySelector('meta[name="theme-color"]')
 
+    const bg = getBackgroundColor(theme)
+
     // remove any other color mode classes
     html.className = html.className.replace(/(theme)--\w+/g, '')
     html.classList.add(`theme--${theme}`)
-    // set color to 'theme-color' meta tag
-    meta?.setAttribute('content', getBackgroundColor(theme))
+
+    // ensure the page background itself matches the theme and scrolls with it
+    // @ts-ignore web only
+    html.style.backgroundColor = bg
+    // @ts-ignore web only
+    if (window.document.body) {
+      // @ts-ignore web only
+      window.document.body.style.backgroundColor = bg
+    }
+
+    // set color to 'theme-color' meta tag (for browser UI)
+    meta?.setAttribute('content', bg)
   }
 }
 
@@ -62,5 +74,7 @@ export function getBackgroundColor(theme: ThemeName): string {
       return dark.atoms.bg.backgroundColor
     case 'dim':
       return dim.atoms.bg.backgroundColor
+    default:
+      return dark.atoms.bg.backgroundColor
   }
 }

@@ -93,7 +93,7 @@ export function ThemeProvider({
     () => ({
       themes,
       themeName: themeName,
-      theme: themes[themeName],
+      theme: themes[themeName] ?? themes.dark,
       fonts: {
         scale: fontScale,
         scaleMultiplier: fontScaleMultiplier,
