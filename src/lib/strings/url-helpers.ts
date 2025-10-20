@@ -333,11 +333,14 @@ export function createProxiedUrl(url: string): string {
     return url
   }
 
+  // Only allow http/https URLs to pass through; otherwise, return as-is
   if (u?.protocol !== 'http:' && u?.protocol !== 'https:') {
     return url
   }
 
-  return `https://go.bsky.app/redirect?u=${encodeURIComponent(url)}`
+  // Previously proxied through go.bsky.app for tracking/redirect.
+  // Tracking removed: return the original URL unchanged.
+  return url
 }
 
 export function isShortLink(url: string): boolean {
