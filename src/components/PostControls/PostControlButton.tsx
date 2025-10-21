@@ -2,7 +2,7 @@ import {createContext, useContext, useMemo} from 'react'
 import {type GestureResponderEvent, type Insets, type View} from 'react-native'
 
 import {useHaptics} from '#/lib/haptics'
-import {atoms as a, select, useTheme} from '#/alf'
+import {atoms as a, useTheme} from '#/alf'
 import {Button, type ButtonProps} from '#/components/Button'
 import {type Props as SVGIconProps} from '#/components/icons/common'
 import {Text, type TextProps} from '#/components/Typography'
@@ -45,21 +45,10 @@ export function PostControlButton({
         color:
           activeColor && active
             ? activeColor
-            : select(t.name, {
-                light: t.palette.contrast_600,
-                dark: t.palette.contrast_300,
-                dim: t.palette.contrast_300,
-              }),
+            : t.atoms.text_contrast_medium.color,
       },
     }),
-    [
-      big,
-      active,
-      activeColor,
-      t.name,
-      t.palette.contrast_600,
-      t.palette.contrast_300,
-    ],
+    [big, active, activeColor, t.atoms.text_contrast_medium.color],
   )
 
   const style = useMemo(
@@ -127,10 +116,12 @@ export function PostControlButtonIcon({
   icon: React.ComponentType<SVGIconProps>
 }) {
   const {big, color} = useContext(PostControlContext)
+  const fillColor = color?.color
 
   return (
     <Comp
-      style={[color, a.pointer_events_none, style]}
+      style={[a.pointer_events_none, style]}
+      fill={fillColor}
       {...rest}
       width={big ? 22 : 18}
     />

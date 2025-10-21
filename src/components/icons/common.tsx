@@ -31,7 +31,24 @@ export function useCommonSVGProps(props: Props) {
   const {fill, size, gradient, ...rest} = props
   const style = StyleSheet.flatten(rest.style)
   const _size = Number(size ? sizes[size] : rest.width || sizes.md)
-  let _fill = fill || style?.color || t.palette.primary_500
+
+  // Determine a safe default fill color. Avoid using the background color
+  // (which can be applied as `style.color` by some parent containers) so that
+  // icons don’t become invisible by matching their pane/background.
+  let _fill = fill as PathProps['fill']
+  if (!_fill) {
+    const styleColor = (style?.color as PathProps['fill']) || undefined
+    // Background color of the current theme surface
+    const bgColor = (t.atoms?.bg as any)?.backgroundColor as string | undefined
+
+    const normalize = (c?: string) => (c ? c.trim().toLowerCase() : c)
+    if (styleColor && normalize(styleColor) !== normalize(bgColor)) {
+      _fill = styleColor
+    } else {
+      _fill = t.palette.contrast_0
+    }
+  }
+
   let gradientDef = null
 
   if (gradient && tokens.gradients[gradient]) {

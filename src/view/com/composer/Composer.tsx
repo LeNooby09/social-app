@@ -1481,7 +1481,10 @@ function ComposerFooter({
                   variant="ghost"
                   shape="round"
                   color="primary">
-                  <EmojiSmileIcon size="lg" />
+                  <EmojiSmileIcon
+                    size="lg"
+                    style={t.atoms.text_contrast_medium}
+                  />
                 </Button>
               ) : null}
             </ToolbarWrapper>
@@ -1497,7 +1500,7 @@ function ComposerFooter({
             variant="ghost"
             shape="round"
             color="primary">
-            <PlusIcon size="lg" />
+            <PlusIcon size="lg" style={t.atoms.text_contrast_medium} />
           </Button>
         )}
         <PostLanguageSelect

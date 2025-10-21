@@ -485,7 +485,9 @@ export function SelectMediaButton({
       disabled={disabled}>
       <ImageIcon
         size="lg"
-        style={disabled && t.atoms.text_contrast_low}
+        style={[
+          disabled ? t.atoms.text_contrast_low : t.atoms.text_contrast_medium,
+        ]}
         accessibilityIgnoresInvertColors={true}
       />
     </Button>

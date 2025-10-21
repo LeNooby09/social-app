@@ -321,7 +321,7 @@ export function ItemIcon({icon: Comp, position = 'left'}: ItemIconProps) {
         fill={
           disabled
             ? t.atoms.text_contrast_low.color
-            : t.atoms.text_contrast_medium.color
+            : t.atoms.text_contrast_high.color
         }
       />
     </View>

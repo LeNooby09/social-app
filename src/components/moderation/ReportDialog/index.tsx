@@ -92,7 +92,7 @@ function Inner(props: ReportDialogProps) {
     isLoading: isLabelerLoading,
     error: labelersLoadError,
     refetch: refetchLabelers,
-  } = useMyLabelersQuery({excludeNonConfigurableLabelers: true})
+  } = useMyLabelersQuery()
   const isLoading = useDelayedLoading(500, isLabelerLoading)
   const copy = useCopyForSubject(props.subject)
   const reportOptions = useReportOptions()

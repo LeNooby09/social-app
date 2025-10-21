@@ -78,7 +78,10 @@ export function AnimatedLikeIcon({
         </View>
       ) : (
         <HeartIconOutline
-          style={[{color: t.palette.contrast_500}, {pointerEvents: 'none'}]}
+          style={[
+            {color: t.atoms.text_contrast_medium.color},
+            {pointerEvents: 'none'},
+          ]}
           width={size}
         />
       )}

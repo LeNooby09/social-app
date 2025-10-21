@@ -94,7 +94,7 @@ export function CountWheel({
             a.user_select_none,
             isLiked
               ? [a.font_semi_bold, s.likeColor]
-              : {color: t.palette.contrast_500},
+              : {color: t.atoms.text_contrast_medium.color},
           ]}>
           {formattedCount}
         </Text>

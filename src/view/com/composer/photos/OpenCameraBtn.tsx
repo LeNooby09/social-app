@@ -74,7 +74,12 @@ export function OpenCameraBtn({disabled, onAdd}: Props) {
       shape="round"
       color="primary"
       disabled={disabled}>
-      <Camera size="lg" style={disabled && t.atoms.text_contrast_low} />
+      <Camera
+        size="lg"
+        style={[
+          disabled ? t.atoms.text_contrast_low : t.atoms.text_contrast_medium,
+        ]}
+      />
     </Button>
   )
 }

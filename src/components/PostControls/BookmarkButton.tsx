@@ -1,9 +1,9 @@
-import type React from 'react'
 import {memo} from 'react'
 import {type Insets} from 'react-native'
 import {type AppBskyFeedDefs} from '@atproto/api'
 import {msg, Trans} from '@lingui/macro'
 import {useLingui} from '@lingui/react'
+import type React from 'react'
 
 import {useCleanError} from '#/lib/hooks/useCleanError'
 import {logger} from '#/logger'
@@ -131,7 +131,11 @@ export const BookmarkButton = memo(function BookmarkButton({
       onPress={onHandlePress}
       hitSlop={hitSlop}>
       <PostControlButtonIcon
-        fill={isBookmarked ? t.palette.primary_500 : undefined}
+        fill={
+          isBookmarked
+            ? t.palette.primary_500
+            : t.atoms.text_contrast_medium.color
+        }
         icon={isBookmarked ? BookmarkFilled : Bookmark}
       />
     </PostControlButton>

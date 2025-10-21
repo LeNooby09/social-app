@@ -39,7 +39,12 @@ export function SelectGifBtn({onClose, onSelectGif, disabled}: Props) {
         shape="round"
         color="primary"
         disabled={disabled}>
-        <GifIcon size="lg" style={disabled && t.atoms.text_contrast_low} />
+        <GifIcon
+          size="lg"
+          style={[
+            disabled ? t.atoms.text_contrast_low : t.atoms.text_contrast_medium,
+          ]}
+        />
       </Button>
 
       <GifSelectDialog
