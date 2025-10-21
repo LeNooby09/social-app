@@ -9,8 +9,12 @@ import {BAPP_CONFIG_DEV_BYPASS_SECRET, IS_DEV} from '#/env'
 import {type Device, device} from '#/storage'
 
 async function getGeolocationConfig(
-  url: string,
-): Promise<Device['geolocation']> {
+  url?: string,
+): Promise<Device['geolocation'] | undefined> {
+  if (!url) {
+    logger.debug('config: telemetry disabled, skipping fetch')
+    return undefined
+  }
   const res = await fetch(url, {
     headers: IS_DEV
       ? {

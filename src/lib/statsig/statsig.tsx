@@ -1,6 +1,6 @@
 import React from 'react'
 import {AppState, type AppStateStatus, Platform} from 'react-native'
-import {Statsig, StatsigProvider} from 'statsig-react-native-expo'
+import {Statsig} from 'statsig-react-native-expo'
 
 import {logger} from '#/logger'
 import {type MetricEvents} from '#/logger/metrics'
@@ -59,7 +59,7 @@ function createStatsigOptions(prefetchUsers: StatsigUser[]) {
     initTimeoutMs: 1,
     // Get fresh flags for other accounts as well, if any.
     prefetchUsers,
-    api: 'https://events.bsky.app/v2',
+    // Telemetry disabled: no custom API endpoint
   }
 }
 
@@ -264,26 +264,13 @@ export async function tryFetchGates(
 }
 
 export function initialize() {
-  return Statsig.initialize(SDK_KEY, null, createStatsigOptions([]))
+  // Telemetry disabled: do not initialize Statsig
+  return Promise.resolve()
 }
 
 export function Provider({children}: {children: React.ReactNode}) {
-  const {currentAccount, accounts} = useSession()
+  const {currentAccount} = useSession()
   const did = currentAccount?.did
-  const currentStatsigUser = React.useMemo(() => toStatsigUser(did), [did])
-
-  const otherDidsConcatenated = accounts
-    .map(account => account.did)
-    .filter(accountDid => accountDid !== did)
-    .join(' ') // We're only interested in DID changes.
-  const otherStatsigUsers = React.useMemo(
-    () => otherDidsConcatenated.split(' ').map(toStatsigUser),
-    [otherDidsConcatenated],
-  )
-  const statsigOptions = React.useMemo(
-    () => createStatsigOptions(otherStatsigUsers),
-    [otherStatsigUsers],
-  )
 
   // Have our own cache in front of Statsig.
   // This ensures the results remain stable until the active DID changes.
@@ -298,29 +285,12 @@ export function Provider({children}: {children: React.ReactNode}) {
   // These changes are prefetched and stored, but don't get applied until the active DID changes.
   // This ensures that when you switch an account, it already has fresh results by then.
   const handleIntervalTick = useNonReactiveCallback(() => {
-    if (Statsig.initializeCalled()) {
-      // Note: Only first five will be taken into account by Statsig.
-      Statsig.prefetchUsers([currentStatsigUser, ...otherStatsigUsers])
-    }
+    // Telemetry disabled: skip prefetching
   })
   React.useEffect(() => {
     const id = setInterval(handleIntervalTick, 60e3 /* 1 min */)
     return () => clearInterval(id)
   }, [handleIntervalTick])
 
-  return (
-    <GateCache.Provider value={gateCache}>
-      <StatsigProvider
-        key={did}
-        sdkKey={SDK_KEY}
-        mountKey={currentStatsigUser.userID}
-        user={currentStatsigUser}
-        // This isn't really blocking due to short initTimeoutMs above.
-        // However, it ensures `isLoading` is always `false`.
-        waitForInitialization={true}
-        options={statsigOptions}>
-        {children}
-      </StatsigProvider>
-    </GateCache.Provider>
-  )
+  return <GateCache.Provider value={gateCache}>{children}</GateCache.Provider>
 }
