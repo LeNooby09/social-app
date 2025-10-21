@@ -47,6 +47,16 @@
       body {
         background-color: #1e1e2e;
       }
+      /* Ensure app root and immediate descendants match page background in default (dark) */
+      #root {
+        background-color: #1e1e2e;
+      }
+      #root > * {
+        background-color: #1e1e2e;
+      }
+      #root > * > * {
+        background-color: #1e1e2e;
+      }
       @media (prefers-color-scheme: light) {
         html {
           background-color: white;

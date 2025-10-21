@@ -46,6 +46,13 @@ html.theme--dim {
   --backgroundLight: #313244; /* Mocha Surface 0 */
 }
 
+/* Ensure app root and immediate descendants always match theme background */
+#root,
+#root > *,
+#root > * > * {
+  background-color: var(--background);
+}
+
 /* Buttons and inputs have a font set by UA, so we'll have to reset that */
 button,
 input,
