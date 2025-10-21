@@ -84,6 +84,7 @@ export function useSimpleVerificationState({
   profile?: bsky.profile.AnyProfileView
 }): SimpleVerificationState {
   const preferences = usePreferencesQuery()
+  const {currentAccount} = useSession()
   const prefs = useMemo(
     () => preferences.data?.verificationPrefs || {hideBadges: false},
     [preferences.data?.verificationPrefs],
@@ -97,17 +98,21 @@ export function useSimpleVerificationState({
       }
     }
 
-    const {verifiedStatus, trustedVerifierStatus} = profile.verification
-    const isVerifiedUser = ['valid', 'invalid'].includes(verifiedStatus)
-    const isVerifierUser = ['valid', 'invalid'].includes(trustedVerifierStatus)
-    const isVerified =
-      (isVerifiedUser && verifiedStatus === 'valid') ||
-      (isVerifierUser && trustedVerifierStatus === 'valid')
+    // Custom user verification policy: by default, the only trusted verifier is the viewer (self).
+    const viewerDid = currentAccount?.did
+    const verifications = profile.verification?.verifications || []
+
+    const hasVerificationFromViewer = viewerDid
+      ? verifications.some(v => v.issuer === viewerDid)
+      : false
+
+    const isVerified = hasVerificationFromViewer
+    const role = profile.did === viewerDid ? 'verifier' : 'default'
 
     return {
-      role: isVerifierUser ? 'verifier' : 'default',
+      role,
       isVerified,
       showBadge: prefs.hideBadges ? false : isVerified,
     }
-  }, [profile, prefs])
+  }, [profile, prefs, currentAccount])
 }
