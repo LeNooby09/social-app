@@ -173,11 +173,36 @@ function InnerApp() {
 function App() {
   const [isReady, setReady] = useState(false)
 
+  // Ensure the static splash is removed as soon as JS runs, regardless of init state
   React.useEffect(() => {
-    Promise.all([
-      initPersistedState(),
-      ensureGeolocationConfigIsResolved(),
-    ]).then(() => setReady(true))
+    try {
+      if (typeof document !== 'undefined') {
+        const splash = document.getElementById('splash')
+        if (splash && splash.parentElement) {
+          splash.parentElement.removeChild(splash)
+        }
+      }
+    } catch {}
+  }, [])
+
+  React.useEffect(() => {
+    let didFinish = false
+    const timeout = setTimeout(() => {
+      // Fallback: never block rendering indefinitely
+      if (!didFinish) setReady(true)
+    }, 5000)
+
+    Promise.all([initPersistedState(), ensureGeolocationConfigIsResolved()])
+      .catch(() => {
+        // Do not block the app if init fails
+      })
+      .finally(() => {
+        didFinish = true
+        clearTimeout(timeout)
+        setReady(true)
+      })
+
+    return () => clearTimeout(timeout)
   }, [])
 
   if (!isReady) {

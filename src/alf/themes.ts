@@ -4,7 +4,7 @@ import {createThemes, type Palette} from '@bsky.app/alf'
 const CATPPUCCIN_MOCHA: Palette = {
   white: '#FFFFFF',
   black: '#000000',
-  like: '#f5c2e7',
+  like: '#f38ba8',
 
   // Contrast scale (light → dark). Note: dark theme is built via invertPalette()
   contrast_0: '#cdd6f4', // Text

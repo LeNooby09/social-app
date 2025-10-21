@@ -83,6 +83,21 @@
       width: 100%;
       overflow-y: scroll;
     }
+    /* Catppuccin Mocha initial paint */
+    html {
+      background-color: #1e1e2e;
+    }
+    body {
+      background-color: #1e1e2e;
+    }
+    @media (prefers-color-scheme: light) {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: white;
+      }
+    }
   </style>
 
   {% include "scripts.html" %}
@@ -90,7 +105,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="{{ staticCDNHost }}/static/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="{{ staticCDNHost }}/static/favicon-16x16.png">
   <link rel="mask-icon" href="{{ staticCDNHost }}/static/safari-pinned-tab.svg" color="#1185fe">
-  <meta name="theme-color">
+  <meta name="theme-color" content="#1e1e2e">
   <meta name="application-name" content="Bluesky">
   <meta name="generator" content="bskyweb">
   <meta property="og:site_name" content="Bluesky Social">

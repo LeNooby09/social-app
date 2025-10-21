@@ -7,6 +7,29 @@
 
 You're all set!
 
+### Serve on your local network (LAN)
+
+Want to load the app from phones/tablets or other computers on your Wi‑Fi? Use one of the options below.
+
+- Web (React Native Web)
+  1. Bind the dev server to all interfaces so it’s reachable from your LAN.
+     - macOS/Linux: `HOST=0.0.0.0 yarn web`
+     - Windows (PowerShell): `$env:HOST="0.0.0.0"; yarn web`
+  2. Note the port Expo prints for Web (often 19006). From another device on the same network, open: `http://<your-computer-LAN-IP>:<port>`.
+     - Tip: On macOS you can find the LAN IP via `ipconfig getifaddr en0`; on Linux `ip addr`; on Windows `ipconfig`.
+  3. If it doesn’t load, allow Node/Expo through your firewall, or temporarily disable strict firewall rules.
+
+- Native (run on real devices using the Expo dev server)
+  - Start in LAN mode: `yarn start` (defaults to LAN) or `expo start --lan`.
+  - Open the project in Expo Go (from the App Store/Play Store) or your custom dev client, then scan the QR code or tap the LAN URL (exp://<LAN-IP>:19000).
+  - If your network blocks local discovery or you’re on different subnets, use a tunnel: `expo start --tunnel`.
+
+- Production-like static hosting (no dev features)
+  - Build the web bundle: `yarn build-web` (outputs to `web-build/`).
+  - Serve it on your LAN with any static server, e.g.:
+    - `npx serve -s web-build -l 0.0.0.0:3000`
+    - or with Python: `python3 -m http.server 3000 --directory web-build` (then visit `http://<LAN-IP>:3000`).
+
 ## iOS/Android Build
 
 ### Native Environment Setup
@@ -61,6 +84,24 @@ This is NOT required when developing for web.
 After you do `yarn ios` and `yarn android` once, you can later just run `yarn web` and then press either `i` or `a` to open iOS and Android emulators respectively which is much faster. However, if you make native changes, you'll have to do `yarn prebuild -p ios` and `yarn prebuild -p android` and then `yarn ios` and `yarn android` again before you can continue with the same workflow.
 
 ### Tips
+
+#### Troubleshooting: ENOSPC (System limit for number of file watchers reached)
+
+On Linux, Metro or other tooling may fail with an error like:
+
+> Error: ENOSPC: System limit for number of file watchers reached
+
+This is an OS limit, not an app bug. Increase inotify watcher limits:
+
+- Temporary (until reboot):
+  - sudo sysctl fs.inotify.max_user_watches=524288
+  - sudo sysctl fs.inotify.max_user_instances=1024
+- Persistent:
+  - echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf
+  - echo fs.inotify.max_user_instances=1024 | sudo tee -a /etc/sysctl.conf
+  - sudo sysctl -p
+
+If you cannot change sysctl values, close other processes that watch many files (IDEs, other dev servers), or run web bundling (webpack) instead of native bundling temporarily.
 
 - Copy the `.env.example` to `.env` and fill in any necessary tokens. (The Sentry token is NOT required; see instructions below if you want to enable Sentry.)
 - To run on the device, add `--device` to the command (e.g. `yarn android --device`). To build in production mode (slower build, faster app), also add `--variant release` on Android or `--configuration Release` on iOS.

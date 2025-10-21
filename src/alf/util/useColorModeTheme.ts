@@ -60,19 +60,6 @@ function updateDocument(theme: ThemeName) {
       // @ts-ignore web only
       window.document.body.style.backgroundColor = bg
     }
-    // @ts-ignore web only
-    const root = window.document.getElementById('root')
-    if (root) {
-      // @ts-ignore web only
-      ;(root as HTMLElement).style.backgroundColor = bg
-      // Also paint the main app wrapper (first child of #root) to handle cases
-      // where the primary scroller is inside the app container (non-desktop mode)
-      const appWrapper = (root as HTMLElement)
-        .firstElementChild as HTMLElement | null
-      if (appWrapper) {
-        appWrapper.style.backgroundColor = bg
-      }
-    }
 
     // set color to 'theme-color' meta tag (for browser UI)
     meta?.setAttribute('content', bg)

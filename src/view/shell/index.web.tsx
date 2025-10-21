@@ -22,7 +22,6 @@ import {EmailDialog} from '#/components/dialogs/EmailDialog'
 import {LinkWarningDialog} from '#/components/dialogs/LinkWarning'
 import {MutedWordsDialog} from '#/components/dialogs/MutedWords'
 import {SigninDialog} from '#/components/dialogs/Signin'
-import {useWelcomeModal} from '#/components/hooks/useWelcomeModal'
 import {
   Outlet as PolicyUpdateOverlayPortalOutlet,
   usePolicyUpdateContext,
@@ -43,7 +42,6 @@ function ShellInner() {
   const showDrawer = !isDesktop && isDrawerOpen
   const [showDrawerDelayedExit, setShowDrawerDelayedExit] = useState(showDrawer)
   const {state: policyUpdateState} = usePolicyUpdateContext()
-  const welcomeModalControl = useWelcomeModal()
 
   useLayoutEffect(() => {
     if (showDrawer !== showDrawerDelayedExit) {
