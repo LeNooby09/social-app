@@ -129,7 +129,12 @@ let ProfileHeaderShell = ({
           cause =>
             cause.type !== 'blocking' &&
             cause.type !== 'blocked-by' &&
-            cause.type !== 'block-other',
+            cause.type !== 'block-other' &&
+            !(
+              cause.type === 'label' &&
+              (cause.labelDef.identifier === '!hide' ||
+                cause.labelDef.identifier === '!takedown')
+            ),
         ),
       )
       if (avatar && !(hasNonBlockBlur && modui.noOverride)) {

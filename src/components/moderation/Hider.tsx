@@ -37,7 +37,14 @@ export function Outer({
   modui: ModerationUI | undefined
 }>) {
   const control = useModerationDetailsDialogControl()
-  const blur = modui?.blurs[0]
+  const blur = modui?.blurs.find(
+    cause =>
+      !(
+        cause.type === 'label' &&
+        (cause.labelDef.identifier === '!hide' ||
+          cause.labelDef.identifier === '!takedown')
+      ),
+  )
   const [isContentVisible, setIsContentVisible] = React.useState(
     isContentVisibleInitialState || !blur,
   )

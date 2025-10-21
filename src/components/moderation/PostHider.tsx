@@ -57,8 +57,14 @@ export function PostHider({
   const [override, setOverride] = React.useState(false)
   const control = useModerationDetailsDialogControl()
   const blur =
-    modui.blurs[0] ||
-    (interpretFilterAsBlur ? getBlurrableFilter(modui) : undefined)
+    modui.blurs.find(
+      cause =>
+        !(
+          cause.type === 'label' &&
+          (cause.labelDef.identifier === '!hide' ||
+            cause.labelDef.identifier === '!takedown')
+        ),
+    ) || (interpretFilterAsBlur ? getBlurrableFilter(modui) : undefined)
   const desc = useModerationCauseDescription(blur)
 
   const onBeforePress = React.useCallback(() => {
@@ -161,7 +167,15 @@ function getBlurrableFilter(modui: ModerationUI): ModerationCause | undefined {
   // moderation causes get "downgraded" when they originate from embedded content
   // a downgraded cause should *only* drive filtering in feeds, so we want to look
   // for filters that arent downgraded
-  return modui.filters.find(filter => !filter.downgraded)
+  return modui.filters.find(
+    filter =>
+      !filter.downgraded &&
+      !(
+        filter.type === 'label' &&
+        (filter.labelDef.identifier === '!hide' ||
+          filter.labelDef.identifier === '!takedown')
+      ),
+  )
 }
 
 const styles = StyleSheet.create({

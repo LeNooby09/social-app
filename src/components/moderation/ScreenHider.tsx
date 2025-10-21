@@ -42,7 +42,14 @@ export function ScreenHider({
   const navigation = useNavigation<NavigationProp>()
   const {isMobile} = useWebMediaQueries()
   const control = useModerationDetailsDialogControl()
-  const blur = modui.blurs[0]
+  const blur = modui.blurs.find(
+    cause =>
+      !(
+        cause.type === 'label' &&
+        (cause.labelDef.identifier === '!hide' ||
+          cause.labelDef.identifier === '!takedown')
+      ),
+  )
   const desc = useModerationCauseDescription(blur)
 
   if (!blur || override) {

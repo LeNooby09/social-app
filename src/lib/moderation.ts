@@ -52,7 +52,8 @@ export function moduiContainsHideableOffense(modui: ModerationUI): boolean {
 export function labelIsHideableOffense(
   label: ComAtprotoLabelDefs.Label,
 ): boolean {
-  return ['!hide', '!takedown'].includes(label.val)
+  // Ignore '!hide' and '!takedown' from any moderation service; do not treat labels as hideable offenses
+  return false
 }
 
 export function getLabelingServiceTitle({

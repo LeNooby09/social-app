@@ -75,8 +75,24 @@ export function threadPost({
 }): Extract<ThreadItem, {type: 'threadPost'}> {
   const moderation = moderatePost(value.post, moderationOpts)
   const modui = moderation.ui('contentList')
-  const blurred = modui.blur || modui.filter
-  const muted = (modui.blurs[0] || modui.filters[0])?.type === 'muted'
+  const firstBlur = modui.blurs.find(
+    cause =>
+      !(
+        cause.type === 'label' &&
+        (cause.labelDef.identifier === '!hide' ||
+          cause.labelDef.identifier === '!takedown')
+      ),
+  )
+  const firstFilter = modui.filters.find(
+    cause =>
+      !(
+        cause.type === 'label' &&
+        (cause.labelDef.identifier === '!hide' ||
+          cause.labelDef.identifier === '!takedown')
+      ),
+  )
+  const blurred = Boolean(firstBlur || firstFilter)
+  const muted = (firstBlur || firstFilter)?.type === 'muted'
   const hiddenByThreadgate = threadgateHiddenReplies.has(uri)
   const isOwnPost = value.post.author.did === moderationOpts.userDid
   const isBlurred = (hiddenByThreadgate || blurred || muted) && !isOwnPost

@@ -159,7 +159,7 @@ function ProfileListScreenLoaded({
   const aboutSectionRef = useRef<SectionRef>(null)
   const isCurateList = list.purpose === AppBskyGraphDefs.CURATELIST
   const isScreenFocused = useIsFocused()
-  const isHidden = list.labels?.findIndex(l => l.val === '!hide') !== -1
+  const isHidden = false
   const isOwner = currentAccount?.did === list.creator.did
   const scrollElRef = useAnimatedRef()
   const addUserDialogControl = useDialogControl()

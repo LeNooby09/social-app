@@ -72,6 +72,15 @@ export function VideoPostCard({
     return modui
   }, [moderation])
 
+  const hasNonHideBlur = mergedModui.blurs.some(
+    cause =>
+      !(
+        cause.type === 'label' &&
+        (cause.labelDef.identifier === '!hide' ||
+          cause.labelDef.identifier === '!takedown')
+      ),
+  )
+
   /**
    * Filtering should be done at a higher level, such as `PostFeed` or
    * `PostFeedVideoGridRow`, but we need to protect here as well.
@@ -180,7 +189,7 @@ export function VideoPostCard({
               </View>
             </View>
           </View>
-          {listModUi.blur ? (
+          {hasNonHideBlur ? (
             <VideoPostCardTextPlaceholder author={post.author} />
           ) : (
             textAndAuthor

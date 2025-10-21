@@ -35,7 +35,14 @@ export function ContentHider({
   childContainerStyle?: StyleProp<ViewStyle>
   children?: React.ReactNode | ((props: {active: boolean}) => React.ReactNode)
 }) {
-  const blur = modui?.blurs[0]
+  const blur = modui?.blurs.find(
+    cause =>
+      !(
+        cause.type === 'label' &&
+        (cause.labelDef.identifier === '!hide' ||
+          cause.labelDef.identifier === '!takedown')
+      ),
+  )
   if (!blur || (ignoreMute && isJustAMute(modui))) {
     return (
       <View testID={testID} style={style}>
@@ -74,7 +81,14 @@ function ContentHiderActive({
   const {labelDefs} = useLabelDefinitions()
   const globalLabelStrings = useGlobalLabelStrings()
   const {i18n} = useLingui()
-  const blur = modui?.blurs[0]
+  const blur = modui?.blurs.find(
+    cause =>
+      !(
+        cause.type === 'label' &&
+        (cause.labelDef.identifier === '!hide' ||
+          cause.labelDef.identifier === '!takedown')
+      ),
+  )
   const desc = useModerationCauseDescription(blur)
 
   const labelName = React.useMemo(() => {
