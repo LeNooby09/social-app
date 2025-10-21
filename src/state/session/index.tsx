@@ -357,38 +357,6 @@ function useOneTaskAtATime() {
   return cancelPendingTask
 }
 
-const _secondaryAgentCache = new Map<string, BskyAgent>()
-
-export async function getAgentForDid(did: string): Promise<BskyAgent | null> {
-  if (!did) return null
-  const cached = _secondaryAgentCache.get(did)
-  if (cached) return cached
-  const session = persisted.get('session')
-  const account = session.accounts.find(a => a.did === did)
-  if (!account) return null
-  try {
-    const {agent} = await createAgentAndResume(account, () => {})
-    _secondaryAgentCache.set(did, agent)
-    return agent
-  } catch {
-    return null
-  }
-}
-
-export async function getSecondaryAgentIfEnabled(): Promise<BskyAgent | null> {
-  const enabled = persisted.get('secondaryFetchEnabled')
-  if (!enabled) return null
-  const targetDid =
-    persisted.get('secondaryFetchDid') ||
-    (() => {
-      const sess = persisted.get('session')
-      const currentDid = sess.currentAccount?.did
-      return sess.accounts.find(a => a.did !== currentDid)?.did
-    })()
-  if (!targetDid) return null
-  return getAgentForDid(targetDid)
-}
-
 export function useSession() {
   return React.useContext(StateContext)
 }

@@ -35,7 +35,7 @@ import {logger} from '#/logger'
 import {useAgeAssuranceContext} from '#/state/ageAssurance'
 import {STALE} from '#/state/queries'
 import {DEFAULT_LOGGED_OUT_PREFERENCES} from '#/state/queries/preferences/const'
-import {getSecondaryAgentIfEnabled, useAgent} from '#/state/session'
+import {useAgent} from '#/state/session'
 import * as userActionHistory from '#/state/userActionHistory'
 import {KnownError} from '#/view/com/posts/PostFeedErrorMessage'
 import {useFeedTuners} from '../preferences/feed-tuners'
@@ -135,7 +135,6 @@ export function usePostFeedQuery(
   opts?: {
     enabled?: boolean
     ignoreFilterFor?: string
-    preferSecondaryAgent?: boolean
   },
 ) {
   const feedTuners = useFeedTuners(feedDesc)

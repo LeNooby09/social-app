@@ -399,7 +399,6 @@ function ProfileScreenLoaded({
                 isFocused={isFocused}
                 scrollElRef={scrollElRef as ListRef}
                 ignoreFilterFor={profile.did}
-                preferSecondaryAgent={Boolean(profile.viewer?.blockedBy)}
                 setScrollViewTag={setScrollViewTag}
               />
             )
@@ -413,7 +412,6 @@ function ProfileScreenLoaded({
                 isFocused={isFocused}
                 scrollElRef={scrollElRef as ListRef}
                 ignoreFilterFor={profile.did}
-                preferSecondaryAgent={Boolean(profile.viewer?.blockedBy)}
                 setScrollViewTag={setScrollViewTag}
               />
             )
@@ -427,7 +425,6 @@ function ProfileScreenLoaded({
                 isFocused={isFocused}
                 scrollElRef={scrollElRef as ListRef}
                 ignoreFilterFor={profile.did}
-                preferSecondaryAgent={Boolean(profile.viewer?.blockedBy)}
                 setScrollViewTag={setScrollViewTag}
               />
             )
@@ -441,7 +438,6 @@ function ProfileScreenLoaded({
                 isFocused={isFocused}
                 scrollElRef={scrollElRef as ListRef}
                 ignoreFilterFor={profile.did}
-                preferSecondaryAgent={Boolean(profile.viewer?.blockedBy)}
                 setScrollViewTag={setScrollViewTag}
               />
             )

@@ -1,5 +1,5 @@
 import React, {Fragment, useCallback} from 'react'
-import {Linking, Pressable, View} from 'react-native'
+import {Linking, View} from 'react-native'
 import {LABELS} from '@atproto/api'
 import {msg, Trans} from '@lingui/macro'
 import {useLingui} from '@lingui/react'
@@ -13,14 +13,12 @@ import {
 import {logger} from '#/logger'
 import {isIOS} from '#/platform/detection'
 import {useAgeAssurance} from '#/state/ageAssurance/useAgeAssurance'
-import * as persisted from '#/state/persisted'
 import {
   useMyLabelersQuery,
   usePreferencesQuery,
   type UsePreferencesQueryResponse,
   usePreferencesSetAdultContentMutation,
 } from '#/state/queries/preferences'
-import {useSession} from '#/state/session'
 import {useSetMinimalShellMode} from '#/state/shell'
 import {atoms as a, useBreakpoints, useTheme, type ViewStyleProp} from '#/alf'
 import {Admonition} from '#/components/Admonition'
@@ -162,8 +160,7 @@ export function ModerationScreenInner({
   const t = useTheme()
   const setMinimalShellMode = useSetMinimalShellMode()
   const {gtMobile} = useBreakpoints()
-  const {mutedWordsDialogControl, signinDialogControl} =
-    useGlobalDialogsControlContext()
+  const {mutedWordsDialogControl} = useGlobalDialogsControlContext()
   const birthdateDialogControl = Dialog.useDialogControl()
   const {
     isLoading: isLabelersLoading,
@@ -171,28 +168,6 @@ export function ModerationScreenInner({
     error: labelersError,
   } = useMyLabelersQuery()
   const {declaredAge, isDeclaredUnderage, isAgeRestricted} = useAgeAssurance()
-
-  // Secondary account for blocked-content fetch
-  const {accounts, currentAccount} = useSession()
-  const [secondaryEnabled, setSecondaryEnabled] = React.useState(
-    persisted.get('secondaryFetchEnabled') || false,
-  )
-  const otherAccounts = accounts.filter(a => a.did !== currentAccount?.did)
-  const initialSecondaryDid = React.useMemo(
-    () => persisted.get('secondaryFetchDid') || otherAccounts[0]?.did,
-    [otherAccounts],
-  )
-  const [secondaryDid, setSecondaryDid] = React.useState<string | undefined>(
-    initialSecondaryDid,
-  )
-  const onToggleSecondaryEnabled = React.useCallback((v: boolean) => {
-    setSecondaryEnabled(v)
-    persisted.write('secondaryFetchEnabled', v)
-  }, [])
-  const onSelectSecondaryDid = React.useCallback((did: string) => {
-    setSecondaryDid(did)
-    persisted.write('secondaryFetchDid', did)
-  }, [])
 
   useFocusEffect(
     useCallback(() => {
@@ -504,113 +479,7 @@ export function ModerationScreenInner({
         <Trans>Advanced</Trans>
       </Text>
 
-      <View style={[a.rounded_sm, t.atoms.bg_contrast_25, a.mb_md]}>
-        <View
-          style={[
-            a.py_lg,
-            a.px_lg,
-            a.flex_row,
-            a.align_center,
-            a.justify_between,
-          ]}>
-          <Text style={[a.font_semi_bold, t.atoms.text_contrast_high]}>
-            <Trans>Use secondary account to view blocked content</Trans>
-          </Text>
-          <Toggle.Item
-            label={_(
-              msg`Toggle to fetch blocked content using a different logged-in account`,
-            )}
-            name="secondaryFetch"
-            value={secondaryEnabled}
-            onChange={onToggleSecondaryEnabled}>
-            <View style={[a.flex_row, a.align_center, a.gap_sm]}>
-              <Text style={[t.atoms.text_contrast_medium]}>
-                {secondaryEnabled ? (
-                  <Trans>Enabled</Trans>
-                ) : (
-                  <Trans>Disabled</Trans>
-                )}
-              </Text>
-              <Toggle.Switch />
-            </View>
-          </Toggle.Item>
-        </View>
-        {secondaryEnabled && otherAccounts.length > 0 && (
-          <>
-            <Divider />
-            <View style={[a.p_lg, a.gap_md]}>
-              <Text style={[t.atoms.text_contrast_medium, a.mb_sm]}>
-                <Trans>Choose secondary account</Trans>
-              </Text>
-              <Toggle.Group
-                type="radio"
-                values={secondaryDid ? [secondaryDid] : []}
-                onChange={vals => {
-                  const did = vals[0]
-                  if (did) onSelectSecondaryDid(did)
-                }}
-                label={_(msg`Secondary account selection`)}>
-                {otherAccounts.map(acc => (
-                  <Toggle.Item
-                    key={acc.did}
-                    type="radio"
-                    name={acc.did}
-                    label={_(msg`Select ${acc.handle} as secondary account`)}
-                    value={secondaryDid === acc.did}
-                    onChange={selected => {
-                      if (selected) onSelectSecondaryDid(acc.did)
-                    }}
-                    style={[a.py_sm]}>
-                    {({selected}) => (
-                      <Pressable
-                        onPress={() => onSelectSecondaryDid(acc.did)}
-                        accessibilityRole="button"
-                        accessibilityLabel={_(
-                          msg`Select ${acc.handle} as secondary account`,
-                        )}>
-                        <View
-                          style={[
-                            a.flex_row,
-                            a.align_center,
-                            a.justify_between,
-                          ]}>
-                          <View style={[a.flex_row, a.align_center, a.gap_md]}>
-                            <Toggle.Radio />
-                            <Text style={[t.atoms.text]}>{acc.handle}</Text>
-                          </View>
-                          {selected ? (
-                            <Text style={[t.atoms.text_contrast_medium]}>
-                              <Trans>Selected</Trans>
-                            </Text>
-                          ) : null}
-                        </View>
-                      </Pressable>
-                    )}
-                  </Toggle.Item>
-                ))}
-              </Toggle.Group>
-            </View>
-          </>
-        )}
-        {accounts.length <= 1 && (
-          <View style={[a.p_lg, a.gap_sm]}>
-            <Text style={[t.atoms.text_contrast_medium]}>
-              <Trans>Add another account to enable this feature.</Trans>
-            </Text>
-            <Button
-              label={_(msg`Add account`)}
-              size="small"
-              variant="solid"
-              color="secondary"
-              onPress={() => signinDialogControl.open()}
-              style={[a.self_start, a.rounded_md]}>
-              <ButtonText>
-                <Trans>Add account</Trans>
-              </ButtonText>
-            </Button>
-          </View>
-        )}
-      </View>
+      {/* Secondary account feature removed */}
 
       {isLabelersLoading ? (
         <View style={[a.w_full, a.align_center, a.p_lg]}>
