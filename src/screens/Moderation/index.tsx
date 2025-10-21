@@ -21,7 +21,6 @@ import {
   usePreferencesSetAdultContentMutation,
 } from '#/state/queries/preferences'
 import {useSession} from '#/state/session'
-import {isNonConfigurableModerationAuthority} from '#/state/session/additional-moderation-authorities'
 import {useSetMinimalShellMode} from '#/state/shell'
 import {atoms as a, useBreakpoints, useTheme, type ViewStyleProp} from '#/alf'
 import {Admonition} from '#/components/Admonition'
@@ -647,9 +646,6 @@ export function ModerationScreenInner({
                           value={labeler.creator.description}
                           handle={labeler.creator.handle}
                         />
-                        {isNonConfigurableModerationAuthority(
-                          labeler.creator.did,
-                        ) && <LabelingService.RegionalNotice />}
                       </LabelingService.Content>
                     </LabelingService.Outer>
                   )}
