@@ -150,3 +150,16 @@ export function unique(
     ) === index
   )
 }
+
+export function moduiHasNonIgnoredFilter(modui: ModerationUI): boolean {
+  return Boolean(
+    modui.filters.find(
+      cause =>
+        !(
+          cause.type === 'label' &&
+          (cause.labelDef.identifier === '!hide' ||
+            cause.labelDef.identifier === '!takedown')
+        ),
+    ),
+  )
+}

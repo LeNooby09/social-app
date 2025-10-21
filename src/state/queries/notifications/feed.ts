@@ -33,6 +33,7 @@ import {
 } from '@tanstack/react-query'
 
 import {useModerationOpts} from '#/state/preferences/moderation-opts'
+import {moduiHasNonIgnoredFilter} from '#/lib/moderation'
 import {STALE} from '#/state/queries'
 import {useAgent} from '#/state/session'
 import {useThreadgateHiddenReplyUris} from '#/state/threadgate-hidden-replies'
@@ -201,7 +202,7 @@ export function useNotificationFeedQuery(opts: {
                        */
                       if (AppBskyFeedPost.isRecord(item.subject?.record)) {
                         const mod = moderatePost(item.subject, moderationOpts!)
-                        if (mod.ui('contentList').filter) {
+                        if (moduiHasNonIgnoredFilter(mod.ui('contentList'))) {
                           return false
                         }
                       }

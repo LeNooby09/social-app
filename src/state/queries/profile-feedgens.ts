@@ -10,6 +10,7 @@ import {
 
 import {useAgent} from '#/state/session'
 import {useModerationOpts} from '../preferences/moderation-opts'
+import {moduiHasNonIgnoredFilter} from '#/lib/moderation'
 
 const PAGE_SIZE = 50
 type RQPageParam = string | undefined
@@ -57,7 +58,7 @@ export function useProfileFeedgensQuery(
               // filter by labels
               .filter(list => {
                 const decision = moderateFeedGenerator(list, moderationOpts!)
-                return !decision.ui('contentList').filter
+                return !moduiHasNonIgnoredFilter(decision.ui('contentList'))
               }),
           }
         }),

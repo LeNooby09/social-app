@@ -14,6 +14,7 @@ import {
 } from '@tanstack/react-query'
 
 import {useModerationOpts} from '#/state/preferences/moderation-opts'
+import {moduiHasNonIgnoredFilter} from '#/lib/moderation'
 import {useAgent} from '#/state/session'
 import {
   didOrHandleUriMatches,
@@ -125,7 +126,7 @@ export function useSearchPostsQuery({
                 ...page,
                 posts: page.posts.filter(post => {
                   const mod = moderatePost(post, moderationOpts!)
-                  return !mod.ui('contentList').filter
+                  return !moduiHasNonIgnoredFilter(mod.ui('contentList'))
                 }),
               }
             }),

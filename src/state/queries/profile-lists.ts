@@ -7,6 +7,7 @@ import {
 
 import {useAgent} from '#/state/session'
 import {useModerationOpts} from '../preferences/moderation-opts'
+import {moduiHasNonIgnoredFilter} from '#/lib/moderation'
 
 const PAGE_SIZE = 30
 type RQPageParam = string | undefined
@@ -46,7 +47,7 @@ export function useProfileListsQuery(did: string, opts?: {enabled?: boolean}) {
             ...page,
             lists: page.lists.filter(list => {
               const decision = moderateUserList(list, moderationOpts!)
-              return !decision.ui('contentList').filter
+              return !moduiHasNonIgnoredFilter(decision.ui('contentList'))
             }),
           }
         }),

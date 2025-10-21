@@ -6,7 +6,11 @@ import {
 } from '@atproto/api'
 import {keepPreviousData, useQuery, useQueryClient} from '@tanstack/react-query'
 
-import {isJustAMute, moduiContainsHideableOffense} from '#/lib/moderation'
+import {
+  isJustAMute,
+  moduiContainsHideableOffense,
+  moduiHasNonIgnoredFilter,
+} from '#/lib/moderation'
 import {logger} from '#/logger'
 import {STALE} from '#/state/queries'
 import {useAgent} from '#/state/session'
@@ -117,9 +121,10 @@ function computeSuggestions({
   return items.filter(profile => {
     const modui = moderateProfile(profile, moderationOpts).ui('profileList')
     const isExactMatch = q && profile.handle.toLowerCase() === q
+    const hasNonIgnored = moduiHasNonIgnoredFilter(modui)
     return (
       (isExactMatch && !moduiContainsHideableOffense(modui)) ||
-      !modui.filter ||
+      !hasNonIgnored ||
       isJustAMute(modui)
     )
   })

@@ -39,6 +39,7 @@ import {getSecondaryAgentIfEnabled, useAgent} from '#/state/session'
 import * as userActionHistory from '#/state/userActionHistory'
 import {KnownError} from '#/view/com/posts/PostFeedErrorMessage'
 import {useFeedTuners} from '../preferences/feed-tuners'
+import {moduiHasNonIgnoredFilter} from '#/lib/moderation'
 import {useModerationOpts} from '../preferences/moderation-opts'
 import {usePreferencesQuery} from './preferences'
 import {
@@ -321,7 +322,8 @@ export function usePostFeedQuery(
                     }
                     if (
                       !ignoreFilter &&
-                      moderations[i]?.ui('contentList').filter
+                      moderations[i] &&
+                      moduiHasNonIgnoredFilter(moderations[i].ui('contentList'))
                     ) {
                       return undefined
                     }
@@ -623,8 +625,8 @@ function assertSomePostsPassModeration(
       prefs: moderationPrefs,
     })
 
-    if (!moderation.ui('contentList').filter) {
-      // we have a sfw post
+    if (!moduiHasNonIgnoredFilter(moderation.ui('contentList'))) {
+      // we have a sfw post (no non-ignored filters)
       somePostsPassModeration = true
     }
   }

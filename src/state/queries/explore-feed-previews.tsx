@@ -18,6 +18,7 @@ import {aggregateUserInterests} from '#/lib/api/feed/utils'
 import {FeedTuner} from '#/lib/api/feed-manip'
 import {cleanError} from '#/lib/strings/errors'
 import {useModerationOpts} from '#/state/preferences/moderation-opts'
+import {moduiHasNonIgnoredFilter} from '#/lib/moderation'
 import {
   type FeedPostSlice,
   type FeedPostSliceItem,
@@ -210,9 +211,11 @@ export function useFeedPreviews(
                 moderatePost(item.post, moderationOpts!),
               )
 
-              // apply moderation filters
+              // apply moderation filters (ignore '!hide'/'!takedown' label filters)
               item.items = item.items.filter((_, i) => {
-                return !moderations[i]?.ui('contentList').filter
+                return !moduiHasNonIgnoredFilter(
+                  moderations[i].ui('contentList'),
+                )
               })
 
               const slice = {

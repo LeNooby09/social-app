@@ -20,6 +20,7 @@ import {msg} from '@lingui/macro'
 import {useLingui} from '@lingui/react'
 
 import {useGlobalLabelStrings} from '#/lib/moderation/useGlobalLabelStrings'
+import {moduiHasNonIgnoredFilter} from '#/lib/moderation'
 import {
   type CommonNavigatorParams,
   type NativeStackScreenProps,
@@ -819,7 +820,7 @@ function MockPostFeedItem({
   moderation: ModerationDecision
 }) {
   const t = useTheme()
-  if (moderation.ui('contentList').filter) {
+  if (moduiHasNonIgnoredFilter(moderation.ui('contentList'))) {
     return (
       <P style={[t.atoms.bg_contrast_25, a.px_lg, a.py_md, a.mb_lg]}>
         Filtered from the feed
@@ -909,7 +910,7 @@ function MockAccountCard({
 
   if (!moderationOpts) return null
 
-  if (moderation.ui('profileList').filter) {
+  if (moduiHasNonIgnoredFilter(moderation.ui('profileList'))) {
     return (
       <P style={[t.atoms.bg_contrast_25, a.px_lg, a.py_md, a.mb_lg]}>
         Filtered from the listing

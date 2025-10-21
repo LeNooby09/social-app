@@ -28,6 +28,7 @@ import {usePreferencesQuery} from '#/state/queries/preferences'
 import {useAgent, useSession} from '#/state/session'
 import {router} from '#/routes'
 import {useModerationOpts} from '../preferences/moderation-opts'
+import {moduiHasNonIgnoredFilter} from '#/lib/moderation'
 import {type FeedDescriptor} from './post-feed'
 import {precacheResolvedUri} from './resolve-uri'
 
@@ -290,7 +291,10 @@ export function useGetPopularFeedsQuery(options?: GetPopularFeedsOptions) {
                   }),
                 )
                 const decision = moderateFeedGenerator(feed, moderationOpts!)
-                return !alreadySaved && !decision.ui('contentList').filter
+                return (
+                  !alreadySaved &&
+                  !moduiHasNonIgnoredFilter(decision.ui('contentList'))
+                )
               }),
             }
           }),

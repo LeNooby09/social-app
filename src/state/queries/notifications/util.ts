@@ -14,7 +14,10 @@ import {
 import {type QueryClient} from '@tanstack/react-query'
 import chunk from 'lodash.chunk'
 
-import {labelIsHideableOffense} from '#/lib/moderation'
+import {
+  labelIsHideableOffense,
+  moduiHasNonIgnoredFilter,
+} from '#/lib/moderation'
 import * as bsky from '#/types/bsky'
 import {precacheProfile} from '../profile'
 import {
@@ -146,7 +149,9 @@ export function shouldFilterNotif(
   if (notif.author.viewer?.following) {
     return false
   }
-  return moderateNotification(notif, moderationOpts).ui('contentList').filter
+  return moduiHasNonIgnoredFilter(
+    moderateNotification(notif, moderationOpts).ui('contentList'),
+  )
 }
 
 export function groupNotifications(
