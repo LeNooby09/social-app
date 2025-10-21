@@ -536,7 +536,7 @@ function Selectable({
             a.p_md,
             {minHeight: 40}, // for consistency with checkmark icon visible or not
             t.atoms.bg_contrast_50,
-            (hovered || focused) && t.atoms.bg_contrast_100,
+            (hovered || focused) && {backgroundColor: t.palette.primary_50},
             isSelected && {
               backgroundColor: t.palette.primary_100,
             },

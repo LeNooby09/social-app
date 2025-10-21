@@ -270,7 +270,9 @@ export function ModerationScreenInner({
               title={_(msg`Interaction settings`)}
               icon={EditBig}
               style={[
-                (state.hovered || state.pressed) && [t.atoms.bg_contrast_50],
+                (state.hovered || state.pressed) && [
+                  {backgroundColor: t.palette.primary_50},
+                ],
               ]}
             />
           )}
@@ -285,7 +287,9 @@ export function ModerationScreenInner({
               title={_(msg`Muted words & tags`)}
               icon={Filter}
               style={[
-                (state.hovered || state.pressed) && [t.atoms.bg_contrast_50],
+                (state.hovered || state.pressed) && [
+                  {backgroundColor: t.palette.primary_50},
+                ],
               ]}
             />
           )}
@@ -300,7 +304,9 @@ export function ModerationScreenInner({
               title={_(msg`Moderation lists`)}
               icon={Group}
               style={[
-                (state.hovered || state.pressed) && [t.atoms.bg_contrast_50],
+                (state.hovered || state.pressed) && [
+                  {backgroundColor: t.palette.primary_50},
+                ],
               ]}
             />
           )}
@@ -315,7 +321,9 @@ export function ModerationScreenInner({
               title={_(msg`Muted accounts`)}
               icon={Person}
               style={[
-                (state.hovered || state.pressed) && [t.atoms.bg_contrast_50],
+                (state.hovered || state.pressed) && [
+                  {backgroundColor: t.palette.primary_50},
+                ],
               ]}
             />
           )}
@@ -330,7 +338,9 @@ export function ModerationScreenInner({
               title={_(msg`Blocked accounts`)}
               icon={CircleBanSign}
               style={[
-                (state.hovered || state.pressed) && [t.atoms.bg_contrast_50],
+                (state.hovered || state.pressed) && [
+                  {backgroundColor: t.palette.primary_50},
+                ],
               ]}
             />
           )}
@@ -345,7 +355,9 @@ export function ModerationScreenInner({
               title={_(msg`Verification settings`)}
               icon={CircleCheck}
               style={[
-                (state.hovered || state.pressed) && [t.atoms.bg_contrast_50],
+                (state.hovered || state.pressed) && [
+                  {backgroundColor: t.palette.primary_50},
+                ],
               ]}
             />
           )}
@@ -631,7 +643,7 @@ export function ModerationScreenInner({
                           borderBottomRightRadius: a.rounded_sm.borderRadius,
                         },
                         (state.hovered || state.pressed) && [
-                          t.atoms.bg_contrast_50,
+                          {backgroundColor: t.palette.primary_50},
                         ],
                       ]}>
                       <LabelingService.Avatar avatar={labeler.creator.avatar} />

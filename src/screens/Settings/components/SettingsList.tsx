@@ -138,7 +138,9 @@ export function LinkItem({
         <Item
           destructive={destructive}
           style={[
-            (args.hovered || args.pressed) && [t.atoms.bg_contrast_25],
+            (args.hovered || args.pressed) && [
+              {backgroundColor: t.palette.primary_50},
+            ],
             contentContainerStyle,
           ]}>
           {typeof children === 'function' ? children(args) : children}
@@ -167,7 +169,7 @@ export function PressableItem({
           destructive={destructive}
           style={[
             (args.hovered || args.pressed) && [
-              t.atoms.bg_contrast_25,
+              {backgroundColor: t.palette.primary_50},
               hoverStyle,
             ],
             contentContainerStyle,

@@ -56,9 +56,9 @@ function ButtonInner({children}: React.PropsWithChildren<{}>) {
     const hover: ViewStyle[] = []
     const active: ViewStyle[] = []
 
-    hover.push(
-      t.name === 'light' ? t.atoms.bg_contrast_100 : t.atoms.bg_contrast_25,
-    )
+    hover.push({
+      backgroundColor: t.palette.primary_50,
+    })
 
     if (state.selected) {
       active.push({

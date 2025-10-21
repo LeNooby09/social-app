@@ -301,8 +301,8 @@ export function createSharedToggleStyles({
   } else {
     if (hovered) {
       baseHover.push({
-        backgroundColor: t.palette.contrast_50,
-        borderColor: t.palette.contrast_500,
+        backgroundColor: t.palette.primary_50,
+        borderColor: t.palette.primary_500,
       })
     }
   }

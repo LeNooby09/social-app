@@ -635,7 +635,9 @@ function AccountRow({
                   {top: 10, right: tokens.space.lg},
                   a.p_xs,
                   a.rounded_full,
-                  (state.hovered || state.pressed) && t.atoms.bg_contrast_25,
+                  (state.hovered || state.pressed) && {
+                    backgroundColor: t.palette.primary_50,
+                  },
                 ]}>
                 <DotsHorizontal size="md" style={t.atoms.text} />
               </Pressable>

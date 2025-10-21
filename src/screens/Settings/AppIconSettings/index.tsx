@@ -185,7 +185,7 @@ function Row({
             a.gap_md,
             a.align_center,
             t.atoms.bg_contrast_25,
-            (hovered || pressed) && t.atoms.bg_contrast_50,
+            (hovered || pressed) && {backgroundColor: t.palette.primary_50},
             t.atoms.border_contrast_high,
             !isEnd && a.border_b,
           ]}>
