@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
-import {ScrollView, View} from 'react-native'
-import {Dimensions} from 'react-native'
+import {Dimensions, ScrollView, View} from 'react-native'
 import {useSafeAreaInsets} from 'react-native-safe-area-context'
 import {msg} from '@lingui/macro'
 import {useLingui} from '@lingui/react'

@@ -3,8 +3,7 @@ import {useWindowDimensions, View} from 'react-native'
 import {type $Typed, type AppBskyEmbedRecord} from '@atproto/api'
 
 import {atoms as a, native, tokens, useTheme, web} from '#/alf'
-import {PostEmbedViewContext} from '#/components/Post/Embed'
-import {Embed} from '#/components/Post/Embed'
+import {Embed, PostEmbedViewContext} from '#/components/Post/Embed'
 import {MessageContextProvider} from './MessageContext'
 
 let MessageItemEmbed = ({

@@ -1,3 +1,4 @@
+import type React from 'react'
 import {useRef, useState} from 'react'
 import {AppState, type AppStateStatus} from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
@@ -7,7 +8,6 @@ import {
   PersistQueryClientProvider,
   type PersistQueryClientProviderProps,
 } from '@tanstack/react-query-persist-client'
-import type React from 'react'
 
 import {isNative} from '#/platform/detection'
 import {listenNetworkConfirmed, listenNetworkLost} from '#/state/events'

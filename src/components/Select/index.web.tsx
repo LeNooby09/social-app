@@ -2,8 +2,7 @@ import {createContext, forwardRef, useContext, useMemo} from 'react'
 import {View} from 'react-native'
 import {Select as RadixSelect} from 'radix-ui'
 
-import {flatten, useTheme} from '#/alf'
-import {atoms as a} from '#/alf'
+import {atoms as a, flatten, useTheme} from '#/alf'
 import {useInteractionState} from '#/components/hooks/useInteractionState'
 import {Check_Stroke2_Corner0_Rounded as CheckIcon} from '#/components/icons/Check'
 import {

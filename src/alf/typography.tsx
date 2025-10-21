@@ -1,11 +1,9 @@
 import {Children} from 'react'
-import {type TextProps as RNTextProps} from 'react-native'
-import {type StyleProp, type TextStyle} from 'react-native'
+import {type StyleProp, type TextProps as RNTextProps, type TextStyle} from 'react-native'
 import {UITextView} from 'react-native-uitextview'
 import createEmojiRegex from 'emoji-regex'
 
-import {isNative} from '#/platform/detection'
-import {isIOS} from '#/platform/detection'
+import {isIOS, isNative} from '#/platform/detection'
 import {type Alf, applyFonts, atoms, flatten} from '#/alf'
 
 /**

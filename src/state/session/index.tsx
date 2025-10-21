@@ -15,15 +15,15 @@ import {
   sessionAccountToSession,
 } from './agent'
 import {type Action, getInitialState, reducer, type State} from './reducer'
-
-export {isSignupQueued} from './util'
 import {addSessionDebugLog} from './logging'
-export type {SessionAccount} from '#/state/session/types'
 import {logger} from '#/logger'
 import {
   type SessionApiContext,
   type SessionStateContext,
 } from '#/state/session/types'
+
+export {isSignupQueued} from './util'
+export type {SessionAccount} from '#/state/session/types'
 
 const StateContext = React.createContext<SessionStateContext>({
   accounts: [],

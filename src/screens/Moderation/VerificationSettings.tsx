@@ -7,8 +7,8 @@ import {logger} from '#/logger'
 import {
   usePreferencesQuery,
   type UsePreferencesQueryResponse,
+  useSetVerificationPrefsMutation,
 } from '#/state/queries/preferences'
-import {useSetVerificationPrefsMutation} from '#/state/queries/preferences'
 import * as SettingsList from '#/screens/Settings/components/SettingsList'
 import {atoms as a, useGutters} from '#/alf'
 import {Admonition} from '#/components/Admonition'

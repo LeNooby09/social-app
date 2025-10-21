@@ -1,6 +1,5 @@
 import React from 'react'
-import {Platform} from 'react-native'
-import {AppState, type AppStateStatus} from 'react-native'
+import {AppState, type AppStateStatus, Platform} from 'react-native'
 import {Statsig, StatsigProvider} from 'statsig-react-native-expo'
 
 import {logger} from '#/logger'

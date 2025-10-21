@@ -1,10 +1,5 @@
 import {useEffect, useRef, useState} from 'react'
-import {
-  type ScrollView,
-  type StyleProp,
-  View,
-  type ViewStyle,
-} from 'react-native'
+import {type ScrollView, type StyleProp, View, type ViewStyle,} from 'react-native'
 import {msg} from '@lingui/macro'
 import {useLingui} from '@lingui/react'
 

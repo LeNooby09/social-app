@@ -96,8 +96,11 @@ import {usePreferencesQuery} from '#/state/queries/preferences'
 import {useProfileQuery} from '#/state/queries/profile'
 import {type Gif} from '#/state/queries/tenor'
 import {useAgent, useSession} from '#/state/session'
-import {useComposerControls} from '#/state/shell/composer'
-import {type ComposerOpts, type OnPostSuccessData} from '#/state/shell/composer'
+import {
+  type ComposerOpts,
+  type OnPostSuccessData,
+  useComposerControls,
+} from '#/state/shell/composer'
 import {CharProgress} from '#/view/com/composer/char-progress/CharProgress'
 import {ComposerReplyTo} from '#/view/com/composer/ComposerReplyTo'
 import {

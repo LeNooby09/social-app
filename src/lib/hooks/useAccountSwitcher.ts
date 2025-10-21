@@ -7,8 +7,7 @@ import {isWeb} from '#/platform/detection'
 import {type SessionAccount, useSessionApi} from '#/state/session'
 import {useLoggedOutViewControls} from '#/state/shell/logged-out'
 import * as Toast from '#/view/com/util/Toast'
-import {logEvent} from '../statsig/statsig'
-import {type LogEvents} from '../statsig/statsig'
+import {logEvent, type LogEvents} from '../statsig/statsig'
 
 export function useAccountSwitcher() {
   const [pendingDid, setPendingDid] = useState<string | null>(null)

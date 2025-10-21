@@ -1,10 +1,7 @@
 import React, {useMemo} from 'react'
 import {type GestureResponderEvent, Linking} from 'react-native'
 import {sanitizeUrl} from '@braintree/sanitize-url'
-import {
-  type LinkProps as RNLinkProps,
-  StackActions,
-} from '@react-navigation/native'
+import {type LinkProps as RNLinkProps, StackActions,} from '@react-navigation/native'
 
 import {BSKY_DOWNLOAD_URL} from '#/lib/constants'
 import {useNavigationDeduped} from '#/lib/hooks/useNavigationDeduped'

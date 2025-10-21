@@ -1,6 +1,5 @@
 import {useRef} from 'react'
-import {type ListRenderItemInfo} from 'react-native'
-import {View} from 'react-native'
+import {type ListRenderItemInfo, View} from 'react-native'
 import {
   type AppBskyActorDefs,
   type AppBskyFeedDefs,

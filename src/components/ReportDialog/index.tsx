@@ -6,8 +6,6 @@ import {useLingui} from '@lingui/react'
 
 import {type ReportOption} from '#/lib/moderation/useReportOptions'
 import {useMyLabelersQuery} from '#/state/queries/preferences'
-export {useDialogControl as useReportDialogControl} from '#/components/Dialog'
-
 import {type AppBskyLabelerDefs} from '@atproto/api'
 
 import {atoms as a} from '#/alf'
@@ -19,6 +17,8 @@ import {SelectLabelerView} from './SelectLabelerView'
 import {SelectReportOptionView} from './SelectReportOptionView'
 import {SubmitView} from './SubmitView'
 import {type ReportDialogProps} from './types'
+
+export {useDialogControl as useReportDialogControl} from '#/components/Dialog'
 
 export function ReportDialog(props: ReportDialogProps) {
   return (

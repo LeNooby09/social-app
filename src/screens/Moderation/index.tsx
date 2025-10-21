@@ -1,5 +1,5 @@
 import React, {Fragment, useCallback} from 'react'
-import {Linking, Pressable,View} from 'react-native'
+import {Linking, Pressable, View} from 'react-native'
 import {LABELS} from '@atproto/api'
 import {msg, Trans} from '@lingui/macro'
 import {useLingui} from '@lingui/react'
@@ -163,7 +163,8 @@ export function ModerationScreenInner({
   const t = useTheme()
   const setMinimalShellMode = useSetMinimalShellMode()
   const {gtMobile} = useBreakpoints()
-  const {mutedWordsDialogControl, signinDialogControl} = useGlobalDialogsControlContext()
+  const {mutedWordsDialogControl, signinDialogControl} =
+    useGlobalDialogsControlContext()
   const birthdateDialogControl = Dialog.useDialogControl()
   const {
     isLoading: isLabelersLoading,
@@ -172,27 +173,27 @@ export function ModerationScreenInner({
   } = useMyLabelersQuery()
   const {declaredAge, isDeclaredUnderage, isAgeRestricted} = useAgeAssurance()
 
-    // Secondary account for blocked-content fetch
-    const {accounts, currentAccount} = useSession()
-    const [secondaryEnabled, setSecondaryEnabled] = React.useState(
-      persisted.get('secondaryFetchEnabled') || false,
-    )
-    const otherAccounts = accounts.filter(a => a.did !== currentAccount?.did)
-    const initialSecondaryDid = React.useMemo(
-      () => persisted.get('secondaryFetchDid') || otherAccounts[0]?.did,
-      [otherAccounts],
-    )
-    const [secondaryDid, setSecondaryDid] = React.useState<string | undefined>(
-      initialSecondaryDid,
-    )
-    const onToggleSecondaryEnabled = React.useCallback((v: boolean) => {
-      setSecondaryEnabled(v)
-      persisted.write('secondaryFetchEnabled', v)
-    }, [])
-    const onSelectSecondaryDid = React.useCallback((did: string) => {
-      setSecondaryDid(did)
-      persisted.write('secondaryFetchDid', did)
-    }, [])
+  // Secondary account for blocked-content fetch
+  const {accounts, currentAccount} = useSession()
+  const [secondaryEnabled, setSecondaryEnabled] = React.useState(
+    persisted.get('secondaryFetchEnabled') || false,
+  )
+  const otherAccounts = accounts.filter(a => a.did !== currentAccount?.did)
+  const initialSecondaryDid = React.useMemo(
+    () => persisted.get('secondaryFetchDid') || otherAccounts[0]?.did,
+    [otherAccounts],
+  )
+  const [secondaryDid, setSecondaryDid] = React.useState<string | undefined>(
+    initialSecondaryDid,
+  )
+  const onToggleSecondaryEnabled = React.useCallback((v: boolean) => {
+    setSecondaryEnabled(v)
+    persisted.write('secondaryFetchEnabled', v)
+  }, [])
+  const onSelectSecondaryDid = React.useCallback((did: string) => {
+    setSecondaryDid(did)
+    persisted.write('secondaryFetchDid', did)
+  }, [])
 
   useFocusEffect(
     useCallback(() => {
@@ -513,7 +514,11 @@ export function ModerationScreenInner({
             onChange={onToggleSecondaryEnabled}>
             <View style={[a.flex_row, a.align_center, a.gap_sm]}>
               <Text style={[t.atoms.text_contrast_medium]}>
-                {secondaryEnabled ? <Trans>Enabled</Trans> : <Trans>Disabled</Trans>}
+                {secondaryEnabled ? (
+                  <Trans>Enabled</Trans>
+                ) : (
+                  <Trans>Disabled</Trans>
+                )}
               </Text>
               <Toggle.Switch />
             </View>
@@ -549,8 +554,15 @@ export function ModerationScreenInner({
                       <Pressable
                         onPress={() => onSelectSecondaryDid(acc.did)}
                         accessibilityRole="button"
-                        accessibilityLabel={_(msg`Select ${acc.handle} as secondary account`)}>
-                        <View style={[a.flex_row, a.align_center, a.justify_between]}>
+                        accessibilityLabel={_(
+                          msg`Select ${acc.handle} as secondary account`,
+                        )}>
+                        <View
+                          style={[
+                            a.flex_row,
+                            a.align_center,
+                            a.justify_between,
+                          ]}>
                           <View style={[a.flex_row, a.align_center, a.gap_md]}>
                             <Toggle.Radio />
                             <Text style={[t.atoms.text]}>{acc.handle}</Text>

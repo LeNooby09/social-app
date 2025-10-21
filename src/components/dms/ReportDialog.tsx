@@ -1,3 +1,4 @@
+import type React from 'react'
 import {memo, useMemo, useState} from 'react'
 import {View} from 'react-native'
 import {
@@ -11,7 +12,6 @@ import {msg, Trans} from '@lingui/macro'
 import {useLingui} from '@lingui/react'
 import {StackActions, useNavigation} from '@react-navigation/native'
 import {useMutation} from '@tanstack/react-query'
-import type React from 'react'
 
 import {BLUESKY_MOD_SERVICE_HEADERS} from '#/lib/constants'
 import {type ReportOption} from '#/lib/moderation/useReportOptions'

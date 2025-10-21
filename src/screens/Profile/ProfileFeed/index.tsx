@@ -13,8 +13,10 @@ import {useOpenComposer} from '#/lib/hooks/useOpenComposer'
 import {usePalette} from '#/lib/hooks/usePalette'
 import {useSetTitle} from '#/lib/hooks/useSetTitle'
 import {ComposeIcon2} from '#/lib/icons'
-import {type CommonNavigatorParams} from '#/lib/routes/types'
-import {type NavigationProp} from '#/lib/routes/types'
+import {
+  type CommonNavigatorParams,
+  type NavigationProp,
+} from '#/lib/routes/types'
 import {makeRecordUri} from '#/lib/strings/url-helpers'
 import {s} from '#/lib/styles'
 import {isNative} from '#/platform/detection'
@@ -24,8 +26,11 @@ import {
   type FeedSourceFeedInfo,
   useFeedSourceInfoQuery,
 } from '#/state/queries/feed'
-import {type FeedDescriptor, type FeedParams} from '#/state/queries/post-feed'
-import {RQKEY as FEED_RQKEY} from '#/state/queries/post-feed'
+import {
+  type FeedDescriptor,
+  type FeedParams,
+  RQKEY as FEED_RQKEY,
+} from '#/state/queries/post-feed'
 import {
   usePreferencesQuery,
   type UsePreferencesQueryResponse,

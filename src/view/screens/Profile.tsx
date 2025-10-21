@@ -27,7 +27,6 @@ import {useProfileShadow} from '#/state/cache/profile-shadow'
 import {listenSoftReset} from '#/state/events'
 import {useModerationOpts} from '#/state/preferences/moderation-opts'
 import {useLabelerInfoQuery} from '#/state/queries/labeler'
-import {resetProfilePostsQueries} from '#/state/queries/post-feed'
 import {useProfileQuery} from '#/state/queries/profile'
 import {useResolveDidQuery} from '#/state/queries/resolve-uri'
 import {useAgent, useSession} from '#/state/session'
@@ -101,7 +100,6 @@ function ProfileScreenInner({route}: Props) {
       }
     }
   }, [name, resolveError])
-
 
   // Most pushes will happen here, since we will have only placeholder data
   if (isLoadingDid || isLoadingProfile) {

@@ -8,8 +8,11 @@ import {useQueryClient} from '@tanstack/react-query'
 import {useGoBack} from '#/lib/hooks/useGoBack'
 import {sanitizeHandle} from '#/lib/strings/handles'
 import {logger} from '#/logger'
-import {RQKEY_ROOT as listQueryRoot} from '#/state/queries/list'
-import {useListBlockMutation, useListMuteMutation} from '#/state/queries/list'
+import {
+  RQKEY_ROOT as listQueryRoot,
+  useListBlockMutation,
+  useListMuteMutation,
+} from '#/state/queries/list'
 import {
   type UsePreferencesQueryResponse,
   useRemoveFeedMutation,

@@ -8,8 +8,8 @@ import {useRequireEmailVerification} from '#/lib/hooks/useRequireEmailVerificati
 import {
   type CommonNavigatorParams,
   type NativeStackScreenProps,
+  type NavigationProp,
 } from '#/lib/routes/types'
-import {type NavigationProp} from '#/lib/routes/types'
 import {useSetMinimalShellMode} from '#/state/shell'
 import {MyLists} from '#/view/com/lists/MyLists'
 import {atoms as a} from '#/alf'

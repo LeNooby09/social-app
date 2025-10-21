@@ -1,6 +1,5 @@
 import {useCallback, useState} from 'react'
-import {LayoutAnimation, View} from 'react-native'
-import {Pressable} from 'react-native'
+import {LayoutAnimation, Pressable, View} from 'react-native'
 import {msg, Trans} from '@lingui/macro'
 import {useLingui} from '@lingui/react'
 import {useFocusEffect} from '@react-navigation/native'
@@ -11,8 +10,7 @@ import {
   type NativeStackScreenProps,
 } from '#/lib/routes/types'
 import {getEntries} from '#/logger/logDump'
-import {useTickEveryMinute} from '#/state/shell'
-import {useSetMinimalShellMode} from '#/state/shell'
+import {useSetMinimalShellMode, useTickEveryMinute} from '#/state/shell'
 import {atoms as a, useTheme} from '#/alf'
 import {
   ChevronBottom_Stroke2_Corner0_Rounded as ChevronBottomIcon,

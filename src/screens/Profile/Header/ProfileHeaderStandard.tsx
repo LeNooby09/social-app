@@ -253,7 +253,9 @@ let ProfileHeaderStandard = ({
                         : _(msg`Follow ${profile.handle}`)
                     }
                     onPress={
-                      profile.viewer?.following ? onPressUnfollow : onPressFollow
+                      profile.viewer?.following
+                        ? onPressUnfollow
+                        : onPressFollow
                     }
                     style={[a.rounded_full]}>
                     {!profile.viewer?.following && (

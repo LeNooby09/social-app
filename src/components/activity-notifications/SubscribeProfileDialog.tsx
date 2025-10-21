@@ -23,8 +23,7 @@ import {updateProfileShadow} from '#/state/cache/profile-shadow'
 import {RQKEY_getActivitySubscriptions} from '#/state/queries/activity-subscriptions'
 import {useAgent} from '#/state/session'
 import * as Toast from '#/view/com/util/Toast'
-import {platform, useTheme, web} from '#/alf'
-import {atoms as a} from '#/alf'
+import {atoms as a, platform, useTheme, web} from '#/alf'
 import {Admonition} from '#/components/Admonition'
 import {
   Button,

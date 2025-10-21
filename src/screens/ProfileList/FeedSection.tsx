@@ -7,8 +7,10 @@ import {useQueryClient} from '@tanstack/react-query'
 
 import {isNative} from '#/platform/detection'
 import {listenSoftReset} from '#/state/events'
-import {type FeedDescriptor} from '#/state/queries/post-feed'
-import {RQKEY as FEED_RQKEY} from '#/state/queries/post-feed'
+import {
+  type FeedDescriptor,
+  RQKEY as FEED_RQKEY,
+} from '#/state/queries/post-feed'
 import {PostFeed} from '#/view/com/posts/PostFeed'
 import {EmptyState} from '#/view/com/util/EmptyState'
 import {type ListRef} from '#/view/com/util/List'

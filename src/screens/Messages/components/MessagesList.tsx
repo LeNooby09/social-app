@@ -24,8 +24,7 @@ import {
   isBskyPostUrl,
 } from '#/lib/strings/url-helpers'
 import {logger} from '#/logger'
-import {isNative} from '#/platform/detection'
-import {isWeb} from '#/platform/detection'
+import {isNative, isWeb} from '#/platform/detection'
 import {
   type ActiveConvoStates,
   isConvoActive,

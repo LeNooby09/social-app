@@ -1,10 +1,10 @@
 import {
   type AppBskyFeedDefs,
   type AppBskyGraphDefs,
+  AtUri,
+  type BskyAgent,
   type ComAtprotoRepoStrongRef,
 } from '@atproto/api'
-import {AtUri} from '@atproto/api'
-import {type BskyAgent} from '@atproto/api'
 
 import {POST_IMG_MAX} from '#/lib/constants'
 import {getLinkMeta} from '#/lib/link-meta/link-meta'
@@ -22,8 +22,7 @@ import {
   isBskyStartUrl,
   isShortLink,
 } from '#/lib/strings/url-helpers'
-import {type ComposerImage} from '#/state/gallery'
-import {createComposerImage} from '#/state/gallery'
+import {type ComposerImage, createComposerImage} from '#/state/gallery'
 import {type Gif} from '#/state/queries/tenor'
 import {createGIFDescription} from '../gif-alt-text'
 import {convertBskyAppUrlIfNeeded, makeRecordUri} from '../strings/url-helpers'

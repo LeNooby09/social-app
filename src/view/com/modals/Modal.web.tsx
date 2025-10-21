@@ -4,8 +4,11 @@ import {RemoveScrollBar} from 'react-remove-scroll-bar'
 
 import {usePalette} from '#/lib/hooks/usePalette'
 import {useWebMediaQueries} from '#/lib/hooks/useWebMediaQueries'
-import {type Modal as ModalIface} from '#/state/modals'
-import {useModalControls, useModals} from '#/state/modals'
+import {
+  type Modal as ModalIface,
+  useModalControls,
+  useModals,
+} from '#/state/modals'
 import * as DeleteAccountModal from './DeleteAccount'
 import * as ContentLanguagesSettingsModal from './lang-settings/ContentLanguagesSettings'
 import * as UserAddRemoveLists from './UserAddRemoveLists'

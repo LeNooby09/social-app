@@ -16,6 +16,7 @@ import {findAllPostsInQueryData as findAllPostsInQuoteQueryData} from '#/state/q
 import {findAllPostsInQueryData as findAllPostsInSearchQueryData} from '#/state/queries/search-posts'
 import {findAllPostsInQueryData as findAllPostsInThreadV2QueryData} from '#/state/queries/usePostThread/queryCache'
 import {castAsShadow, type Shadow} from './types'
+
 export type {Shadow} from './types'
 
 export interface PostShadow {

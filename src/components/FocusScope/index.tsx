@@ -1,19 +1,5 @@
-import {
-  Children,
-  cloneElement,
-  isValidElement,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-} from 'react'
-import {
-  AccessibilityInfo,
-  findNodeHandle,
-  Pressable,
-  Text,
-  View,
-} from 'react-native'
+import {Children, cloneElement, isValidElement, useCallback, useEffect, useMemo, useRef,} from 'react'
+import {AccessibilityInfo, findNodeHandle, Pressable, Text, View,} from 'react-native'
 import {msg} from '@lingui/macro'
 import {useLingui} from '@lingui/react'
 

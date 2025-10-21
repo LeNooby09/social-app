@@ -6,11 +6,7 @@ import {
 import {useMutation, useQueryClient} from '@tanstack/react-query'
 
 import {wait} from '#/lib/async/wait'
-import {
-  // DEV_ENV_APPVIEW,
-  PUBLIC_APPVIEW,
-  PUBLIC_APPVIEW_DID,
-} from '#/lib/constants'
+import {PUBLIC_APPVIEW, PUBLIC_APPVIEW_DID} from '#/lib/constants'
 import {isNetworkError} from '#/lib/hooks/useCleanError'
 import {logger} from '#/logger'
 import {createAgeAssuranceQueryKey} from '#/state/ageAssurance'

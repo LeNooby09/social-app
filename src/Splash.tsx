@@ -24,6 +24,7 @@ import {Logotype} from '#/view/icons/Logotype'
 import splashImagePointer from '../assets/splash.png'
 // @ts-ignore
 import darkSplashImagePointer from '../assets/splash-dark.png'
+
 const splashImageUri = RNImage.resolveAssetSource(splashImagePointer).uri
 const darkSplashImageUri = RNImage.resolveAssetSource(
   darkSplashImagePointer,

@@ -30,8 +30,11 @@ import {
 } from '#/state/queries/usePostThread/types'
 import {getRootPostAtUri} from '#/state/queries/usePostThread/utils'
 import {postViewToThreadPlaceholder} from '#/state/queries/usePostThread/views'
-import {didOrHandleUriMatches, getEmbeddedPost} from '#/state/queries/util'
-import {embedViewRecordToPostView} from '#/state/queries/util'
+import {
+  didOrHandleUriMatches,
+  embedViewRecordToPostView,
+  getEmbeddedPost,
+} from '#/state/queries/util'
 
 export function createCacheMutator({
   queryClient,

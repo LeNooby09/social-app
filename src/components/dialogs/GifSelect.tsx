@@ -5,8 +5,7 @@ import {
   useRef,
   useState,
 } from 'react'
-import {type TextInput, View} from 'react-native'
-import {useWindowDimensions} from 'react-native'
+import {type TextInput, useWindowDimensions, View} from 'react-native'
 import {Image} from 'expo-image'
 import {msg, Trans} from '@lingui/macro'
 import {useLingui} from '@lingui/react'

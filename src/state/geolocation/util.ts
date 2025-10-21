@@ -1,8 +1,4 @@
-import {
-  getCurrentPositionAsync,
-  type LocationGeocodedAddress,
-  reverseGeocodeAsync,
-} from 'expo-location'
+import {getCurrentPositionAsync, type LocationGeocodedAddress, reverseGeocodeAsync,} from 'expo-location'
 
 import {logger} from '#/state/geolocation/logger'
 import {type DeviceLocation} from '#/state/geolocation/types'

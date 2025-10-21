@@ -16,8 +16,7 @@ import {useWebMediaQueries} from '#/lib/hooks/useWebMediaQueries'
 import {clamp} from '#/lib/numbers'
 import {gradients} from '#/lib/styles'
 import {isWeb} from '#/platform/detection'
-import {ios} from '#/alf'
-import {atoms as a} from '#/alf'
+import {atoms as a, ios} from '#/alf'
 
 export interface FABProps extends ComponentProps<typeof Pressable> {
   testID?: string

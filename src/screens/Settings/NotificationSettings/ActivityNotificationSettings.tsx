@@ -21,8 +21,10 @@ import {SubscribeProfileDialog} from '#/components/activity-notifications/Subscr
 import * as Admonition from '#/components/Admonition'
 import {Button, ButtonText} from '#/components/Button'
 import {useDialogControl} from '#/components/Dialog'
-import {BellRinging_Filled_Corner0_Rounded as BellRingingFilledIcon} from '#/components/icons/BellRinging'
-import {BellRinging_Stroke2_Corner0_Rounded as BellRingingIcon} from '#/components/icons/BellRinging'
+import {
+  BellRinging_Filled_Corner0_Rounded as BellRingingFilledIcon,
+  BellRinging_Stroke2_Corner0_Rounded as BellRingingIcon,
+} from '#/components/icons/BellRinging'
 import * as Layout from '#/components/Layout'
 import {InlineLinkText} from '#/components/Link'
 import {ListFooter} from '#/components/Lists'

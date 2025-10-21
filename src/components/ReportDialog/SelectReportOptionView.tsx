@@ -10,8 +10,6 @@ import {
 } from '#/lib/moderation/useReportOptions'
 import {Link} from '#/components/Link'
 import {DMCA_LINK} from '#/components/ReportDialog/const'
-export {useDialogControl as useReportDialogControl} from '#/components/Dialog'
-
 import {atoms as a, useBreakpoints, useTheme} from '#/alf'
 import {
   Button,
@@ -27,6 +25,8 @@ import {
 import {SquareArrowTopRight_Stroke2_Corner0_Rounded as SquareArrowTopRight} from '#/components/icons/SquareArrowTopRight'
 import {Text} from '#/components/Typography'
 import {type ReportDialogProps} from './types'
+
+export {useDialogControl as useReportDialogControl} from '#/components/Dialog'
 
 export function SelectReportOptionView(props: {
   params: ReportDialogProps['params']

@@ -53,17 +53,13 @@ export function useModerationCauseDescription(
         return {
           icon: CircleBanSign,
           name: _(msg`User Blocked by "${cause.source.list.name}"`),
-          description: _(
-            msg`You have blocked this user.`,
-          ),
+          description: _(msg`You have blocked this user.`),
         }
       } else {
         return {
           icon: CircleBanSign,
           name: _(msg`User Blocked`),
-          description: _(
-            msg`You have blocked this user.`,
-          ),
+          description: _(msg`You have blocked this user.`),
         }
       }
     }
@@ -71,9 +67,7 @@ export function useModerationCauseDescription(
       return {
         icon: CircleBanSign,
         name: _(msg`User Blocking You`),
-        description: _(
-          msg`This user has blocked you.`,
-        ),
+        description: _(msg`This user has blocked you.`),
       }
     }
     if (cause.type === 'block-other') {

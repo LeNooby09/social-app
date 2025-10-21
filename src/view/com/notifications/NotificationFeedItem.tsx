@@ -19,19 +19,18 @@ import {
   type AppBskyFeedDefs,
   AppBskyFeedPost,
   AppBskyGraphFollow,
+  AtUri,
   moderateProfile,
   type ModerationDecision,
   type ModerationOpts,
 } from '@atproto/api'
-import {AtUri} from '@atproto/api'
 import {TID} from '@atproto/common-web'
 import {msg, Plural, plural, Trans} from '@lingui/macro'
 import {useLingui} from '@lingui/react'
 import {useNavigation} from '@react-navigation/native'
 import {useQueryClient} from '@tanstack/react-query'
 
-import {MAX_POST_LINES} from '#/lib/constants'
-import {DM_SERVICE_HEADERS} from '#/lib/constants'
+import {DM_SERVICE_HEADERS, MAX_POST_LINES} from '#/lib/constants'
 import {useAnimatedValue} from '#/lib/hooks/useAnimatedValue'
 import {usePalette} from '#/lib/hooks/usePalette'
 import {makeProfileLink} from '#/lib/routes/links'

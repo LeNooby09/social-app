@@ -1,6 +1,5 @@
 import {useCallback, useImperativeHandle, useRef, useState} from 'react'
-import {View} from 'react-native'
-import {useWindowDimensions} from 'react-native'
+import {useWindowDimensions, View} from 'react-native'
 import {msg, Trans} from '@lingui/macro'
 import {useLingui} from '@lingui/react'
 
