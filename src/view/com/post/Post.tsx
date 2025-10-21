@@ -26,7 +26,7 @@ import {unstableCacheProfileView} from '#/state/queries/profile'
 import {Link} from '#/view/com/util/Link'
 import {PostMeta} from '#/view/com/util/PostMeta'
 import {PreviewableUserAvatar} from '#/view/com/util/UserAvatar'
-import {atoms as a} from '#/alf'
+import {atoms as a, useTheme} from '#/alf'
 import {ContentHider} from '#/components/moderation/ContentHider'
 import {LabelsOnMyPost} from '#/components/moderation/LabelsOnMe'
 import {PostAlerts} from '#/components/moderation/PostAlerts'
@@ -115,6 +115,7 @@ function PostInner({
 }) {
   const queryClient = useQueryClient()
   const pal = usePalette('default')
+  const t = useTheme()
   const {openComposer} = useOpenComposer()
   const [limitLines, setLimitLines] = useState(
     () => countLines(richText?.text) >= MAX_POST_LINES,
@@ -167,7 +168,10 @@ function PostInner({
       onPointerLeave={() => {
         setHover(false)
       }}>
-      <SubtleHover hover={hover} />
+      <SubtleHover
+        hover={hover}
+        style={{backgroundColor: t.palette.primary_50}}
+      />
       {showReplyLine && <View style={styles.replyLine} />}
       <View style={styles.layout}>
         <View style={styles.layoutAvi}>

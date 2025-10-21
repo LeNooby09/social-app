@@ -118,7 +118,7 @@ export function Label({
               a.align_center,
               a.rounded_full,
               outer,
-              (hovered || pressed) && t.atoms.bg_contrast_50,
+              (hovered || pressed) && {backgroundColor: t.palette.primary_50},
             ]}>
             {isBlueskyLabel || !isLabeler ? (
               <desc.icon

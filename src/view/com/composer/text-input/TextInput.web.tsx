@@ -342,6 +342,11 @@ export function TextInput({
       ? ((style.lineHeight + 'px') as unknown as number)
       : undefined
     style.minHeight = webForceMinHeight ? 140 : undefined
+    // Remove focus highlight/outline around the composer input on web
+    // @ts-ignore web-only style
+    style.outline = 'none'
+    // @ts-ignore web-only style
+    style.boxShadow = 'none'
     return style
   }, [t, fonts, webForceMinHeight])
 

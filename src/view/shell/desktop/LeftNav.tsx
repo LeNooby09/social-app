@@ -420,7 +420,7 @@ function NavItem({count, hasNew, href, icon, iconFilled, label}: NavItemProps) {
         a.outline_inset_1,
         a.transition_color,
       ]}
-      hoverStyle={t.atoms.bg_contrast_25}
+      hoverStyle={{backgroundColor: t.palette.primary_50}}
       // @ts-expect-error the function signature differs on web -prf
       onPress={onPressWrapped}
       href={href}

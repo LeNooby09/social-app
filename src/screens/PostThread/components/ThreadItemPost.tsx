@@ -349,12 +349,16 @@ function SubtleHoverWrapper({children}: {children: ReactNode}) {
     onIn: onHoverIn,
     onOut: onHoverOut,
   } = useInteractionState()
+  const t = useTheme()
   return (
     <View
       onPointerEnter={onHoverIn}
       onPointerLeave={onHoverOut}
       style={a.pointer}>
-      <SubtleHover hover={hover} />
+      <SubtleHover
+        hover={hover}
+        style={{backgroundColor: t.palette.primary_50}}
+      />
       {children}
     </View>
   )

@@ -37,7 +37,7 @@ import {
 import {Link} from '#/view/com/util/Link'
 import {PostMeta} from '#/view/com/util/PostMeta'
 import {PreviewableUserAvatar} from '#/view/com/util/UserAvatar'
-import {atoms as a} from '#/alf'
+import {atoms as a, useTheme} from '#/alf'
 import {ContentHider} from '#/components/moderation/ContentHider'
 import {LabelsOnMyPost} from '#/components/moderation/LabelsOnMe'
 import {PostAlerts} from '#/components/moderation/PostAlerts'
@@ -164,6 +164,7 @@ let FeedItemInner = ({
   const {openComposer} = useOpenComposer()
   const navigation = useNavigation<NavigationProp>()
   const pal = usePalette('default')
+  const t = useTheme()
   const gate = useGate()
 
   const [hover, setHover] = useState(false)
@@ -303,7 +304,10 @@ let FeedItemInner = ({
       onPointerLeave={() => {
         setHover(false)
       }}>
-      <SubtleHover hover={hover} />
+      <SubtleHover
+        hover={hover}
+        style={{backgroundColor: t.palette.primary_50}}
+      />
       <View style={{flexDirection: 'row', gap: 10, paddingLeft: 8}}>
         <View style={{width: 42}}>
           {isThreadChild && (

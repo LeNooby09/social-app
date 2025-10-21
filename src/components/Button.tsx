@@ -231,7 +231,7 @@ export const Button = React.forwardRef<View, ButtonProps>(
               backgroundColor: t.palette.primary_500,
             })
             hoverStyles.push({
-              backgroundColor: t.palette.primary_600,
+              backgroundColor: t.palette.primary_500, // Use Catppuccin Mocha Mauve for hover accent
             })
           } else {
             baseStyles.push({

@@ -155,6 +155,7 @@ let RepostButtonDialogInner = ({
             onPress={onPressRepost}
             size="large"
             variant="ghost"
+            hoverStyle={{backgroundColor: t.palette.primary_50}}
             color="primary">
             <Repost size="lg" fill={t.palette.primary_500} />
             <Text style={[a.font_semi_bold, a.text_xl]}>
@@ -177,6 +178,7 @@ let RepostButtonDialogInner = ({
             onPress={onPressQuote}
             size="large"
             variant="ghost"
+            hoverStyle={{backgroundColor: t.palette.primary_50}}
             color="primary">
             <Quote
               size="lg"

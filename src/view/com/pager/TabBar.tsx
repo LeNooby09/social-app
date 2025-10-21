@@ -424,7 +424,7 @@ function TabBarItem({
       <PressableWithHover
         testID={`${testID}-selector-${index}`}
         style={styles.item}
-        hoverStyle={t.atoms.bg_contrast_25}
+        hoverStyle={{backgroundColor: t.palette.primary_50}}
         onPress={() => onPressItem(index)}
         accessibilityRole="tab">
         <Animated.View style={[style, styles.itemInner]}>

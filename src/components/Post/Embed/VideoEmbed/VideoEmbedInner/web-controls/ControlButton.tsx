@@ -30,7 +30,7 @@ export function ControlButton({
         a.rounded_full,
         web({transition: 'background-color 0.1s'}),
       ]}
-      hoverStyle={{backgroundColor: 'rgba(255, 255, 255, 0.2)'}}>
+      hoverStyle={{backgroundColor: 'rgba(203, 166, 247, 0.2)'}}>
       {active ? (
         <ActiveIcon fill={t.palette.white} width={20} aria-hidden />
       ) : (
