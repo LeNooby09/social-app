@@ -1,12 +1,11 @@
 import React, {type ComponentProps, type JSX} from 'react'
-import {Linking, ScrollView, TouchableOpacity, View} from 'react-native'
+import {ScrollView, TouchableOpacity, View} from 'react-native'
 import {useSafeAreaInsets} from 'react-native-safe-area-context'
 import {msg, Plural, plural, Trans} from '@lingui/macro'
 import {useLingui} from '@lingui/react'
 import {StackActions, useNavigation} from '@react-navigation/native'
 
 import {useActorStatus} from '#/lib/actor-status'
-import {FEEDBACK_FORM_URL, HELP_DESK_URL} from '#/lib/constants'
 import {type PressableScale} from '#/lib/custom-animations/PressableScale'
 import {useNavigationTabState} from '#/lib/hooks/useNavigationTabState'
 import {getTabState, TabState} from '#/lib/routes/helpers'
@@ -15,7 +14,6 @@ import {sanitizeHandle} from '#/lib/strings/handles'
 import {colors} from '#/lib/styles'
 import {isWeb} from '#/platform/detection'
 import {emitSoftReset} from '#/state/events'
-import {useKawaiiMode} from '#/state/preferences/kawaii'
 import {useUnreadNotifications} from '#/state/queries/notifications/unread'
 import {useProfileQuery} from '#/state/queries/profile'
 import {type SessionAccount, useSession} from '#/state/session'
@@ -23,8 +21,8 @@ import {useSetDrawerOpen} from '#/state/shell'
 import {formatCount} from '#/view/com/util/numeric/format'
 import {UserAvatar} from '#/view/com/util/UserAvatar'
 import {NavSignupCard} from '#/view/shell/NavSignupCard'
-import {atoms as a, tokens, useTheme, web} from '#/alf'
-import {Button, ButtonIcon, ButtonText} from '#/components/Button'
+import {atoms as a, useTheme, web} from '#/alf'
+import {Button} from '#/components/Button'
 import {Divider} from '#/components/Divider'
 import {
   Bell_Filled_Corner0_Rounded as BellFilled,
@@ -42,16 +40,12 @@ import {
 } from '#/components/icons/HomeOpen'
 import {MagnifyingGlass_Filled_Stroke2_Corner0_Rounded as MagnifyingGlassFilled} from '#/components/icons/MagnifyingGlass'
 import {MagnifyingGlass2_Stroke2_Corner0_Rounded as MagnifyingGlass} from '#/components/icons/MagnifyingGlass2'
-import {
-  Message_Stroke2_Corner0_Rounded as Message,
-  Message_Stroke2_Corner0_Rounded_Filled as MessageFilled,
-} from '#/components/icons/Message'
+import {Message_Stroke2_Corner0_Rounded_Filled as MessageFilled} from '#/components/icons/Message'
 import {SettingsGear2_Stroke2_Corner0_Rounded as Settings} from '#/components/icons/SettingsGear2'
 import {
   UserCircle_Filled_Corner0_Rounded as UserCircleFilled,
   UserCircle_Stroke2_Corner0_Rounded as UserCircle,
 } from '#/components/icons/UserCircle'
-import {InlineLinkText} from '#/components/Link'
 import {Text} from '#/components/Typography'
 import {useSimpleVerificationState} from '#/components/verification'
 import {VerificationCheck} from '#/components/verification/VerificationCheck'
@@ -243,19 +237,6 @@ let DrawerContent = ({}: React.PropsWithoutRef<{}>): React.ReactNode => {
     setDrawerOpen(false)
   }, [navigation, setDrawerOpen])
 
-  const onPressFeedback = React.useCallback(() => {
-    Linking.openURL(
-      FEEDBACK_FORM_URL({
-        email: currentAccount?.email,
-        handle: currentAccount?.handle,
-      }),
-    )
-  }, [currentAccount])
-
-  const onPressHelp = React.useCallback(() => {
-    Linking.openURL(HELP_DESK_URL)
-  }, [])
-
   // rendering
   // =
 
@@ -316,75 +297,12 @@ let DrawerContent = ({}: React.PropsWithoutRef<{}>): React.ReactNode => {
             <SearchMenuItem isActive={isAtSearch} onPress={onPressSearch} />
           </>
         )}
-
-        <View style={[a.px_xl]}>
-          <Divider style={[a.mb_xl, a.mt_sm]} />
-          <ExtraLinks />
-        </View>
       </ScrollView>
-
-      <DrawerFooter
-        onPressFeedback={onPressFeedback}
-        onPressHelp={onPressHelp}
-      />
     </View>
   )
 }
 DrawerContent = React.memo(DrawerContent)
 export {DrawerContent}
-
-let DrawerFooter = ({
-  onPressFeedback,
-  onPressHelp,
-}: {
-  onPressFeedback: () => void
-  onPressHelp: () => void
-}): React.ReactNode => {
-  const {_} = useLingui()
-  const insets = useSafeAreaInsets()
-  return (
-    <View
-      style={[
-        a.flex_row,
-        a.gap_sm,
-        a.flex_wrap,
-        a.pl_xl,
-        a.pt_md,
-        {
-          paddingBottom: Math.max(
-            insets.bottom + tokens.space.xs,
-            tokens.space.xl,
-          ),
-        },
-      ]}>
-      <Button
-        label={_(msg`Send feedback`)}
-        size="small"
-        variant="solid"
-        color="secondary"
-        onPress={onPressFeedback}>
-        <ButtonIcon icon={Message} position="left" />
-        <ButtonText>
-          <Trans>Feedback</Trans>
-        </ButtonText>
-      </Button>
-      <Button
-        label={_(msg`Get help`)}
-        size="small"
-        variant="outline"
-        color="secondary"
-        onPress={onPressHelp}
-        style={{
-          backgroundColor: 'transparent',
-        }}>
-        <ButtonText>
-          <Trans>Help</Trans>
-        </ButtonText>
-      </Button>
-    </View>
-  )
-}
-DrawerFooter = React.memo(DrawerFooter)
 
 interface MenuItemProps extends ComponentProps<typeof PressableScale> {
   icon: JSX.Element
@@ -682,41 +600,5 @@ function MenuItem({icon, label, count, bold, onPress}: MenuItemProps) {
         </View>
       )}
     </Button>
-  )
-}
-
-function ExtraLinks() {
-  const {_} = useLingui()
-  const t = useTheme()
-  const kawaii = useKawaiiMode()
-
-  return (
-    <View style={[a.flex_col, a.gap_md, a.flex_wrap]}>
-      <InlineLinkText
-        style={[a.text_md]}
-        label={_(msg`Terms of Service`)}
-        to="https://bsky.social/about/support/tos">
-        <Trans>Terms of Service</Trans>
-      </InlineLinkText>
-      <InlineLinkText
-        style={[a.text_md]}
-        to="https://bsky.social/about/support/privacy-policy"
-        label={_(msg`Privacy Policy`)}>
-        <Trans>Privacy Policy</Trans>
-      </InlineLinkText>
-      {kawaii && (
-        <Text style={t.atoms.text_contrast_medium}>
-          <Trans>
-            Logo by{' '}
-            <InlineLinkText
-              style={[a.text_md]}
-              to="/profile/sawaratsuki.bsky.social"
-              label="@sawaratsuki.bsky.social">
-              @sawaratsuki.bsky.social
-            </InlineLinkText>
-          </Trans>
-        </Text>
-      )}
-    </View>
   )
 }
