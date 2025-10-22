@@ -135,6 +135,7 @@ function mergeShadow<TProfileView extends bsky.profile.AnyProfileView>(
         'followingUri' in shadow
           ? shadow.followingUri
           : profile.viewer?.following,
+      followedBy: profile.viewer?.followedBy,
       muted: 'muted' in shadow ? shadow.muted : profile.viewer?.muted,
       blocking:
         'blockingUri' in shadow ? shadow.blockingUri : profile.viewer?.blocking,
