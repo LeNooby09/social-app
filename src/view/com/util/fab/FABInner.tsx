@@ -14,7 +14,6 @@ import {useHaptics} from '#/lib/haptics'
 import {useMinimalShellFabTransform} from '#/lib/hooks/useMinimalShellTransform'
 import {useWebMediaQueries} from '#/lib/hooks/useWebMediaQueries'
 import {clamp} from '#/lib/numbers'
-import {gradients} from '#/lib/styles'
 import {isWeb} from '#/platform/detection'
 import {atoms as a, ios} from '#/alf'
 
@@ -59,7 +58,7 @@ export function FABInner({testID, icon, onPress, style, ...props}: FABProps) {
         style={[a.rounded_full, style]}
         {...props}>
         <LinearGradient
-          colors={[gradients.blueLight.start, gradients.blueLight.end]}
+          colors={['#cba6f7', '#b58be6']}
           start={{x: 0, y: 0}}
           end={{x: 1, y: 1}}
           style={[styles.inner, size]}>
