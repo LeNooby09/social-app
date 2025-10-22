@@ -50,8 +50,6 @@ import {
   shouldRequestEmailConfirmation,
   snoozeEmailConfirmationPrompt,
 } from '#/state/shell/reminders'
-import {CommunityGuidelinesScreen} from '#/view/screens/CommunityGuidelines'
-import {CopyrightPolicyScreen} from '#/view/screens/CopyrightPolicy'
 import {DebugModScreen} from '#/view/screens/DebugMod'
 import {FeedsScreen} from '#/view/screens/Feeds'
 import {HomeScreen} from '#/view/screens/Home'
@@ -62,12 +60,9 @@ import {ModerationMutedAccounts} from '#/view/screens/ModerationMutedAccounts'
 import {NotFoundScreen} from '#/view/screens/NotFound'
 import {NotificationsScreen} from '#/view/screens/Notifications'
 import {PostThreadScreen} from '#/view/screens/PostThread'
-import {PrivacyPolicyScreen} from '#/view/screens/PrivacyPolicy'
 import {ProfileScreen} from '#/view/screens/Profile'
 import {ProfileFeedLikedByScreen} from '#/view/screens/ProfileFeedLikedBy'
 import {Storybook} from '#/view/screens/Storybook'
-import {SupportScreen} from '#/view/screens/Support'
-import {TermsOfServiceScreen} from '#/view/screens/TermsOfService'
 import {BottomBar} from '#/view/shell/bottom-bar/BottomBar'
 import {createNativeStackNavigatorWithAuth} from '#/view/shell/createNativeStackNavigatorWithAuth'
 import {BookmarksScreen} from '#/screens/Bookmarks'
@@ -94,7 +89,6 @@ import {ProfileSearchScreen} from '#/screens/Profile/ProfileSearch'
 import {ProfileListScreen} from '#/screens/ProfileList'
 import {SavedFeeds} from '#/screens/SavedFeeds'
 import {SearchScreen} from '#/screens/Search'
-import {AboutSettingsScreen} from '#/screens/Settings/AboutSettings'
 import {AccessibilitySettingsScreen} from '#/screens/Settings/AccessibilitySettings'
 import {AccountSettingsScreen} from '#/screens/Settings/AccountSettings'
 import {ActivityPrivacySettingsScreen} from '#/screens/Settings/ActivityPrivacySettings'
@@ -322,31 +316,6 @@ function commonScreens(Stack: typeof Flat, unreadCountLabel?: string) {
         options={{title: title(msg`Log`), requireAuth: true}}
       />
       <Stack.Screen
-        name="Support"
-        getComponent={() => SupportScreen}
-        options={{title: title(msg`Support`)}}
-      />
-      <Stack.Screen
-        name="PrivacyPolicy"
-        getComponent={() => PrivacyPolicyScreen}
-        options={{title: title(msg`Privacy Policy`)}}
-      />
-      <Stack.Screen
-        name="TermsOfService"
-        getComponent={() => TermsOfServiceScreen}
-        options={{title: title(msg`Terms of Service`)}}
-      />
-      <Stack.Screen
-        name="CommunityGuidelines"
-        getComponent={() => CommunityGuidelinesScreen}
-        options={{title: title(msg`Community Guidelines`)}}
-      />
-      <Stack.Screen
-        name="CopyrightPolicy"
-        getComponent={() => CopyrightPolicyScreen}
-        options={{title: title(msg`Copyright Policy`)}}
-      />
-      <Stack.Screen
         name="AppPasswords"
         getComponent={() => AppPasswordsScreen}
         options={{title: title(msg`App Passwords`), requireAuth: true}}
@@ -515,14 +484,6 @@ function commonScreens(Stack: typeof Flat, unreadCountLabel?: string) {
         getComponent={() => InterestsSettingsScreen}
         options={{
           title: title(msg`Your interests`),
-          requireAuth: true,
-        }}
-      />
-      <Stack.Screen
-        name="AboutSettings"
-        getComponent={() => AboutSettingsScreen}
-        options={{
-          title: title(msg`About`),
           requireAuth: true,
         }}
       />

@@ -1,5 +1,5 @@
 import {useState} from 'react'
-import {Alert, LayoutAnimation, Linking, Pressable, View} from 'react-native'
+import {Alert, LayoutAnimation, Pressable, View} from 'react-native'
 import {useReducedMotion} from 'react-native-reanimated'
 import {type AppBskyActorDefs, moderateProfile} from '@atproto/api'
 import {msg, Trans} from '@lingui/macro'
@@ -8,7 +8,6 @@ import {useNavigation} from '@react-navigation/native'
 import {type NativeStackScreenProps} from '@react-navigation/native-stack'
 
 import {useActorStatus} from '#/lib/actor-status'
-import {HELP_DESK_URL} from '#/lib/constants'
 import {useAccountSwitcher} from '#/lib/hooks/useAccountSwitcher'
 import {useApplyPullRequestOTAUpdate} from '#/lib/hooks/useOTAUpdates'
 import {
@@ -44,9 +43,7 @@ import {useDialogControl} from '#/components/Dialog'
 import {SwitchAccountDialog} from '#/components/dialogs/SwitchAccount'
 import {Accessibility_Stroke2_Corner2_Rounded as AccessibilityIcon} from '#/components/icons/Accessibility'
 import {Bell_Stroke2_Corner0_Rounded as NotificationIcon} from '#/components/icons/Bell'
-import {BubbleInfo_Stroke2_Corner2_Rounded as BubbleInfoIcon} from '#/components/icons/BubbleInfo'
 import {ChevronTop_Stroke2_Corner0_Rounded as ChevronUpIcon} from '#/components/icons/Chevron'
-import {CircleQuestion_Stroke2_Corner2_Rounded as CircleQuestionIcon} from '#/components/icons/CircleQuestion'
 import {CodeBrackets_Stroke2_Corner2_Rounded as CodeBracketsIcon} from '#/components/icons/CodeBrackets'
 import {DotGrid_Stroke2_Corner0_Rounded as DotsHorizontal} from '#/components/icons/DotGrid'
 import {Earth_Stroke2_Corner2_Rounded as EarthIcon} from '#/components/icons/Globe'
@@ -232,22 +229,6 @@ export function SettingsScreen({}: Props) {
             <SettingsList.ItemIcon icon={EarthIcon} />
             <SettingsList.ItemText>
               <Trans>Languages</Trans>
-            </SettingsList.ItemText>
-          </SettingsList.LinkItem>
-          <SettingsList.PressableItem
-            onPress={() => Linking.openURL(HELP_DESK_URL)}
-            label={_(msg`Help`)}
-            accessibilityHint={_(msg`Opens helpdesk in browser`)}>
-            <SettingsList.ItemIcon icon={CircleQuestionIcon} />
-            <SettingsList.ItemText>
-              <Trans>Help</Trans>
-            </SettingsList.ItemText>
-            <SettingsList.Chevron />
-          </SettingsList.PressableItem>
-          <SettingsList.LinkItem to="/settings/about" label={_(msg`About`)}>
-            <SettingsList.ItemIcon icon={BubbleInfoIcon} />
-            <SettingsList.ItemText>
-              <Trans>About</Trans>
             </SettingsList.ItemText>
           </SettingsList.LinkItem>
           <SettingsList.Divider />

@@ -14,6 +14,7 @@ import {sanitizeHandle} from '#/lib/strings/handles'
 import {colors} from '#/lib/styles'
 import {isWeb} from '#/platform/detection'
 import {emitSoftReset} from '#/state/events'
+import {useKawaiiMode} from '#/state/preferences/kawaii'
 import {useUnreadNotifications} from '#/state/queries/notifications/unread'
 import {useProfileQuery} from '#/state/queries/profile'
 import {type SessionAccount, useSession} from '#/state/session'
@@ -40,12 +41,16 @@ import {
 } from '#/components/icons/HomeOpen'
 import {MagnifyingGlass_Filled_Stroke2_Corner0_Rounded as MagnifyingGlassFilled} from '#/components/icons/MagnifyingGlass'
 import {MagnifyingGlass2_Stroke2_Corner0_Rounded as MagnifyingGlass} from '#/components/icons/MagnifyingGlass2'
-import {Message_Stroke2_Corner0_Rounded_Filled as MessageFilled} from '#/components/icons/Message'
+import {
+  Message_Stroke2_Corner0_Rounded as Message,
+  Message_Stroke2_Corner0_Rounded_Filled as MessageFilled,
+} from '#/components/icons/Message'
 import {SettingsGear2_Stroke2_Corner0_Rounded as Settings} from '#/components/icons/SettingsGear2'
 import {
   UserCircle_Filled_Corner0_Rounded as UserCircleFilled,
   UserCircle_Stroke2_Corner0_Rounded as UserCircle,
 } from '#/components/icons/UserCircle'
+import {InlineLinkText} from '#/components/Link'
 import {Text} from '#/components/Typography'
 import {useSimpleVerificationState} from '#/components/verification'
 import {VerificationCheck} from '#/components/verification/VerificationCheck'
@@ -297,6 +302,11 @@ let DrawerContent = ({}: React.PropsWithoutRef<{}>): React.ReactNode => {
             <SearchMenuItem isActive={isAtSearch} onPress={onPressSearch} />
           </>
         )}
+
+        <View style={[a.px_xl]}>
+          <Divider style={[a.mb_xl, a.mt_sm]} />
+          <ExtraLinks />
+        </View>
       </ScrollView>
     </View>
   )
@@ -548,7 +558,7 @@ function MenuItem({icon, label, count, bold, onPress}: MenuItemProps) {
             a.gap_md,
             a.py_md,
             a.px_xl,
-            (hovered || pressed) && t.atoms.bg_contrast_25,
+            (hovered || pressed) && {backgroundColor: t.palette.primary_100},
           ]}>
           <View style={[a.relative]}>
             {icon}
@@ -600,5 +610,29 @@ function MenuItem({icon, label, count, bold, onPress}: MenuItemProps) {
         </View>
       )}
     </Button>
+  )
+}
+
+function ExtraLinks() {
+  const {_} = useLingui()
+  const t = useTheme()
+  const kawaii = useKawaiiMode()
+
+  return (
+    <View style={[a.flex_col, a.gap_md, a.flex_wrap]}>
+      {kawaii && (
+        <Text style={t.atoms.text_contrast_medium}>
+          <Trans>
+            Logo by{' '}
+            <InlineLinkText
+              style={[a.text_md]}
+              to="/profile/sawaratsuki.bsky.social"
+              label="@sawaratsuki.bsky.social">
+              @sawaratsuki.bsky.social
+            </InlineLinkText>
+          </Trans>
+        </Text>
+      )}
+    </View>
   )
 }
