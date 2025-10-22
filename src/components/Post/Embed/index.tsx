@@ -155,7 +155,9 @@ function RecordEmbed({
       return null
     }
     case 'post': {
-      if (rest.isWithinQuote && !rest.allowNestedQuotes) {
+      const currentDepth = rest.quoteDepth ?? 0
+      // Allow up to 3 layers of quotes (depth 0, 1, 2)
+      if (currentDepth >= 3) {
         return null
       }
 
@@ -170,6 +172,7 @@ function RecordEmbed({
           }
           isWithinQuote={rest.isWithinQuote}
           allowNestedQuotes={rest.allowNestedQuotes}
+          quoteDepth={currentDepth}
         />
       )
     }
@@ -235,6 +238,7 @@ export function QuoteEmbed({
   style,
   isWithinQuote: parentIsWithinQuote,
   allowNestedQuotes: parentAllowNestedQuotes,
+  quoteDepth: parentQuoteDepth,
 }: Omit<CommonProps, 'viewContext'> & {
   embed: EmbedType<'post'>
   viewContext?: QuoteEmbedViewContext
@@ -320,7 +324,6 @@ export function QuoteEmbed({
                   value={richText}
                   style={a.text_md}
                   numberOfLines={20}
-                  disableLinks
                 />
               ) : null}
               {quote.embed && (
@@ -332,6 +335,7 @@ export function QuoteEmbed({
                   allowNestedQuotes={
                     parentIsWithinQuote ? false : parentAllowNestedQuotes
                   }
+                  quoteDepth={(parentQuoteDepth ?? 0) + 1}
                 />
               )}
             </Link>

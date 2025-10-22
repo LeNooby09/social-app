@@ -22,6 +22,7 @@ export type CommonProps = {
   viewContext?: PostEmbedViewContext
   isWithinQuote?: boolean
   allowNestedQuotes?: boolean
+  quoteDepth?: number
   postAuthor?: AppBskyActorDefs.ProfileViewBasic
 }
 
