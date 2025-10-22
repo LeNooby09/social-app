@@ -494,24 +494,8 @@ func (srv *Server) WebPost(c echo.Context) error {
 		log.Warnf("failed to fetch profile for: %s\t%v", identifier, err)
 		return c.Render(http.StatusOK, "post.html", data)
 	}
-	unauthedViewingOkay := true
-	for _, label := range pv.Labels {
-		if label.Src == pv.Did && label.Val == "!no-unauthenticated" {
-			unauthedViewingOkay = false
-		}
-	}
 
 	req := c.Request()
-	if !unauthedViewingOkay {
-		// Provide minimal OpenGraph data for auth-required posts
-		data["requestURI"] = fmt.Sprintf("https://%s%s", req.Host, req.URL.Path)
-		data["requiresAuth"] = true
-		data["profileHandle"] = pv.Handle
-		if pv.DisplayName != nil {
-			data["profileDisplayName"] = *pv.DisplayName
-		}
-		return c.Render(http.StatusOK, "post.html", data)
-	}
 
 	// then fetch the post thread (with extra context)
 	uri := fmt.Sprintf("at://%s/app.bsky.feed.post/%s", pv.Did, rkey)
@@ -630,21 +614,11 @@ func (srv *Server) WebProfile(c echo.Context) error {
 		log.Warnf("failed to fetch profile for: %s\t%v", identifier, err)
 		return c.Render(http.StatusOK, "profile.html", data)
 	}
-	unauthedViewingOkay := true
-	for _, label := range pv.Labels {
-		if label.Src == pv.Did && label.Val == "!no-unauthenticated" {
-			unauthedViewingOkay = false
-		}
-	}
 
 	req := c.Request()
 	data["profileView"] = pv
 	data["requestURI"] = fmt.Sprintf("https://%s%s", req.Host, req.URL.Path)
 	data["requestHost"] = req.Host
-
-	if !unauthedViewingOkay {
-		data["requiresAuth"] = true
-	}
 
 	return c.Render(http.StatusOK, "profile.html", data)
 }
@@ -673,16 +647,7 @@ func (srv *Server) WebFeed(c echo.Context) error {
 		log.Warnf("failed to fetch profile for: %s\t%v", identifier, err)
 		return c.Render(http.StatusOK, "feed.html", data)
 	}
-	unauthedViewingOkay := true
-	for _, label := range pv.Labels {
-		if label.Src == pv.Did && label.Val == "!no-unauthenticated" {
-			unauthedViewingOkay = false
-		}
-	}
 
-	if !unauthedViewingOkay {
-		return c.Render(http.StatusOK, "feed.html", data)
-	}
 	did := pv.Did
 	data["did"] = did
 
