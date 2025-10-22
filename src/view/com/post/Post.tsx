@@ -254,9 +254,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     gap: 10,
   },
-  layoutAvi: {
-    paddingLeft: 8,
-  },
+  layoutAvi: {},
   layoutContent: {
     flex: 1,
   },

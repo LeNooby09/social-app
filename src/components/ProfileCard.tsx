@@ -78,15 +78,16 @@ export function Card({
     <Outer>
       <Header>
         <Avatar profile={profile} moderationOpts={moderationOpts} />
-        <NameAndHandle profile={profile} moderationOpts={moderationOpts} />
+        <View style={[a.flex_1]}>
+          <NameAndHandle profile={profile} moderationOpts={moderationOpts} />
+          <Labels profile={profile} moderationOpts={moderationOpts} />
+        </View>
         <FollowButton
           profile={profile}
           moderationOpts={moderationOpts}
           logContext={logContext}
         />
       </Header>
-
-      <Labels profile={profile} moderationOpts={moderationOpts} />
 
       <Description profile={profile} />
     </Outer>
@@ -595,20 +596,25 @@ export function Labels({
 }) {
   const moderation = moderateProfile(profile, moderationOpts)
   const modui = moderation.ui('profileList')
-  const followedBy = profile.viewer?.followedBy
+  const isFollowedBy = Boolean(profile.viewer?.followedBy)
+  const isFollowing = Boolean(profile.viewer?.following)
 
-  if (!followedBy && !modui.inform && !modui.alert) {
+  if (!isFollowedBy && !modui.inform && !modui.alert && !isFollowing) {
     return null
   }
 
   return (
     <Pills.Row style={[a.pt_xs]}>
-      {followedBy && <Pills.FollowsYou />}
+      {isFollowing && isFollowedBy ? (
+        <Pills.Mutuals />
+      ) : isFollowedBy ? (
+        <Pills.FollowsYou />
+      ) : null}
       {modui.alerts.map(alert => (
-        <Pills.Label key={getModerationCauseKey(alert)} cause={alert} />
+        <Pills.Label key={getModerationCauseKey(alert)} cause={alert} noBg />
       ))}
       {modui.informs.map(inform => (
-        <Pills.Label key={getModerationCauseKey(inform)} cause={inform} />
+        <Pills.Label key={getModerationCauseKey(inform)} cause={inform} noBg />
       ))}
     </Pills.Row>
   )

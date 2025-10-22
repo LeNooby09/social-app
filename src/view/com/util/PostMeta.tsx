@@ -8,7 +8,6 @@ import {useQueryClient} from '@tanstack/react-query'
 import {useActorStatus} from '#/lib/actor-status'
 import {makeProfileLink} from '#/lib/routes/links'
 import {forceLTR} from '#/lib/strings/bidi'
-import {NON_BREAKING_SPACE} from '#/lib/strings/constants'
 import {sanitizeDisplayName} from '#/lib/strings/display-names'
 import {sanitizeHandle} from '#/lib/strings/handles'
 import {niceDate} from '#/lib/strings/time'
@@ -17,6 +16,7 @@ import {useProfileShadow} from '#/state/cache/profile-shadow'
 import {precacheProfile} from '#/state/queries/profile'
 import {atoms as a, platform, useTheme, web} from '#/alf'
 import {WebOnlyInlineLinkText} from '#/components/Link'
+import * as Pills from '#/components/Pills'
 import {ProfileHoverCard} from '#/components/ProfileHoverCard'
 import {Text} from '#/components/Typography'
 import {useSimpleVerificationState} from '#/components/verification'
@@ -60,120 +60,134 @@ let PostMeta = (opts: PostMetaOpts): React.ReactNode => {
   return (
     <View
       style={[
-        a.flex_1,
-        a.flex_row,
-        a.align_center,
-        a.pb_xs,
-        a.gap_xs,
+        opts.showAvatar ? a.flex_row : a.flex_1,
+        opts.showAvatar && a.gap_sm,
         a.z_20,
         opts.style,
       ]}>
       {opts.showAvatar && (
-        <View style={[a.self_center, a.mr_2xs]}>
-          <PreviewableUserAvatar
-            size={opts.avatarSize || 16}
-            profile={author}
-            moderation={opts.moderation?.ui('avatar')}
-            type={author.associated?.labeler ? 'labeler' : 'user'}
-            live={live}
-            hideLiveBadge
-          />
-        </View>
+        <PreviewableUserAvatar
+          size={opts.avatarSize || 16}
+          profile={author}
+          moderation={opts.moderation?.ui('avatar')}
+          type={author.associated?.labeler ? 'labeler' : 'user'}
+          live={live}
+          hideLiveBadge
+        />
       )}
-      <View style={[a.flex_row, a.align_end, a.flex_shrink]}>
-        <ProfileHoverCard did={author.did}>
-          <View style={[a.flex_row, a.align_end, a.flex_shrink]}>
-            <WebOnlyInlineLinkText
-              emoji
-              numberOfLines={1}
-              to={profileLink}
-              label={_(msg`View profile`)}
-              disableMismatchWarning
-              onPress={onBeforePressAuthor}
-              style={[
-                a.text_md,
-                a.font_semi_bold,
-                t.atoms.text,
-                a.leading_tight,
-                a.flex_shrink_0,
-                {maxWidth: '70%'},
-              ]}>
-              {forceLTR(
-                sanitizeDisplayName(
-                  displayName,
-                  opts.moderation?.ui('displayName'),
-                ),
-              )}
-            </WebOnlyInlineLinkText>
-            {verification.showBadge && (
-              <View
-                style={[
-                  a.pl_2xs,
-                  a.self_center,
-                  {
-                    marginTop: platform({web: 0, ios: 0, android: -1}),
-                  },
-                ]}>
-                <VerificationCheck
-                  width={platform({android: 13, default: 12})}
-                  verifier={verification.role === 'verifier'}
-                />
-              </View>
-            )}
-            <WebOnlyInlineLinkText
-              emoji
-              numberOfLines={1}
-              to={profileLink}
-              label={_(msg`View profile`)}
-              disableMismatchWarning
-              disableUnderline
-              onPress={onBeforePressAuthor}
-              style={[
-                a.text_md,
-                t.atoms.text_contrast_medium,
-                a.leading_tight,
-                {flexShrink: 10},
-              ]}>
-              {NON_BREAKING_SPACE + sanitizeHandle(handle, '@')}
-            </WebOnlyInlineLinkText>
-          </View>
-        </ProfileHoverCard>
 
-        <TimeElapsed timestamp={opts.timestamp}>
-          {({timeElapsed}) => (
+      <View style={[a.flex_1]}>
+        {/* First row: Display name + verification + timestamp */}
+        <View style={[a.flex_row, a.align_center, a.gap_xs]}>
+          <ProfileHoverCard did={author.did}>
+            <View style={[a.flex_row, a.align_center, a.flex_shrink]}>
+              <WebOnlyInlineLinkText
+                emoji
+                numberOfLines={1}
+                to={profileLink}
+                label={_(msg`View profile`)}
+                disableMismatchWarning
+                onPress={onBeforePressAuthor}
+                style={[
+                  a.text_md,
+                  a.font_semi_bold,
+                  t.atoms.text,
+                  a.leading_tight,
+                  a.flex_shrink,
+                ]}>
+                {forceLTR(
+                  sanitizeDisplayName(
+                    displayName,
+                    opts.moderation?.ui('displayName'),
+                  ),
+                )}
+              </WebOnlyInlineLinkText>
+              {verification.showBadge && (
+                <View
+                  style={[
+                    a.pl_2xs,
+                    a.self_center,
+                    {
+                      marginTop: platform({web: 0, ios: 0, android: -1}),
+                    },
+                  ]}>
+                  <VerificationCheck
+                    width={platform({android: 13, default: 12})}
+                    verifier={verification.role === 'verifier'}
+                  />
+                </View>
+              )}
+            </View>
+          </ProfileHoverCard>
+
+          <TimeElapsed timestamp={opts.timestamp}>
+            {({timeElapsed}) => (
+              <WebOnlyInlineLinkText
+                to={opts.postHref}
+                label={timestampLabel}
+                title={timestampLabel}
+                disableMismatchWarning
+                disableUnderline
+                onPress={onBeforePressPost}
+                style={[
+                  a.text_md,
+                  a.leading_tight,
+                  isAndroid && a.flex_grow,
+                  a.text_right,
+                  t.atoms.text_contrast_medium,
+                  web({
+                    whiteSpace: 'nowrap',
+                  }),
+                ]}>
+                {!isAndroid && (
+                  <Text
+                    style={[
+                      a.text_md,
+                      a.leading_tight,
+                      t.atoms.text_contrast_medium,
+                    ]}
+                    accessible={false}>
+                    &middot;{' '}
+                  </Text>
+                )}
+                {timeElapsed}
+              </WebOnlyInlineLinkText>
+            )}
+          </TimeElapsed>
+        </View>
+
+        {/* Second row: Handle + Relationship pills */}
+        <View style={[a.flex_row, a.align_center, a.gap_xs]}>
+          <ProfileHoverCard did={author.did}>
             <WebOnlyInlineLinkText
-              to={opts.postHref}
-              label={timestampLabel}
-              title={timestampLabel}
+              emoji
+              numberOfLines={1}
+              to={profileLink}
+              label={_(msg`View profile`)}
               disableMismatchWarning
               disableUnderline
-              onPress={onBeforePressPost}
+              onPress={onBeforePressAuthor}
               style={[
-                a.pl_xs,
                 a.text_md,
-                a.leading_tight,
-                isAndroid && a.flex_grow,
-                a.text_right,
                 t.atoms.text_contrast_medium,
-                web({
-                  whiteSpace: 'nowrap',
-                }),
+                a.leading_tight,
               ]}>
-              {!isAndroid && (
-                <Text
-                  style={[
-                    a.text_md,
-                    a.leading_tight,
-                    t.atoms.text_contrast_medium,
-                  ]}
-                  accessible={false}>
-                  &middot;{' '}
-                </Text>
-              )}
-              {timeElapsed}
+              {sanitizeHandle(handle, '@')}
             </WebOnlyInlineLinkText>
-          )}
-        </TimeElapsed>
+          </ProfileHoverCard>
+
+          {/* Relationship pills inline with handle */}
+          {(author.viewer?.following && author.viewer?.followedBy) ||
+          author.viewer?.followedBy ? (
+            <>
+              {author.viewer?.following && author.viewer?.followedBy ? (
+                <Pills.Mutuals size="sm" />
+              ) : author.viewer?.followedBy ? (
+                <Pills.FollowsYou size="sm" />
+              ) : null}
+            </>
+          ) : null}
+        </View>
       </View>
     </View>
   )

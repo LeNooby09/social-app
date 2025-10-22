@@ -296,6 +296,7 @@ export function QuoteEmbed({
                   author={quote.author}
                   moderation={moderation}
                   showAvatar
+                  avatarSize={32}
                   postHref={itemHref}
                   timestamp={quote.indexedAt}
                 />

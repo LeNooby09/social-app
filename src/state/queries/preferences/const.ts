@@ -46,4 +46,5 @@ export const DEFAULT_LOGGED_OUT_PREFERENCES: UsePreferencesQueryResponse = {
   verificationPrefs: {
     hideBadges: false,
   },
+  mutedRepostsByDid: {},
 }

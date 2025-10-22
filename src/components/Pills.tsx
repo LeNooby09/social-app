@@ -24,6 +24,8 @@ export type AppModerationCause =
 
 export type CommonProps = {
   size?: 'sm' | 'lg'
+  /** When true, render without a background fill (ghost style) */
+  noBg?: boolean
 }
 
 export function Row({
@@ -72,7 +74,7 @@ export function Label({
       case 'lg': {
         return {
           outer: [
-            t.atoms.bg_contrast_25,
+            !noBg && t.atoms.bg_contrast_25,
             {
               gap: 5,
               paddingHorizontal: 5,
@@ -151,7 +153,7 @@ export function Label({
   )
 }
 
-export function FollowsYou({size = 'sm'}: CommonProps) {
+export function FollowsYou({size = 'sm', noBg}: CommonProps) {
   const t = useTheme()
 
   const variantStyles = React.useMemo(() => {
@@ -170,9 +172,46 @@ export function FollowsYou({size = 'sm'}: CommonProps) {
   }, [size])
 
   return (
-    <View style={[variantStyles, a.justify_center, t.atoms.bg_contrast_25]}>
+    <View
+      style={[
+        variantStyles,
+        a.justify_center,
+        !noBg && t.atoms.bg_contrast_25,
+      ]}>
       <Text style={[a.text_xs, a.leading_tight]}>
         <Trans>Follows You</Trans>
+      </Text>
+    </View>
+  )
+}
+
+export function Mutuals({size = 'sm', noBg}: CommonProps) {
+  const t = useTheme()
+
+  const variantStyles = React.useMemo(() => {
+    switch (size) {
+      case 'sm':
+      case 'lg':
+      default:
+        return [
+          {
+            paddingHorizontal: 6,
+            paddingVertical: 3,
+            borderRadius: 4,
+          },
+        ]
+    }
+  }, [size])
+
+  return (
+    <View
+      style={[
+        variantStyles,
+        a.justify_center,
+        !noBg && {backgroundColor: t.palette.primary_50},
+      ]}>
+      <Text style={[a.text_xs, a.leading_tight]}>
+        <Trans>Mutuals</Trans>
       </Text>
     </View>
   )

@@ -549,6 +549,7 @@ function Inner({
               size="lg"
               cause={cause}
               disableDetailsDialog
+              noBg
             />
           ))}
         </View>

@@ -32,7 +32,7 @@ export function SubtleHover({
         a.inset_0,
         a.pointer_events_none,
         a.transition_opacity,
-        t.atoms.bg_contrast_50,
+        {backgroundColor: t.palette.primary_50},
         style,
         {opacity: hover ? opacity : 0},
       ]}

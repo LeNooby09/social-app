@@ -24,6 +24,10 @@ import {
 } from '#/state/queries/preferences/types'
 import {useAgent} from '#/state/session'
 import {saveLabelers} from '#/state/session/agent-config'
+import {
+  readMutedRepostsByDid,
+  saveMutedRepostsByDid,
+} from '#/state/queries/preferences/local'
 
 export * from '#/state/queries/preferences/const'
 export * from '#/state/queries/preferences/moderation'
@@ -53,6 +57,7 @@ export function usePreferencesQuery() {
           res.moderationPrefs.labelers.map(l => l.did),
         )
 
+        const persistedMuted = await readMutedRepostsByDid(agent.did)
         const preferences: UsePreferencesQueryResponse = {
           ...res,
           savedFeeds: res.savedFeeds.filter(f => f.type !== 'unknown'),
@@ -69,6 +74,7 @@ export function usePreferencesQuery() {
             ...(res.threadViewPrefs ?? {}),
           },
           userAge: res.birthDate ? getAge(res.birthDate) : undefined,
+          mutedRepostsByDid: persistedMuted || {},
         }
         return preferences
       }
@@ -444,6 +450,36 @@ export function useSetVerificationPrefsMutation() {
       await queryClient.invalidateQueries({
         queryKey: preferencesQueryKey,
       })
+    },
+  })
+}
+
+export function useSetMutedRepostsByDidMutation() {
+  const queryClient = useQueryClient()
+  const agent = useAgent()
+  return useMutation<void, unknown, {did: string; muted: boolean}>({
+    mutationFn: async ({did, muted}) => {
+      let latestMap: Record<string, boolean> = {}
+      queryClient.setQueryData<UsePreferencesQueryResponse | undefined>(
+        preferencesQueryKey,
+        prev => {
+          if (!prev) return prev
+          const nextMap = {...(prev.mutedRepostsByDid || {})}
+          if (muted) {
+            nextMap[did] = true
+          } else {
+            delete nextMap[did]
+          }
+          latestMap = nextMap
+          return {
+            ...prev,
+            mutedRepostsByDid: nextMap,
+          }
+        },
+      )
+      if (agent.did) {
+        await saveMutedRepostsByDid(agent.did, latestMap)
+      }
     },
   })
 }

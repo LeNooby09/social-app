@@ -21,6 +21,11 @@ import {
   useProfileFollowMutationQueue,
   useProfileMuteMutationQueue,
 } from '#/state/queries/profile'
+import {
+  usePreferencesQuery,
+  useSetMutedRepostsByDidMutation,
+} from '#/state/queries/preferences'
+import {reselectPostsFeedQueries} from '#/state/queries/post-feed'
 import {useCanGoLive} from '#/state/service-config'
 import {useSession} from '#/state/session'
 import {EventStopper} from '#/view/com/util/EventStopper'
@@ -59,6 +64,7 @@ import {useFullVerificationState} from '#/components/verification'
 import {VerificationCreatePrompt} from '#/components/verification/VerificationCreatePrompt'
 import {VerificationRemovePrompt} from '#/components/verification/VerificationRemovePrompt'
 import {useDevMode} from '#/storage/hooks/dev-mode'
+import {useFeatureFlag} from '#/lib/featureFlags'
 
 let ProfileMenu = ({
   profile,
@@ -79,6 +85,7 @@ let ProfileMenu = ({
   const [devModeEnabled] = useDevMode()
   const verification = useFullVerificationState({profile})
   const canGoLive = useCanGoLive(currentAccount?.did)
+  const flagMuteReposts = useFeatureFlag('feat.muteRepostsByAccount')
 
   const [queueMute, queueUnmute] = useProfileMuteMutationQueue(profile)
   const [queueBlock, queueUnblock] = useProfileBlockMutationQueue(profile)
@@ -109,6 +116,33 @@ let ProfileMenu = ({
     logger.metric('profile:addToStarterPack', {})
     addToStarterPacksDialogControl.open()
   }, [addToStarterPacksDialogControl])
+
+  // F4: Mute reposts per-account
+  const {data: preferences} = usePreferencesQuery()
+  const {mutateAsync: setMutedRepostsByDid} = useSetMutedRepostsByDidMutation()
+  const isRepostsMuted = !!preferences?.mutedRepostsByDid?.[profile.did]
+
+  const onPressToggleMuteReposts = React.useCallback(async () => {
+    try {
+      await setMutedRepostsByDid({did: profile.did, muted: !isRepostsMuted})
+      reselectPostsFeedQueries(queryClient)
+      Toast.show(
+        _(
+          msg({
+            message: !isRepostsMuted
+              ? 'Muted reposts from account'
+              : 'Unmuted reposts from account',
+            context: 'toast',
+          }),
+        ),
+      )
+    } catch (e: any) {
+      if (e?.name !== 'AbortError') {
+        logger.error('Failed to toggle mute reposts', {message: e})
+        Toast.show(_(msg`There was an issue! ${e.toString()}`), 'xmark')
+      }
+    }
+  }, [setMutedRepostsByDid, profile.did, isRepostsMuted, queryClient, _])
 
   const onPressShare = React.useCallback(() => {
     shareUrl(toShareUrl(makeProfileLink(profile)))
@@ -392,6 +426,27 @@ let ProfileMenu = ({
                           />
                         </Menu.Item>
                       )}
+
+                    {flagMuteReposts && !isSelf && (
+                      <Menu.Item
+                        testID="profileHeaderDropdownMuteRepostsBtn"
+                        label={
+                          isRepostsMuted
+                            ? _(msg`Unmute reposts from account`)
+                            : _(msg`Mute reposts from account`)
+                        }
+                        onPress={onPressToggleMuteReposts}>
+                        <Menu.ItemText>
+                          {isRepostsMuted ? (
+                            <Trans>Unmute reposts from account</Trans>
+                          ) : (
+                            <Trans>Mute reposts from account</Trans>
+                          )}
+                        </Menu.ItemText>
+                        <Menu.ItemIcon icon={isRepostsMuted ? Unmute : Mute} />
+                      </Menu.Item>
+                    )}
+
                     {!profile.viewer?.blockingByList && (
                       <Menu.Item
                         testID="profileHeaderDropdownBlockBtn"

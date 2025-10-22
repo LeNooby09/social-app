@@ -23,6 +23,7 @@ export function ProfileHeaderAlerts({
           size="lg"
           key={getModerationCauseKey(cause)}
           cause={cause}
+          noBg
         />
       ))}
       {modui.informs.filter(unique).map(cause => (
@@ -30,6 +31,7 @@ export function ProfileHeaderAlerts({
           size="lg"
           key={getModerationCauseKey(cause)}
           cause={cause}
+          noBg
         />
       ))}
     </Pills.Row>

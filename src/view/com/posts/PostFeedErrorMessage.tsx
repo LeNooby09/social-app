@@ -31,6 +31,7 @@ export enum KnownError {
   FeedgenUnknown = 'FeedgenUnknown',
   FeedSignedInOnly = 'FeedSignedInOnly',
   FeedTooManyRequests = 'FeedTooManyRequests',
+  LikesNotPublic = 'LikesNotPublic',
   Unknown = 'Unknown',
 }
 
@@ -70,6 +71,16 @@ export function PostFeedErrorMessage({
       <EmptyState
         icon="ban"
         message={_l(msgLingui`Posts hidden`)}
+        style={{paddingVertical: 40}}
+      />
+    )
+  }
+
+  if (knownError === KnownError.LikesNotPublic) {
+    return (
+      <EmptyState
+        icon="heart"
+        message={_l(msgLingui`This user's likes are not publicly viewable`)}
         style={{paddingVertical: 40}}
       />
     )
@@ -256,6 +267,20 @@ function detectKnownError(
   if (error.includes(KnownError.FeedSignedInOnly)) {
     return KnownError.FeedSignedInOnly
   }
+
+  // handle likes feed errors
+  if (feedDesc.startsWith('likes')) {
+    if (
+      error.includes('Profile not found') ||
+      error.includes('profile not found') ||
+      error.includes('not found') ||
+      error.includes('RecordNotFound')
+    ) {
+      return KnownError.LikesNotPublic
+    }
+    return KnownError.Unknown
+  }
+
   if (!feedDesc.startsWith('feedgen')) {
     return KnownError.Unknown
   }

@@ -16,6 +16,8 @@ export type UsePreferencesQueryResponse = Omit<
    */
   threadViewPrefs: ThreadViewPreferences
   userAge: number | undefined
+  /** Client-only preference: DID -> whether reposts by that DID are muted */
+  mutedRepostsByDid?: Record<string, boolean>
 }
 
 export type ThreadViewPreferences = Pick<

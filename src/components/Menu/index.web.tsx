@@ -201,7 +201,7 @@ export function Outer({
             a.rounded_sm,
             a.p_xs,
             a.border,
-            t.name === 'light' ? t.atoms.bg : t.atoms.bg_contrast_25,
+            t.atoms.bg,
             t.atoms.shadow_md,
             t.atoms.border_contrast_low,
             a.overflow_auto,
@@ -214,10 +214,7 @@ export function Outer({
         {/* Disabled until we can fix positioning
         <DropdownMenu.Arrow
           className="DropdownMenuArrow"
-          fill={
-            (t.name === 'light' ? t.atoms.bg : t.atoms.bg_contrast_25)
-              .backgroundColor
-          }
+          fill={t.atoms.bg.backgroundColor}
         />
           */}
       </DropdownMenu.Content>
@@ -267,9 +264,7 @@ export function Item({children, label, onPress, style, ...rest}: ItemProps) {
           (hovered || focused) &&
             !rest.disabled && [
               web({outline: '0 !important'}),
-              t.name === 'light'
-                ? t.atoms.bg_contrast_25
-                : t.atoms.bg_contrast_50,
+              {backgroundColor: t.palette.primary_50},
             ],
           style,
         ])}

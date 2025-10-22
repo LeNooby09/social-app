@@ -42,6 +42,8 @@ import {useFeedTuners} from '../preferences/feed-tuners'
 import {moduiHasNonIgnoredFilter} from '#/lib/moderation'
 import {useModerationOpts} from '../preferences/moderation-opts'
 import {usePreferencesQuery} from './preferences'
+import {filterFeedItemsByMutedReposts} from '#/lib/feed/filterReposts'
+import {featureFlagEnabled} from '#/lib/featureFlags'
 import {
   didOrHandleUriMatches,
   embedViewRecordToPostView,
@@ -180,8 +182,16 @@ export function usePostFeedQuery(
       moderationOpts,
       ignoreFilterFor: opts?.ignoreFilterFor,
       isDiscover,
+      mutedRepostsByDid: preferences?.mutedRepostsByDid || {},
+      muteRepostsFeature: featureFlagEnabled('feat.muteRepostsByAccount'),
     }),
-    [feedTuners, moderationOpts, opts?.ignoreFilterFor, isDiscover],
+    [
+      feedTuners,
+      moderationOpts,
+      opts?.ignoreFilterFor,
+      isDiscover,
+      preferences?.mutedRepostsByDid,
+    ],
   )
 
   const query = useInfiniteQuery<
@@ -255,8 +265,14 @@ export function usePostFeedQuery(
       (data: InfiniteData<FeedPageUnselected, RQPageParam>) => {
         // If the selection depends on some data, that data should
         // be included in the selectArgs object and read here.
-        const {feedTuners, moderationOpts, ignoreFilterFor, isDiscover} =
-          selectArgs
+        const {
+          feedTuners,
+          moderationOpts,
+          ignoreFilterFor,
+          isDiscover,
+          mutedRepostsByDid,
+          muteRepostsFeature,
+        } = selectArgs
 
         const tuner = new FeedTuner(feedTuners)
 
@@ -284,7 +300,14 @@ export function usePostFeedQuery(
               if (data.pages[i] && lastData.pages[i] === data.pages[i]) {
                 reusedPages.push(lastResult.pages[i])
                 // Keep the tuner in sync so that the end result is deterministic.
-                tuner.tune(lastData.pages[i].feed)
+                tuner.tune(
+                  muteRepostsFeature
+                    ? filterFeedItemsByMutedReposts(
+                        lastData.pages[i].feed,
+                        mutedRepostsByDid,
+                      )
+                    : lastData.pages[i].feed,
+                )
                 continue
               }
               // Stop as soon as pages stop matching up.
@@ -303,7 +326,14 @@ export function usePostFeedQuery(
               cursor: page.cursor,
               fetchedAt: page.fetchedAt,
               slices: tuner
-                .tune(page.feed)
+                .tune(
+                  muteRepostsFeature
+                    ? filterFeedItemsByMutedReposts(
+                        page.feed,
+                        mutedRepostsByDid,
+                      )
+                    : page.feed,
+                )
                 .map(slice => {
                   const moderations = slice.items.map(item =>
                     moderatePost(item.post, moderationOpts!),
@@ -641,6 +671,27 @@ export function resetPostsFeedQueries(queryClient: QueryClient, timeout = 0) {
       predicate: query => query.queryKey[0] === RQKEY_ROOT,
     })
   }, timeout)
+}
+
+/**
+ * Triggers a re-selection of all active post-feed queries without refetching from the network.
+ * Useful when local-only preferences that affect the select() phase change (e.g., mutedRepostsByDid).
+ */
+export function reselectPostsFeedQueries(queryClient: QueryClient) {
+  const queries = queryClient.getQueriesData<InfiniteData<FeedPageUnselected>>({
+    queryKey: [RQKEY_ROOT],
+  })
+  for (const [queryKey, data] of queries) {
+    if (!data) continue
+    // Shallow-clone to ensure React Query treats it as updated and re-runs selectors
+    const cloned: InfiniteData<FeedPageUnselected> = {
+      pages: data.pages.slice(),
+      pageParams: Array.isArray(data.pageParams)
+        ? (data.pageParams as any[]).slice()
+        : data.pageParams,
+    }
+    queryClient.setQueryData(queryKey as QueryKey, cloned)
+  }
 }
 
 export function resetProfilePostsQueries(
