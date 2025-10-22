@@ -1452,7 +1452,7 @@ function ComposerFooter({
         a.align_center,
         a.border_t,
         t.atoms.bg,
-        t.atoms.border_contrast_medium,
+        {borderColor: t.palette.primary_500},
         a.justify_between,
       ]}>
       <View style={[a.flex_row, a.align_center]}>
@@ -1912,7 +1912,7 @@ function VideoUploadToolbar({state}: {state: VideoState}) {
         <ProgressCircle
           size={30}
           borderWidth={1}
-          borderColor={t.atoms.border_contrast_low.borderColor}
+          borderColor={t.palette.primary_500}
           color={
             state.status === 'error'
               ? t.palette.negative_500

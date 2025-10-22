@@ -1,5 +1,5 @@
 import {useEffect, useLayoutEffect, useState} from 'react'
-import {StyleSheet, TouchableWithoutFeedback, View} from 'react-native'
+import {TouchableWithoutFeedback, View} from 'react-native'
 import {msg} from '@lingui/macro'
 import {useLingui} from '@lingui/react'
 import {useNavigation} from '@react-navigation/native'
@@ -101,21 +101,35 @@ function ShellInner() {
             accessibilityHint="">
             <View
               style={[
-                styles.drawerMask,
                 {
+                  position: 'fixed',
+                  width: '100%',
+                  height: '100%',
+                  top: 0,
+                  left: 0,
                   backgroundColor: showDrawer
                     ? select(t.name, {
-                        light: 'rgba(0, 57, 117, 0.1)',
-                        dark: 'rgba(1, 82, 168, 0.1)',
+                        light: 'rgba(0, 0, 0, 0.1)',
+                        dark: 'rgba(0, 0, 0, 0.5)',
                         dim: 'rgba(10, 13, 16, 0.8)',
                       })
                     : 'transparent',
+                  zIndex: 100,
                 },
                 a.transition_color,
               ]}>
               <View
                 style={[
-                  styles.drawerContainer,
+                  {
+                    display: 'flex',
+                    position: 'fixed',
+                    top: 0,
+                    left: 0,
+                    height: '100%',
+                    width: 330,
+                    maxWidth: '80%',
+                    zIndex: 101,
+                  },
                   showDrawer ? a.slide_in_left : a.slide_out_left,
                 ]}>
                 <DrawerContent />
@@ -145,22 +159,3 @@ export function Shell() {
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  drawerMask: {
-    ...a.fixed,
-    width: '100%',
-    height: '100%',
-    top: 0,
-    left: 0,
-  },
-  drawerContainer: {
-    display: 'flex',
-    ...a.fixed,
-    top: 0,
-    left: 0,
-    height: '100%',
-    width: 330,
-    maxWidth: '80%',
-  },
-})

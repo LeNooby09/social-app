@@ -396,12 +396,21 @@ function Btn({
   accessibilityHint,
   accessibilityLabel,
 }: BtnProps) {
+  const t = useTheme()
+  const [isHovered, setIsHovered] = React.useState(false)
+
   return (
     <PressableScale
       testID={testID}
-      style={[styles.ctrl, a.flex_1]}
+      style={[
+        styles.ctrl,
+        a.flex_1,
+        isHovered && {backgroundColor: t.palette.primary_100},
+      ]}
       onPress={onPress}
       onLongPress={onLongPress}
+      onHoverIn={() => setIsHovered(true)}
+      onHoverOut={() => setIsHovered(false)}
       accessible={accessible}
       accessibilityLabel={accessibilityLabel}
       accessibilityHint={accessibilityHint}

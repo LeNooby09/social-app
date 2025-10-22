@@ -74,7 +74,6 @@ export function Label({
       case 'lg': {
         return {
           outer: [
-            !noBg && t.atoms.bg_contrast_25,
             {
               gap: 5,
               paddingHorizontal: 5,
@@ -89,7 +88,6 @@ export function Label({
       default: {
         return {
           outer: [
-            !noBg && t.atoms.bg_contrast_25,
             {
               gap: 3,
               paddingHorizontal: 3,
@@ -172,12 +170,7 @@ export function FollowsYou({size = 'sm', noBg}: CommonProps) {
   }, [size])
 
   return (
-    <View
-      style={[
-        variantStyles,
-        a.justify_center,
-        !noBg && t.atoms.bg_contrast_25,
-      ]}>
+    <View style={[variantStyles, a.justify_center]}>
       <Text style={[a.text_xs, a.leading_tight]}>
         <Trans>Follows You</Trans>
       </Text>

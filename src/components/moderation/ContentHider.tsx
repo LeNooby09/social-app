@@ -179,13 +179,15 @@ function ContentHiderActive({
               a.px_lg,
               a.gap_xs,
               a.rounded_sm,
-              t.atoms.bg_contrast_25,
+              {backgroundColor: t.palette.primary_100},
               gtMobile && [a.gap_sm, a.py_lg, a.mt_xs, a.px_xl],
-              (state.hovered || state.pressed) && t.atoms.bg_contrast_50,
+              (state.hovered || state.pressed) && {
+                backgroundColor: t.palette.primary_300,
+              },
             ]}>
             <desc.icon
               size="md"
-              fill={t.atoms.text_contrast_medium.color}
+              fill={t.palette.primary_500}
               style={{marginLeft: -2}}
             />
             <Text
@@ -195,7 +197,7 @@ function ContentHiderActive({
                 a.font_semi_bold,
                 a.leading_snug,
                 gtMobile && [a.font_semi_bold],
-                t.atoms.text_contrast_medium,
+                {color: t.palette.primary_500},
                 web({
                   marginBottom: 1,
                 }),

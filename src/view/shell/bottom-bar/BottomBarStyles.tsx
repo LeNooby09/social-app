@@ -24,7 +24,7 @@ export const styles = StyleSheet.create({
     position: 'absolute',
     left: '52%',
     top: 8,
-    backgroundColor: colors.blue3,
+    backgroundColor: '#cba6f7', // Catppuccin Mocha Mauve accent
     paddingHorizontal: 4,
     paddingBottom: 1,
     borderRadius: 6,
@@ -54,7 +54,7 @@ export const styles = StyleSheet.create({
     top: 10,
     width: 8,
     height: 8,
-    backgroundColor: colors.blue3,
+    backgroundColor: '#cba6f7', // Catppuccin Mocha Mauve accent
     borderRadius: 6,
     zIndex: 1,
   },

@@ -1,5 +1,9 @@
 import {type StyleProp, type ViewStyle} from 'react-native'
-import {type AppBskyFeedDefs, type ModerationDecision} from '@atproto/api'
+import {
+  type AppBskyActorDefs,
+  type AppBskyFeedDefs,
+  type ModerationDecision,
+} from '@atproto/api'
 
 export enum PostEmbedViewContext {
   ThreadHighlighted = 'ThreadHighlighted',
@@ -18,6 +22,7 @@ export type CommonProps = {
   viewContext?: PostEmbedViewContext
   isWithinQuote?: boolean
   allowNestedQuotes?: boolean
+  postAuthor?: AppBskyActorDefs.ProfileViewBasic
 }
 
 export type EmbedProps = CommonProps & {

@@ -4,7 +4,6 @@ import {View} from 'react-native'
 import {msg} from '@lingui/macro'
 import {useLingui} from '@lingui/react'
 
-import {useKawaiiMode} from '#/state/preferences/kawaii'
 import {useSession} from '#/state/session'
 import {useShellLayout} from '#/state/shell/shell-layout'
 import {HomeHeaderLayoutMobile} from '#/view/com/home/HomeHeaderLayoutMobile'
@@ -38,7 +37,6 @@ function HomeHeaderLayoutDesktopAndTablet({
   const {headerHeight} = useShellLayout()
   const {hasSession} = useSession()
   const {_} = useLingui()
-  const kawaii = useKawaiiMode()
   const gutters = useGutters([0, 'base'])
 
   return (
@@ -49,7 +47,7 @@ function HomeHeaderLayoutDesktopAndTablet({
             style={[a.flex_row, a.align_center, gutters, a.pt_md, t.atoms.bg]}>
             <View style={{width: 34}} />
             <View style={[a.flex_1, a.align_center, a.justify_center]}>
-              <Logo width={kawaii ? 60 : 28} />
+              <Logo width={28} />
             </View>
             <Link
               to="/feeds"

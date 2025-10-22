@@ -374,7 +374,7 @@ let FeedItemInner = ({
                 isParentNotFound={isParentNotFound}
               />
             )}
-          <LabelsOnMyPost post={post} />
+          <LabelsOnMyPost post={post} style={[a.pb_xs]} />
           <PostContent
             moderation={moderation}
             richText={richText}
@@ -459,6 +459,7 @@ let PostContent = ({
       testID="contentHider-post"
       modui={moderation.ui('contentList')}
       ignoreMute
+      style={[a.pt_xs]}
       childContainerStyle={styles.contentHiderChild}>
       <PostAlerts
         modui={moderation.ui('contentList')}
@@ -488,6 +489,7 @@ let PostContent = ({
             moderation={moderation}
             onOpen={onOpenEmbed}
             viewContext={PostEmbedViewContext.Feed}
+            postAuthor={postAuthor}
           />
         </View>
       ) : null}

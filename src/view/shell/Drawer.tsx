@@ -14,7 +14,6 @@ import {sanitizeHandle} from '#/lib/strings/handles'
 import {colors} from '#/lib/styles'
 import {isWeb} from '#/platform/detection'
 import {emitSoftReset} from '#/state/events'
-import {useKawaiiMode} from '#/state/preferences/kawaii'
 import {useUnreadNotifications} from '#/state/queries/notifications/unread'
 import {useProfileQuery} from '#/state/queries/profile'
 import {type SessionAccount, useSession} from '#/state/session'
@@ -50,7 +49,6 @@ import {
   UserCircle_Filled_Corner0_Rounded as UserCircleFilled,
   UserCircle_Stroke2_Corner0_Rounded as UserCircle,
 } from '#/components/icons/UserCircle'
-import {InlineLinkText} from '#/components/Link'
 import {Text} from '#/components/Typography'
 import {useSimpleVerificationState} from '#/components/verification'
 import {VerificationCheck} from '#/components/verification/VerificationCheck'
@@ -614,25 +612,5 @@ function MenuItem({icon, label, count, bold, onPress}: MenuItemProps) {
 }
 
 function ExtraLinks() {
-  const {_} = useLingui()
-  const t = useTheme()
-  const kawaii = useKawaiiMode()
-
-  return (
-    <View style={[a.flex_col, a.gap_md, a.flex_wrap]}>
-      {kawaii && (
-        <Text style={t.atoms.text_contrast_medium}>
-          <Trans>
-            Logo by{' '}
-            <InlineLinkText
-              style={[a.text_md]}
-              to="/profile/sawaratsuki.bsky.social"
-              label="@sawaratsuki.bsky.social">
-              @sawaratsuki.bsky.social
-            </InlineLinkText>
-          </Trans>
-        </Text>
-      )}
-    </View>
-  )
+  return <View style={[a.flex_col, a.gap_md, a.flex_wrap]}></View>
 }

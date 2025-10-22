@@ -192,10 +192,10 @@ function PostInner({
           {replyAuthorDid !== '' && (
             <PostRepliedTo parentAuthor={replyAuthorDid} />
           )}
-          <LabelsOnMyPost post={post} />
+          <LabelsOnMyPost post={post} style={[a.pb_xs]} />
           <ContentHider
             modui={moderation.ui('contentView')}
-            style={styles.contentHider}
+            style={[styles.contentHider, a.pt_xs]}
             childContainerStyle={styles.contentHiderChild}>
             <PostAlerts
               modui={moderation.ui('contentView')}

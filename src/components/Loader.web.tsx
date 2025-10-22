@@ -23,7 +23,7 @@ export function Loader(props: Props) {
           style={[
             a.absolute,
             a.inset_0,
-            t.atoms.text_contrast_high,
+            {color: t.palette.primary_500},
             flatten(props.style),
           ]}
         />

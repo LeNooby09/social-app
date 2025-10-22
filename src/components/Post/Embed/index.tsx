@@ -181,6 +181,14 @@ function RecordEmbed({
       )
     }
     case 'post_blocked': {
+      // If the author of the quote is the same as the author of the quoted post,
+      // don't show the block effect (self-quote scenario)
+      if (
+        rest.postAuthor?.did &&
+        embed.view.author.did === rest.postAuthor.did
+      ) {
+        return null
+      }
       return (
         <PostPlaceholderText>
           <Trans>Blocked</Trans>
