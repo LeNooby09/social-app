@@ -10,7 +10,12 @@ import {
   type ModerationDecision,
   type ModerationPrefs,
 } from '@atproto/api'
-import {type InfiniteData, type QueryClient, type QueryKey, useInfiniteQuery,} from '@tanstack/react-query'
+import {
+  type InfiniteData,
+  type QueryClient,
+  type QueryKey,
+  useInfiniteQuery,
+} from '@tanstack/react-query'
 
 import {AuthorFeedAPI} from '#/lib/api/feed/author'
 import {CustomFeedAPI} from '#/lib/api/feed/custom'
@@ -38,7 +43,11 @@ import {KnownError} from '#/view/com/posts/PostFeedErrorMessage'
 import {useFeedTuners} from '../preferences/feed-tuners'
 import {useModerationOpts} from '../preferences/moderation-opts'
 import {usePreferencesQuery} from './preferences'
-import {didOrHandleUriMatches, embedViewRecordToPostView, getEmbeddedPost,} from './util'
+import {
+  didOrHandleUriMatches,
+  embedViewRecordToPostView,
+  getEmbeddedPost,
+} from './util'
 
 type ActorDid = string
 export type AuthorFilter =

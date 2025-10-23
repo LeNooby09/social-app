@@ -7,6 +7,7 @@ import {RemoveScrollBar} from 'react-remove-scroll-bar'
 
 import {useIntentHandler} from '#/lib/hooks/useIntentHandler'
 import {useWebMediaQueries} from '#/lib/hooks/useWebMediaQueries'
+import {getCurrentRoute, isStateAtTabRoot} from '#/lib/routes/helpers'
 import {type NavigationProp} from '#/lib/routes/types'
 import {useGeolocationStatus} from '#/state/geolocation'
 import {useIsDrawerOpen, useSetDrawerOpen} from '#/state/shell'
@@ -60,8 +61,27 @@ function ShellInner() {
   useIntentHandler()
 
   useEffect(() => {
+    let previousRoute: string | undefined
     const unsubscribe = navigator.addListener('state', () => {
       closeAllActiveElements()
+
+      // Scroll to top on tab change, excluding sub-menus and post -> feed transitions
+      const state = navigator.getState()
+      const currentRoute = getCurrentRoute(state)
+      const isAtTabRoot = isStateAtTabRoot(state)
+
+      // Only scroll to top if:
+      // 1. We're at a tab root (main tabs like Home, Search, etc.)
+      // 2. We're not coming from a post detail screen (exclude post -> feed)
+      if (isAtTabRoot && previousRoute !== currentRoute.name) {
+        const isComingFromPost =
+          previousRoute === 'Post' || previousRoute === 'PostThread'
+        if (!isComingFromPost) {
+          window.scrollTo(0, 0)
+        }
+      }
+
+      previousRoute = currentRoute.name
     })
     return unsubscribe
   }, [navigator, closeAllActiveElements])

@@ -136,7 +136,7 @@ export function EmojiPicker({state, close, pinToTop}: IProps) {
           accessibilityLabel={_(msg`Close emoji picker`)}
           accessibilityHint={_(msg`Closes the emoji picker`)}
           onPress={close}
-          style={[a.fixed, a.inset_0]}
+          style={[a.fixed, a.inset_0, {pointerEvents: 'box-none'}]}
         />
 
         <View
@@ -150,6 +150,7 @@ export function EmojiPicker({state, close, pinToTop}: IProps) {
               top: 0,
               left: 0,
               right: 0,
+              pointerEvents: 'box-none',
             },
           ])}>
           <View style={[{position: 'absolute'}, position]}>
@@ -172,7 +173,7 @@ export function EmojiPicker({state, close, pinToTop}: IProps) {
           accessibilityLabel={_(msg`Close emoji picker`)}
           accessibilityHint={_(msg`Closes the emoji picker`)}
           onPress={close}
-          style={[a.fixed, a.inset_0]}
+          style={[a.fixed, a.inset_0, {pointerEvents: 'box-none'}]}
         />
       </FocusScope.FocusScope>
     </Portal>

@@ -887,7 +887,7 @@ let PostFeed = ({
         }}
         onScrolledDownChange={onScrolledDownChange}
         onEndReached={onEndReached}
-        onEndReachedThreshold={2} // number of posts left to trigger load more
+        onEndReachedThreshold={5} // number of posts left to trigger load more - increased for smoother scrolling
         removeClippedSubviews={true}
         extraData={extraData}
         desktopFixedHeight={

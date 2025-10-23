@@ -296,6 +296,8 @@ export function MessagesList({
 
   const animatedListStyle = useAnimatedStyle(() => ({
     marginBottom: Math.max(keyboardHeight.get(), footerHeight.get()),
+    // Web only - prevent horizontal scroll in PWA
+    overflowX: 'hidden',
   }))
 
   const animatedStickyViewStyle = useAnimatedStyle(() => ({
