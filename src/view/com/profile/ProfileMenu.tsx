@@ -7,6 +7,7 @@ import {useQueryClient} from '@tanstack/react-query'
 
 import {useActorStatus} from '#/lib/actor-status'
 import {HITSLOP_20} from '#/lib/constants'
+import {useFeatureFlag} from '#/lib/featureFlags'
 import {makeProfileLink} from '#/lib/routes/links'
 import {type NavigationProp} from '#/lib/routes/types'
 import {shareText, shareUrl} from '#/lib/sharing'
@@ -15,17 +16,17 @@ import {logger} from '#/logger'
 import {isWeb} from '#/platform/detection'
 import {type Shadow} from '#/state/cache/types'
 import {useModalControls} from '#/state/modals'
+import {reselectPostsFeedQueries} from '#/state/queries/post-feed'
+import {
+  usePreferencesQuery,
+  useSetMutedRepostsByDidMutation,
+} from '#/state/queries/preferences'
 import {
   RQKEY as profileQueryKey,
   useProfileBlockMutationQueue,
   useProfileFollowMutationQueue,
   useProfileMuteMutationQueue,
 } from '#/state/queries/profile'
-import {
-  usePreferencesQuery,
-  useSetMutedRepostsByDidMutation,
-} from '#/state/queries/preferences'
-import {reselectPostsFeedQueries} from '#/state/queries/post-feed'
 import {useCanGoLive} from '#/state/service-config'
 import {useSession} from '#/state/session'
 import {EventStopper} from '#/view/com/util/EventStopper'
@@ -64,7 +65,6 @@ import {useFullVerificationState} from '#/components/verification'
 import {VerificationCreatePrompt} from '#/components/verification/VerificationCreatePrompt'
 import {VerificationRemovePrompt} from '#/components/verification/VerificationRemovePrompt'
 import {useDevMode} from '#/storage/hooks/dev-mode'
-import {useFeatureFlag} from '#/lib/featureFlags'
 
 let ProfileMenu = ({
   profile,
@@ -128,12 +128,9 @@ let ProfileMenu = ({
       reselectPostsFeedQueries(queryClient)
       Toast.show(
         _(
-          msg({
-            message: !isRepostsMuted
-              ? 'Muted reposts from account'
-              : 'Unmuted reposts from account',
-            context: 'toast',
-          }),
+          !isRepostsMuted
+            ? msg({message: 'Muted reposts from account', context: 'toast'})
+            : msg({message: 'Unmuted reposts from account', context: 'toast'}),
         ),
       )
     } catch (e: any) {
