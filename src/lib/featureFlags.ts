@@ -7,7 +7,9 @@ export type FeatureFlagKey =
 
 // Defaults:
 // - Keep mute-reposts enabled to avoid regressions where the UI already exists.
-// - Keep otherProfileLikes off until the tab is fully wired and QA'd.
+// - Enable otherProfileLikes: implemented via direct repo queries (com.atproto.repo.listRecords)
+//   to bypass the app.bsky.feed.getActorLikes API restriction. Likes are public records in
+//   AT Protocol, so we query them directly from users' PDS repositories.
 const DEFAULT_FLAGS: Record<FeatureFlagKey, boolean> = {
   'feat.muteRepostsByAccount': true,
   'feat.otherProfileLikes': true,

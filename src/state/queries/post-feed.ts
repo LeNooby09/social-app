@@ -10,19 +10,14 @@ import {
   type ModerationDecision,
   type ModerationPrefs,
 } from '@atproto/api'
-import {
-  type InfiniteData,
-  type QueryClient,
-  type QueryKey,
-  useInfiniteQuery,
-} from '@tanstack/react-query'
+import {type InfiniteData, type QueryClient, type QueryKey, useInfiniteQuery,} from '@tanstack/react-query'
 
 import {AuthorFeedAPI} from '#/lib/api/feed/author'
 import {CustomFeedAPI} from '#/lib/api/feed/custom'
 import {DemoFeedAPI} from '#/lib/api/feed/demo'
 import {FollowingFeedAPI} from '#/lib/api/feed/following'
 import {HomeFeedAPI} from '#/lib/api/feed/home'
-import {LikesFeedAPI} from '#/lib/api/feed/likes'
+import {DirectRepoLikesFeedAPI, LikesFeedAPI} from '#/lib/api/feed/likes'
 import {ListFeedAPI} from '#/lib/api/feed/list'
 import {MergeFeedAPI} from '#/lib/api/feed/merge'
 import {PostListFeedAPI} from '#/lib/api/feed/posts'
@@ -43,11 +38,7 @@ import {KnownError} from '#/view/com/posts/PostFeedErrorMessage'
 import {useFeedTuners} from '../preferences/feed-tuners'
 import {useModerationOpts} from '../preferences/moderation-opts'
 import {usePreferencesQuery} from './preferences'
-import {
-  didOrHandleUriMatches,
-  embedViewRecordToPostView,
-  getEmbeddedPost,
-} from './util'
+import {didOrHandleUriMatches, embedViewRecordToPostView, getEmbeddedPost,} from './util'
 
 type ActorDid = string
 export type AuthorFilter =
@@ -515,7 +506,14 @@ function createApi({
     return new AuthorFeedAPI({agent, feedParams: {actor, filter}})
   } else if (feedDesc.startsWith('likes')) {
     const [__, actor] = feedDesc.split('|')
-    return new LikesFeedAPI({agent, feedParams: {actor}})
+    // Use the standard API for own likes (works with getActorLikes restriction)
+    // Use direct repo query for other users' likes (bypasses API restriction)
+    const isOwnProfile = agent.session?.did === actor
+    if (isOwnProfile) {
+      return new LikesFeedAPI({agent, feedParams: {actor}})
+    } else {
+      return new DirectRepoLikesFeedAPI({agent, feedParams: {actor}})
+    }
   } else if (feedDesc.startsWith('feedgen')) {
     const [__, feed] = feedDesc.split('|')
     return new CustomFeedAPI({
