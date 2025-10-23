@@ -2,6 +2,7 @@ import React from 'react'
 import {View} from 'react-native'
 import {
   type $Typed,
+  AppBskyEmbedRecord,
   type AppBskyFeedDefs,
   AppBskyFeedPost,
   AtUri,
@@ -9,14 +10,14 @@ import {
   RichText as RichTextAPI,
 } from '@atproto/api'
 import {Trans} from '@lingui/macro'
-import {useQueryClient} from '@tanstack/react-query'
+import {useQuery, useQueryClient} from '@tanstack/react-query'
 
 import {usePalette} from '#/lib/hooks/usePalette'
 import {makeProfileLink} from '#/lib/routes/links'
 import {useMaxQuoteDepth} from '#/state/preferences'
 import {useModerationOpts} from '#/state/preferences/moderation-opts'
 import {unstableCacheProfileView} from '#/state/queries/profile'
-import {useSession} from '#/state/session'
+import {useAgent, useSession} from '#/state/session'
 import {Link} from '#/view/com/util/Link'
 import {PostMeta} from '#/view/com/util/PostMeta'
 import {atoms as a, useTheme} from '#/alf'
@@ -195,11 +196,7 @@ function RecordEmbed({
       ) {
         return null
       }
-      return (
-        <PostPlaceholderText>
-          <Trans>Blocked</Trans>
-        </PostPlaceholderText>
-      )
+      return <BlockedQuoteWithFallback embed={embed} {...rest} />
     }
     case 'post_detached': {
       return <PostDetachedEmbed embed={embed} />
@@ -227,6 +224,84 @@ export function PostDetachedEmbed({
       ) : (
         <Trans>Removed by author</Trans>
       )}
+    </PostPlaceholderText>
+  )
+}
+
+function BlockedQuoteWithFallback({
+  embed,
+  viewContext,
+  ...rest
+}: CommonProps & {
+  embed: EmbedType<'post_blocked'>
+}) {
+  const agent = useAgent()
+  const blockedUri = embed.view.uri
+
+  const {data: quotedPost, isLoading} = useQuery({
+    queryKey: ['blocked-quote-fallback', blockedUri],
+    queryFn: async () => {
+      try {
+        const res = await agent.getPosts({uris: [blockedUri]})
+        if (res.success && res.data.posts[0]) {
+          return res.data.posts[0]
+        }
+        return null
+      } catch (error) {
+        return null
+      }
+    },
+    staleTime: 60000, // Cache for 1 minute
+    retry: false, // Don't retry if blocked
+  })
+
+  if (isLoading) {
+    return (
+      <PostPlaceholderText>
+        <Trans>Loading...</Trans>
+      </PostPlaceholderText>
+    )
+  }
+
+  if (quotedPost) {
+    // Convert PostView to ViewRecord format for QuoteEmbed
+    const viewRecord: $Typed<AppBskyEmbedRecord.ViewRecord> = {
+      $type: 'app.bsky.embed.record#viewRecord',
+      uri: quotedPost.uri,
+      cid: quotedPost.cid,
+      author: quotedPost.author,
+      value: quotedPost.record,
+      labels: quotedPost.labels,
+      indexedAt: quotedPost.indexedAt,
+      embeds: quotedPost.embed ? [quotedPost.embed] : undefined,
+      likeCount: quotedPost.likeCount,
+      replyCount: quotedPost.replyCount,
+      repostCount: quotedPost.repostCount,
+      quoteCount: quotedPost.quoteCount,
+    }
+
+    const unblocked: EmbedType<'post'> = {
+      type: 'post',
+      view: viewRecord,
+    }
+
+    return (
+      <QuoteEmbed
+        {...rest}
+        embed={unblocked}
+        viewContext={
+          viewContext === PostEmbedViewContext.Feed
+            ? QuoteEmbedViewContext.FeedEmbedRecordWithMedia
+            : undefined
+        }
+      />
+    )
+  }
+
+  // Viewer also can't see it - show blocked placeholder
+  return (
+    <PostPlaceholderText>
+      <Trans>Blocked</Trans>
     </PostPlaceholderText>
   )
 }
