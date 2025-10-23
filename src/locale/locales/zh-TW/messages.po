@@ -100,7 +100,7 @@ msgstr "{0, plural, one {個跟隨者} other {個跟隨者}}"
 msgid "{0, plural, one {following} other {following}}"
 msgstr "{0, plural, one {個跟隨中} other {個跟隨中}}"
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:530
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:540
 msgid "{0, plural, one {like} other {likes}}"
 msgstr "{0, plural, one {個喜歡} other {個喜歡}}"
 
@@ -108,15 +108,15 @@ msgstr "{0, plural, one {個喜歡} other {個喜歡}}"
 msgid "{0, plural, one {post} other {posts}}"
 msgstr "{0, plural, one {則貼文} other {則貼文}}"
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:514
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:524
 msgid "{0, plural, one {quote} other {quotes}}"
 msgstr "{0, plural, one {次引用} other {次引用}}"
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:496
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:506
 msgid "{0, plural, one {repost} other {reposts}}"
 msgstr "{0, plural, one {則轉發} other {則轉發}}"
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:541
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:551
 msgid "{0, plural, one {save} other {saves}}"
 msgstr "{0, plural, one {個收藏} other {個收藏}}"
 
@@ -1213,12 +1213,12 @@ msgstr "使用預設推薦的動態源"
 msgid "Apply Pull Request"
 msgstr "套用拉取請求 (Pull Request)"
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:722
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:736
 msgid "Archived from {0}"
 msgstr "封存於 {0}"
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:691
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:730
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:705
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:744
 msgid "Archived post"
 msgstr "已封存的貼文"
 
@@ -1470,7 +1470,7 @@ msgstr "封鎖該帳號無法阻止其標記您的帳號，但他將無法在您
 msgid "Bluesky"
 msgstr "Bluesky"
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:752
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:766
 msgid "Bluesky cannot confirm the authenticity of the claimed date."
 msgstr "Bluesky 無法確認貼文發布日期的真實性。"
 
@@ -4881,7 +4881,7 @@ msgstr "喜歡您轉發的貼文"
 msgid "Likes of your reposts notifications"
 msgstr "喜歡您轉發貼文的通知"
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:523
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:533
 msgid "Likes on this post"
 msgstr "這則貼文的喜歡數"
 
@@ -5860,7 +5860,7 @@ msgid "OK"
 msgstr "好的"
 
 #: src/screens/Login/PasswordUpdatedForm.tsx:37
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:757
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:771
 msgid "Okay"
 msgstr "好的"
 
@@ -6753,7 +6753,7 @@ msgstr "引用設定"
 msgid "Quotes"
 msgstr "引用"
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:507
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:517
 msgid "Quotes of this post"
 msgstr "引用這則貼文"
 
@@ -7243,7 +7243,7 @@ msgstr "由您轉發"
 msgid "Reposts"
 msgstr "轉發"
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:489
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:499
 msgid "Reposts of this post"
 msgstr "轉發這則貼文"
 
@@ -8040,8 +8040,8 @@ msgstr "顯示更多回覆"
 
 #: src/components/PostControls/PostMenu/PostMenuItems.tsx:519
 #: src/components/PostControls/PostMenu/PostMenuItems.tsx:525
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:649
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:655
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:663
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:669
 msgid "Show Original"
 msgstr ""
 
@@ -8090,7 +8090,7 @@ msgstr "顯示警告"
 msgid "Show warning and filter from feeds"
 msgstr "顯示警告，並從動態中排除內容"
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:693
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:707
 msgid "Shows information about when this post was created"
 msgstr "顯示有關此貼文建立時間的資訊"
 
@@ -9000,7 +9000,7 @@ msgstr "這個列表是空的。"
 msgid "This moderation service is unavailable. See below for more details. If this issue persists, contact us."
 msgstr "這項內容管理服務目前無法使用，更多資訊請參見下方。如果問題持續發生，請聯絡我們。"
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:733
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:747
 msgid "This post claims to have been created on <0>{0}</0>, but was first seen by Bluesky on <1>{1}</1>."
 msgstr "這則貼文宣告的發布時間為 <0>{0}</0>，但首次出現在 Bluesky 的時間是 <1>{1}</1>。"
 
@@ -9177,17 +9177,17 @@ msgstr "話題"
 #: src/components/dms/MessageContextMenu.tsx:139
 #: src/components/PostControls/PostMenu/PostMenuItems.tsx:520
 #: src/components/PostControls/PostMenu/PostMenuItems.tsx:526
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:650
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:657
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:664
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:671
 msgid "Translate"
 msgstr "翻譯"
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:445
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:450
 #: src/view/com/posts/PostFeedItem.tsx:516
 msgid "Translated from {0} to {1}"
 msgstr ""
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:447
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:455
 #: src/view/com/posts/PostFeedItem.tsx:518
 msgid "Translated to {0}"
 msgstr ""

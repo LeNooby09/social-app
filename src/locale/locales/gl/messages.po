@@ -100,7 +100,7 @@ msgstr "{0, plural, one {seguidor} other {seguidores}}"
 msgid "{0, plural, one {following} other {following}}"
 msgstr "{0, plural, one {seguindo} other {seguindo}}"
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:530
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:540
 msgid "{0, plural, one {like} other {likes}}"
 msgstr "{0, plural, one {gustoulle} other {gustoulles}}"
 
@@ -108,15 +108,15 @@ msgstr "{0, plural, one {gustoulle} other {gustoulles}}"
 msgid "{0, plural, one {post} other {posts}}"
 msgstr ""
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:514
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:524
 msgid "{0, plural, one {quote} other {quotes}}"
 msgstr "{0, plural, one {cita} other {citas}}"
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:496
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:506
 msgid "{0, plural, one {repost} other {reposts}}"
 msgstr ""
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:541
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:551
 msgid "{0, plural, one {save} other {saves}}"
 msgstr ""
 
@@ -1213,12 +1213,12 @@ msgstr "Aplicar canles recomendadas predeterminados"
 msgid "Apply Pull Request"
 msgstr ""
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:722
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:736
 msgid "Archived from {0}"
 msgstr "Arquivada dende {0}"
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:691
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:730
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:705
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:744
 msgid "Archived post"
 msgstr "Publicación arquivada"
 
@@ -1470,7 +1470,7 @@ msgstr "Se bloqueas a un etiquetador aínda poderá seguir aplicando etiquetas n
 msgid "Bluesky"
 msgstr "Bluesky"
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:752
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:766
 msgid "Bluesky cannot confirm the authenticity of the claimed date."
 msgstr "Bluesky non pode confirmar a autenticidade da data solicitada."
 
@@ -4881,7 +4881,7 @@ msgstr ""
 msgid "Likes of your reposts notifications"
 msgstr ""
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:523
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:533
 msgid "Likes on this post"
 msgstr "Gústame en este chío"
 
@@ -5860,7 +5860,7 @@ msgid "OK"
 msgstr "Ben"
 
 #: src/screens/Login/PasswordUpdatedForm.tsx:37
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:757
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:771
 msgid "Okay"
 msgstr "Está ben"
 
@@ -6753,7 +6753,7 @@ msgstr "Configuración de citas"
 msgid "Quotes"
 msgstr "Citas"
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:507
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:517
 msgid "Quotes of this post"
 msgstr "Citas deste chío"
 
@@ -7243,7 +7243,7 @@ msgstr "Rechouchiado por ti"
 msgid "Reposts"
 msgstr ""
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:489
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:499
 msgid "Reposts of this post"
 msgstr "Rechouchíos deste chío"
 
@@ -8040,8 +8040,8 @@ msgstr ""
 
 #: src/components/PostControls/PostMenu/PostMenuItems.tsx:519
 #: src/components/PostControls/PostMenu/PostMenuItems.tsx:525
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:649
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:655
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:663
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:669
 msgid "Show Original"
 msgstr ""
 
@@ -8090,7 +8090,7 @@ msgstr "Mostrar advertencia"
 msgid "Show warning and filter from feeds"
 msgstr "Mostrar advertencia e filtrar desde as canles"
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:693
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:707
 msgid "Shows information about when this post was created"
 msgstr "Amosa información sobre cando foi creada esta publicación"
 
@@ -9000,7 +9000,7 @@ msgstr "Esta lista está baleira."
 msgid "This moderation service is unavailable. See below for more details. If this issue persists, contact us."
 msgstr "Este servizo de moderación non está disponíbel. Consulta máis detalles a continuación. Se o problema persiste, contáctanos."
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:733
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:747
 msgid "This post claims to have been created on <0>{0}</0>, but was first seen by Bluesky on <1>{1}</1>."
 msgstr "Esta publicación declara que foi feita en <0>{0}</0>, pero foi vista por primeira vez por Bluesky en <1>{1}</1>."
 
@@ -9177,17 +9177,17 @@ msgstr "Tema"
 #: src/components/dms/MessageContextMenu.tsx:139
 #: src/components/PostControls/PostMenu/PostMenuItems.tsx:520
 #: src/components/PostControls/PostMenu/PostMenuItems.tsx:526
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:650
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:657
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:664
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:671
 msgid "Translate"
 msgstr "Traducir"
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:445
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:450
 #: src/view/com/posts/PostFeedItem.tsx:516
 msgid "Translated from {0} to {1}"
 msgstr ""
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:447
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:455
 #: src/view/com/posts/PostFeedItem.tsx:518
 msgid "Translated to {0}"
 msgstr ""

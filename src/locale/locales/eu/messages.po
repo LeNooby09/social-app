@@ -100,7 +100,7 @@ msgstr "{0, plural, one {jarraitzaile} other {jarraitzaile}}"
 msgid "{0, plural, one {following} other {following}}"
 msgstr "{0, plural, one {jarraitzen} other {jarraitzen}}"
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:530
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:540
 msgid "{0, plural, one {like} other {likes}}"
 msgstr "{0, plural, one {gogoko} other {gogoko}}"
 
@@ -108,15 +108,15 @@ msgstr "{0, plural, one {gogoko} other {gogoko}}"
 msgid "{0, plural, one {post} other {posts}}"
 msgstr "{0, plural, one {post} other {post}}"
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:514
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:524
 msgid "{0, plural, one {quote} other {quotes}}"
 msgstr "{0, plural, one {aipamen} other {aipamen}}"
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:496
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:506
 msgid "{0, plural, one {repost} other {reposts}}"
 msgstr "{0, plural, one {berpost} other {berpost}}"
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:541
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:551
 msgid "{0, plural, one {save} other {saves}}"
 msgstr "{0, plural, one {gordea} other {gordeta}}"
 
@@ -1213,12 +1213,12 @@ msgstr "Aplikatu gomendatutako feed lehenetsiak"
 msgid "Apply Pull Request"
 msgstr "Aplikatu Tira Eskaera"
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:722
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:736
 msgid "Archived from {0}"
 msgstr "{0}-tik artxibatuta"
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:691
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:730
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:705
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:744
 msgid "Archived post"
 msgstr "Gordetako posta"
 
@@ -1470,7 +1470,7 @@ msgstr "Blokeatzeak ez du eragotziko etiketak zure kontuan aplikatzea, baina kon
 msgid "Bluesky"
 msgstr "Bluesky"
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:752
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:766
 msgid "Bluesky cannot confirm the authenticity of the claimed date."
 msgstr "Bluesky-k ezin du baieztatu erreklamatutako dataren benetakotasuna."
 
@@ -4881,7 +4881,7 @@ msgstr "Zure berposten gustokoak"
 msgid "Likes of your reposts notifications"
 msgstr "Zure berpost jakinarazpenen gustokoak"
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:523
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:533
 msgid "Likes on this post"
 msgstr "Gogoko post honetan"
 
@@ -5860,7 +5860,7 @@ msgid "OK"
 msgstr "Ados"
 
 #: src/screens/Login/PasswordUpdatedForm.tsx:37
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:757
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:771
 msgid "Okay"
 msgstr "Ados"
 
@@ -6753,7 +6753,7 @@ msgstr "Aipamen ezarpenak"
 msgid "Quotes"
 msgstr "Aipamenak"
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:507
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:517
 msgid "Quotes of this post"
 msgstr "Post honen aipamenak"
 
@@ -7243,7 +7243,7 @@ msgstr "Zuk berpostatua"
 msgid "Reposts"
 msgstr "Berpostak"
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:489
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:499
 msgid "Reposts of this post"
 msgstr "Berpostatu post hau"
 
@@ -8040,8 +8040,8 @@ msgstr "Erakutsi erantzun gehiago"
 
 #: src/components/PostControls/PostMenu/PostMenuItems.tsx:519
 #: src/components/PostControls/PostMenu/PostMenuItems.tsx:525
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:649
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:655
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:663
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:669
 msgid "Show Original"
 msgstr ""
 
@@ -8090,7 +8090,7 @@ msgstr "Erakutsi abisua"
 msgid "Show warning and filter from feeds"
 msgstr "Erakutsi feedetako abisua eta iragazkia"
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:693
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:707
 msgid "Shows information about when this post was created"
 msgstr "Post hau noiz sortu zenari buruzko informazioa erakusten du"
 
@@ -9000,7 +9000,7 @@ msgstr "Zerrenda hau hutsik dago."
 msgid "This moderation service is unavailable. See below for more details. If this issue persists, contact us."
 msgstr "Moderazio-zerbitzu hau ez dago erabilgarri. Ikus behean xehetasun gehiagorako. Arazo honek jarraitzen badu, jarri gurekin harremanetan."
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:733
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:747
 msgid "This post claims to have been created on <0>{0}</0>, but was first seen by Bluesky on <1>{1}</1>."
 msgstr "Post honek <0>{0}</0>-n sortu dela dio, baina Bluesky-k <1>{1}</1>-n ikusi zuen lehen aldiz."
 
@@ -9177,17 +9177,17 @@ msgstr "Gaia"
 #: src/components/dms/MessageContextMenu.tsx:139
 #: src/components/PostControls/PostMenu/PostMenuItems.tsx:520
 #: src/components/PostControls/PostMenu/PostMenuItems.tsx:526
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:650
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:657
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:664
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:671
 msgid "Translate"
 msgstr "Itzuli"
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:445
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:450
 #: src/view/com/posts/PostFeedItem.tsx:516
 msgid "Translated from {0} to {1}"
 msgstr ""
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:447
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:455
 #: src/view/com/posts/PostFeedItem.tsx:518
 msgid "Translated to {0}"
 msgstr ""

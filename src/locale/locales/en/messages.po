@@ -95,7 +95,7 @@ msgstr ""
 msgid "{0, plural, one {following} other {following}}"
 msgstr ""
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:530
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:540
 msgid "{0, plural, one {like} other {likes}}"
 msgstr ""
 
@@ -103,15 +103,15 @@ msgstr ""
 msgid "{0, plural, one {post} other {posts}}"
 msgstr ""
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:514
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:524
 msgid "{0, plural, one {quote} other {quotes}}"
 msgstr ""
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:496
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:506
 msgid "{0, plural, one {repost} other {reposts}}"
 msgstr ""
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:541
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:551
 msgid "{0, plural, one {save} other {saves}}"
 msgstr ""
 
@@ -1208,12 +1208,12 @@ msgstr ""
 msgid "Apply Pull Request"
 msgstr ""
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:722
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:736
 msgid "Archived from {0}"
 msgstr ""
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:691
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:730
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:705
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:744
 msgid "Archived post"
 msgstr ""
 
@@ -1465,7 +1465,7 @@ msgstr ""
 msgid "Bluesky"
 msgstr ""
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:752
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:766
 msgid "Bluesky cannot confirm the authenticity of the claimed date."
 msgstr ""
 
@@ -4876,7 +4876,7 @@ msgstr ""
 msgid "Likes of your reposts notifications"
 msgstr ""
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:523
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:533
 msgid "Likes on this post"
 msgstr ""
 
@@ -5855,7 +5855,7 @@ msgid "OK"
 msgstr ""
 
 #: src/screens/Login/PasswordUpdatedForm.tsx:37
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:757
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:771
 msgid "Okay"
 msgstr ""
 
@@ -6748,7 +6748,7 @@ msgstr ""
 msgid "Quotes"
 msgstr ""
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:507
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:517
 msgid "Quotes of this post"
 msgstr ""
 
@@ -7238,7 +7238,7 @@ msgstr ""
 msgid "Reposts"
 msgstr ""
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:489
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:499
 msgid "Reposts of this post"
 msgstr ""
 
@@ -8035,8 +8035,8 @@ msgstr ""
 
 #: src/components/PostControls/PostMenu/PostMenuItems.tsx:519
 #: src/components/PostControls/PostMenu/PostMenuItems.tsx:525
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:649
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:655
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:663
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:669
 msgid "Show Original"
 msgstr ""
 
@@ -8085,7 +8085,7 @@ msgstr ""
 msgid "Show warning and filter from feeds"
 msgstr ""
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:693
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:707
 msgid "Shows information about when this post was created"
 msgstr ""
 
@@ -8995,7 +8995,7 @@ msgstr ""
 msgid "This moderation service is unavailable. See below for more details. If this issue persists, contact us."
 msgstr ""
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:733
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:747
 msgid "This post claims to have been created on <0>{0}</0>, but was first seen by Bluesky on <1>{1}</1>."
 msgstr ""
 
@@ -9172,17 +9172,17 @@ msgstr ""
 #: src/components/dms/MessageContextMenu.tsx:139
 #: src/components/PostControls/PostMenu/PostMenuItems.tsx:520
 #: src/components/PostControls/PostMenu/PostMenuItems.tsx:526
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:650
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:657
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:664
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:671
 msgid "Translate"
 msgstr ""
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:445
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:450
 #: src/view/com/posts/PostFeedItem.tsx:516
 msgid "Translated from {0} to {1}"
 msgstr ""
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:447
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:455
 #: src/view/com/posts/PostFeedItem.tsx:518
 msgid "Translated to {0}"
 msgstr ""
