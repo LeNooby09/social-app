@@ -29,8 +29,10 @@ import {PostListFeedAPI} from '#/lib/api/feed/posts'
 import {type FeedAPI, type ReasonFeedSource} from '#/lib/api/feed/types'
 import {aggregateUserInterests} from '#/lib/api/feed/utils'
 import {FeedTuner, type FeedTunerFn} from '#/lib/api/feed-manip'
-import {BSKY_FEED_OWNER_DIDS, DISCOVER_FEED_URI} from '#/lib/constants'
 import {DISCOVER_FEED_URI} from '#/lib/constants'
+import {featureFlagEnabled} from '#/lib/featureFlags'
+import {filterFeedItemsByMutedReposts} from '#/lib/feed/filterReposts'
+import {moduiHasNonIgnoredFilter} from '#/lib/moderation'
 import {logger} from '#/logger'
 import {useAgeAssuranceContext} from '#/state/ageAssurance'
 import {STALE} from '#/state/queries'
@@ -39,11 +41,8 @@ import {useAgent} from '#/state/session'
 import * as userActionHistory from '#/state/userActionHistory'
 import {KnownError} from '#/view/com/posts/PostFeedErrorMessage'
 import {useFeedTuners} from '../preferences/feed-tuners'
-import {moduiHasNonIgnoredFilter} from '#/lib/moderation'
 import {useModerationOpts} from '../preferences/moderation-opts'
 import {usePreferencesQuery} from './preferences'
-import {filterFeedItemsByMutedReposts} from '#/lib/feed/filterReposts'
-import {featureFlagEnabled} from '#/lib/featureFlags'
 import {
   didOrHandleUriMatches,
   embedViewRecordToPostView,
@@ -214,12 +213,6 @@ export function usePostFeedQuery(
               feedParams: params || {},
               feedTuners,
               agent: await (async () => {
-                try {
-                  if (opts?.preferSecondaryAgent && feedDesc.startsWith('author')) {
-                    const sec = await getSecondaryAgentIfEnabled()
-                    return sec || agent
-                  }
-                } catch {}
                 return agent
               })(),
               // Not in the query key because they don't change:
