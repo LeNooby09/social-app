@@ -13,6 +13,7 @@ import {useQueryClient} from '@tanstack/react-query'
 
 import {usePalette} from '#/lib/hooks/usePalette'
 import {makeProfileLink} from '#/lib/routes/links'
+import {useMaxQuoteDepth} from '#/state/preferences'
 import {useModerationOpts} from '#/state/preferences/moderation-opts'
 import {unstableCacheProfileView} from '#/state/queries/profile'
 import {useSession} from '#/state/session'
@@ -128,6 +129,8 @@ function RecordEmbed({
 }: CommonProps & {
   embed: TEmbed
 }) {
+  const maxQuoteDepth = useMaxQuoteDepth()
+
   switch (embed.type) {
     case 'feed': {
       return (
@@ -156,8 +159,8 @@ function RecordEmbed({
     }
     case 'post': {
       const currentDepth = rest.quoteDepth ?? 0
-      // Allow up to 3 layers of quotes (depth 0, 1, 2)
-      if (currentDepth >= 3) {
+      // Check against user's configured max quote depth preference
+      if (currentDepth >= maxQuoteDepth) {
         return null
       }
 

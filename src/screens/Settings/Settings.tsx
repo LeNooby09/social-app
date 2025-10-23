@@ -55,6 +55,7 @@ import {
   PersonPlus_Stroke2_Corner2_Rounded as PersonPlusIcon,
   PersonX_Stroke2_Corner0_Rounded as PersonXIcon,
 } from '#/components/icons/Person'
+import {SettingsGear2_Stroke2_Corner0_Rounded as SettingsGearIcon} from '#/components/icons/SettingsGear2'
 import {RaisingHand4Finger_Stroke2_Corner2_Rounded as HandIcon} from '#/components/icons/RaisingHand'
 import {Window_Stroke2_Corner2_Rounded as WindowIcon} from '#/components/icons/Window'
 import * as Layout from '#/components/Layout'
@@ -213,6 +214,14 @@ export function SettingsScreen({}: Props) {
             <SettingsList.ItemIcon icon={PaintRollerIcon} />
             <SettingsList.ItemText>
               <Trans>Appearance</Trans>
+            </SettingsList.ItemText>
+          </SettingsList.LinkItem>
+          <SettingsList.LinkItem
+            to="/settings/client"
+            label={_(msg`Client settings`)}>
+            <SettingsList.ItemIcon icon={SettingsGearIcon} />
+            <SettingsList.ItemText>
+              <Trans>Client settings</Trans>
             </SettingsList.ItemText>
           </SettingsList.LinkItem>
           <SettingsList.LinkItem

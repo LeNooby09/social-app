@@ -8,6 +8,7 @@ import {Provider as HiddenPostsProvider} from './hidden-posts'
 import {Provider as InAppBrowserProvider} from './in-app-browser'
 import {Provider as LanguagesProvider} from './languages'
 import {Provider as LargeAltBadgeProvider} from './large-alt-badge'
+import {Provider as MaxQuoteDepthProvider} from './max-quote-depth'
 import {Provider as SubtitlesProvider} from './subtitles'
 import {Provider as TrendingSettingsProvider} from './trending'
 import {Provider as UsedStarterPacksProvider} from './used-starter-packs'
@@ -25,6 +26,7 @@ export {
 export * from './hidden-posts'
 export {useLabelDefinitions} from './label-defs'
 export {useLanguagePrefs, useLanguagePrefsApi} from './languages'
+export {useMaxQuoteDepth, useSetMaxQuoteDepth} from './max-quote-depth'
 export {useSetSubtitlesEnabled, useSubtitlesEnabled} from './subtitles'
 
 export function Provider({children}: React.PropsWithChildren<{}>) {
@@ -40,7 +42,9 @@ export function Provider({children}: React.PropsWithChildren<{}>) {
                     <UsedStarterPacksProvider>
                       <SubtitlesProvider>
                         <TrendingSettingsProvider>
-                          {children}
+                          <MaxQuoteDepthProvider>
+                            {children}
+                          </MaxQuoteDepthProvider>
                         </TrendingSettingsProvider>
                       </SubtitlesProvider>
                     </UsedStarterPacksProvider>

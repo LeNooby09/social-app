@@ -50,6 +50,7 @@ import {ContentHider} from '#/components/moderation/ContentHider'
 import {LabelsOnMyPost} from '#/components/moderation/LabelsOnMe'
 import {PostAlerts} from '#/components/moderation/PostAlerts'
 import * as Pills from '#/components/Pills'
+import {type AppModerationCause} from '#/components/Pills'
 import {Embed, PostEmbedViewContext} from '#/components/Post/Embed'
 import {PostControls} from '#/components/PostControls'
 import {useFormatPostStatCount} from '#/components/PostControls/util'
@@ -190,7 +191,7 @@ const ThreadItemAnchorInner = memo(function ThreadItemAnchorInner({
   const authorShadow = useProfileShadow(post.author)
   const {isActive: live} = useActorStatus(post.author)
   const translation = getTranslation(post.uri)
-  
+
   const richText = useMemo(
     () =>
       new RichTextAPI({
@@ -199,7 +200,7 @@ const ThreadItemAnchorInner = memo(function ThreadItemAnchorInner({
       }),
     [record],
   )
-  
+
   // Create translated RichText if translation is available
   const displayText = useMemo(() => {
     if (translation && !translation.isLoading && translation.translatedText) {
@@ -210,19 +211,22 @@ const ThreadItemAnchorInner = memo(function ThreadItemAnchorInner({
     }
     return richText
   }, [translation, richText])
-  
+
   // Compute language names for translation indicator
   const translationLanguages = useMemo(() => {
     if (!translation || translation.isLoading || !translation.translatedText) {
       return null
     }
-    
-    const sourceLangName = translation.sourceLanguage 
-      ? LANGUAGES_MAP_CODE2[translation.sourceLanguage]?.name || translation.sourceLanguage
+
+    const sourceLangName = translation.sourceLanguage
+      ? LANGUAGES_MAP_CODE2[translation.sourceLanguage]?.name ||
+        translation.sourceLanguage
       : null
-    const targetLangName = LANGUAGES_MAP_CODE2[translation.targetLanguage]?.name || translation.targetLanguage
-    
-    return { sourceLangName, targetLangName }
+    const targetLangName =
+      LANGUAGES_MAP_CODE2[translation.targetLanguage]?.name ||
+      translation.targetLanguage
+
+    return {sourceLangName, targetLangName}
   }, [translation])
 
   const threadRootUri = record.reply?.root?.uri || post.uri
@@ -395,10 +399,12 @@ const ThreadItemAnchorInner = memo(function ThreadItemAnchorInner({
                     {sanitizeHandle(post.author.handle, '@')}
                   </Text>
                   {/* Relationship pills inline with handle */}
-                  {(post.author.viewer?.following && post.author.viewer?.followedBy) ||
+                  {(post.author.viewer?.following &&
+                    post.author.viewer?.followedBy) ||
                   post.author.viewer?.followedBy ? (
                     <>
-                      {post.author.viewer?.following && post.author.viewer?.followedBy ? (
+                      {post.author.viewer?.following &&
+                      post.author.viewer?.followedBy ? (
                         <Pills.Mutuals size="sm" />
                       ) : post.author.viewer?.followedBy ? (
                         <Pills.FollowsYou size="sm" />
@@ -441,9 +447,14 @@ const ThreadItemAnchorInner = memo(function ThreadItemAnchorInner({
                 {translationLanguages && (
                   <Text style={[a.text_xs, a.mt_xs, {opacity: 0.6}]}>
                     {translationLanguages.sourceLangName ? (
-                      <Trans>Translated from {translationLanguages.sourceLangName} to {translationLanguages.targetLangName}</Trans>
+                      <Trans>
+                        Translated from {translationLanguages.sourceLangName} to{' '}
+                        {translationLanguages.targetLangName}
+                      </Trans>
                     ) : (
-                      <Trans>Translated to {translationLanguages.targetLangName}</Trans>
+                      <Trans>
+                        Translated to {translationLanguages.targetLangName}
+                      </Trans>
                     )}
                   </Text>
                 )}
@@ -596,15 +607,19 @@ function ExpandedPostDetails({
   const onTranslatePress = useCallback(
     (e: GestureResponderEvent) => {
       e.preventDefault()
-      
+
       const postUri = post.uri
-      
+
       // Toggle translation: if already translated, show original
       if (isTranslated(postUri)) {
         clearTranslation(postUri)
       } else {
         // Translate the post asynchronously
-        translatePost(postUri, post.record.text || '', langPrefs.primaryLanguage).then(() => {
+        translatePost(
+          postUri,
+          post.record.text || '',
+          langPrefs.primaryLanguage,
+        ).then(() => {
           if (
             bsky.dangerousIsType<AppBskyFeedPost.Record>(
               post.record,

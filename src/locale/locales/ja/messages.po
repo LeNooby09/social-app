@@ -100,7 +100,7 @@ msgstr "{0, plural, other {フォロワー}}"
 msgid "{0, plural, one {following} other {following}}"
 msgstr "{0, plural, other {フォロー中}}"
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:476
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:530
 msgid "{0, plural, one {like} other {likes}}"
 msgstr "{0, plural, other {いいね}}"
 
@@ -108,15 +108,15 @@ msgstr "{0, plural, other {いいね}}"
 msgid "{0, plural, one {post} other {posts}}"
 msgstr "{0, plural, other {投稿}}"
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:460
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:514
 msgid "{0, plural, one {quote} other {quotes}}"
 msgstr "{0, plural, other {引用}}"
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:442
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:496
 msgid "{0, plural, one {repost} other {reposts}}"
 msgstr "{0, plural, other {リポスト}}"
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:487
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:541
 msgid "{0, plural, one {save} other {saves}}"
 msgstr "{0, plural, other {保存}}"
 
@@ -511,6 +511,16 @@ msgstr "<0>あなた</0>と<1></1><2>{0}</2>はあなたのスターターパッ
 msgid "⚠Invalid Handle"
 msgstr "⚠無効なハンドル"
 
+#: src/screens/Settings/ClientSettings.tsx:48
+#: src/screens/Settings/ClientSettings.tsx:51
+msgid "1 level"
+msgstr ""
+
+#: src/screens/Settings/ClientSettings.tsx:57
+#: src/screens/Settings/ClientSettings.tsx:60
+msgid "2 levels"
+msgstr ""
+
 #: src/components/dialogs/MutedWords.tsx:198
 msgid "24 hours"
 msgstr "24時間"
@@ -519,9 +529,24 @@ msgstr "24時間"
 msgid "2FA Confirmation"
 msgstr "2要素認証の確認"
 
+#: src/screens/Settings/ClientSettings.tsx:66
+#: src/screens/Settings/ClientSettings.tsx:69
+msgid "3 levels (default)"
+msgstr ""
+
 #: src/components/dialogs/MutedWords.tsx:237
 msgid "30 days"
 msgstr "30日"
+
+#: src/screens/Settings/ClientSettings.tsx:75
+#: src/screens/Settings/ClientSettings.tsx:78
+msgid "4 levels"
+msgstr ""
+
+#: src/screens/Settings/ClientSettings.tsx:84
+#: src/screens/Settings/ClientSettings.tsx:87
+msgid "5 levels"
+msgstr ""
 
 #: src/components/dialogs/MutedWords.tsx:222
 msgid "7 days"
@@ -576,37 +601,37 @@ msgid "Accept this language suggestion"
 msgstr "この言語の提案を受け入れる"
 
 #: src/screens/Settings/AccessibilitySettings.tsx:44
-#: src/screens/Settings/Settings.tsx:220
-#: src/screens/Settings/Settings.tsx:223
+#: src/screens/Settings/Settings.tsx:229
+#: src/screens/Settings/Settings.tsx:232
 msgid "Accessibility"
 msgstr "アクセシビリティ"
 
-#: src/Navigation.tsx:353
+#: src/Navigation.tsx:354
 msgid "Accessibility Settings"
 msgstr "アクセシビリティの設定"
 
-#: src/Navigation.tsx:369
+#: src/Navigation.tsx:378
 #: src/screens/Login/LoginForm.tsx:193
 #: src/screens/Settings/AccountSettings.tsx:51
-#: src/screens/Settings/Settings.tsx:174
-#: src/screens/Settings/Settings.tsx:177
+#: src/screens/Settings/Settings.tsx:175
+#: src/screens/Settings/Settings.tsx:178
 msgid "Account"
 msgstr "アカウント"
 
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:407
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:415
 #: src/screens/Messages/components/RequestButtons.tsx:90
 #: src/view/com/profile/ProfileMenu.tsx:197
 msgctxt "toast"
 msgid "Account blocked"
 msgstr "アカウントをブロックしました"
 
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:448
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:456
 #: src/view/com/profile/ProfileMenu.tsx:210
 msgctxt "toast"
 msgid "Account followed"
 msgstr "アカウントをフォローしました"
 
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:430
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:438
 #: src/view/com/profile/ProfileMenu.tsx:173
 msgctxt "toast"
 msgid "Account muted"
@@ -621,11 +646,11 @@ msgstr "ミュート中のアカウント"
 msgid "Account Muted by List"
 msgstr "リストによってミュート中のアカウント"
 
-#: src/screens/Settings/Settings.tsx:610
+#: src/screens/Settings/Settings.tsx:619
 msgid "Account options"
 msgstr "アカウントオプション"
 
-#: src/screens/Settings/Settings.tsx:648
+#: src/screens/Settings/Settings.tsx:657
 msgid "Account removed from quick access"
 msgstr "クイックアクセスからアカウントを解除"
 
@@ -635,13 +660,13 @@ msgctxt "toast"
 msgid "Account unblocked"
 msgstr "アカウントのブロックを解除しました"
 
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:445
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:453
 #: src/view/com/profile/ProfileMenu.tsx:222
 msgctxt "toast"
 msgid "Account unfollowed"
 msgstr "アカウントのフォローを解除しました"
 
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:420
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:428
 #: src/view/com/profile/ProfileMenu.tsx:163
 msgctxt "toast"
 msgid "Account unmuted"
@@ -657,7 +682,7 @@ msgstr "スカラップ状（帆立貝の形状）の青色のチェックマー
 msgid "Activity from others"
 msgstr "他のユーザーからのアクティビティ"
 
-#: src/Navigation.tsx:462
+#: src/Navigation.tsx:471
 msgid "Activity notifications"
 msgstr "アクティビティの通知"
 
@@ -710,8 +735,8 @@ msgstr "ALTテキストを追加"
 msgid "Add alt text (optional)"
 msgstr "ALTテキストを追加（オプション）"
 
-#: src/screens/Settings/Settings.tsx:550
-#: src/screens/Settings/Settings.tsx:553
+#: src/screens/Settings/Settings.tsx:559
+#: src/screens/Settings/Settings.tsx:562
 #: src/view/shell/desktop/LeftNav.tsx:262
 #: src/view/shell/desktop/LeftNav.tsx:266
 msgid "Add another account"
@@ -1098,7 +1123,7 @@ msgstr "誰でも反応可能"
 msgid "Anyone who follows me"
 msgstr "フォローしている人"
 
-#: src/Navigation.tsx:494
+#: src/Navigation.tsx:503
 #: src/screens/Settings/AppIconSettings/index.tsx:67
 #: src/screens/Settings/AppIconSettings/SettingsListItem.tsx:18
 #: src/screens/Settings/AppIconSettings/SettingsListItem.tsx:23
@@ -1135,7 +1160,7 @@ msgstr "アプリパスワードの名前は長さが4文字以上である必�
 msgid "App passwords"
 msgstr "アプリパスワード"
 
-#: src/Navigation.tsx:321
+#: src/Navigation.tsx:322
 #: src/screens/Settings/AppPasswords.tsx:51
 msgid "App Passwords"
 msgstr "アプリパスワード"
@@ -1171,10 +1196,10 @@ msgstr "アカウント停止に異議申し立て"
 msgid "Appeal this decision"
 msgstr "この決定に異議を申し立てる"
 
-#: src/Navigation.tsx:361
+#: src/Navigation.tsx:362
 #: src/screens/Settings/AppearanceSettings.tsx:86
-#: src/screens/Settings/Settings.tsx:212
-#: src/screens/Settings/Settings.tsx:215
+#: src/screens/Settings/Settings.tsx:213
+#: src/screens/Settings/Settings.tsx:216
 msgid "Appearance"
 msgstr "外観"
 
@@ -1183,17 +1208,17 @@ msgstr "外観"
 msgid "Apply default recommended feeds"
 msgstr "デフォルトのおすすめフィードを追加"
 
-#: src/screens/Settings/Settings.tsx:482
-#: src/screens/Settings/Settings.tsx:484
+#: src/screens/Settings/Settings.tsx:491
+#: src/screens/Settings/Settings.tsx:493
 msgid "Apply Pull Request"
 msgstr "プルリクエストを適用"
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:656
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:722
 msgid "Archived from {0}"
 msgstr "{0}のアーカイブ"
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:625
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:664
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:691
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:730
 msgid "Archived post"
 msgstr "アーカイブ投稿"
 
@@ -1255,8 +1280,8 @@ msgstr "芸術的または性的ではないヌード。"
 msgid "As a small team, we cannot justify building the expensive infrastructure this requirement demands while legal challenges to this law are pending."
 msgstr "小規模チームとして、我たちはこの法律に対する法的な異議申し立てが保留中の間、この要件が要求する高価なインフラを構築することを正当化できません。"
 
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:562
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:564
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:578
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:580
 msgid "Assign topic for algo"
 msgstr "アルゴリズム用にトピックを割り当て"
 
@@ -1350,7 +1375,7 @@ msgstr "年齢保証プロセスを開始するには、以下のフィールド
 msgid "Birthday"
 msgstr "生年月日"
 
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:844
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:860
 #: src/screens/Profile/Header/ProfileHeaderStandard.tsx:347
 #: src/view/com/profile/ProfileMenu.tsx:547
 msgid "Block"
@@ -1358,8 +1383,8 @@ msgstr "ブロック"
 
 #: src/components/dms/ConvoMenu.tsx:246
 #: src/components/dms/ConvoMenu.tsx:249
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:729
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:731
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:745
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:747
 #: src/screens/Messages/components/RequestButtons.tsx:142
 #: src/screens/Messages/components/RequestButtons.tsx:144
 #: src/view/com/profile/ProfileMenu.tsx:453
@@ -1367,7 +1392,7 @@ msgstr "ブロック"
 msgid "Block account"
 msgstr "アカウントをブロック"
 
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:839
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:855
 #: src/view/com/profile/ProfileMenu.tsx:530
 msgid "Block Account?"
 msgstr "アカウントをブロックしますか？"
@@ -1406,7 +1431,7 @@ msgstr "ユーザーをブロック"
 msgid "Block User"
 msgstr "ユーザーをブロック"
 
-#: src/components/Post/Embed/index.tsx:197
+#: src/components/Post/Embed/index.tsx:200
 msgid "Blocked"
 msgstr "ブロックされています"
 
@@ -1414,12 +1439,12 @@ msgstr "ブロックされています"
 msgid "Blocked accounts"
 msgstr "ブロック中のアカウント"
 
-#: src/Navigation.tsx:187
+#: src/Navigation.tsx:188
 #: src/view/screens/ModerationBlockedAccounts.tsx:104
 msgid "Blocked Accounts"
 msgstr "ブロック中のアカウント"
 
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:841
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:857
 #: src/view/com/profile/ProfileMenu.tsx:542
 msgid "Blocked accounts cannot reply in your threads, mention you, or otherwise interact with you."
 msgstr "ブロック中のアカウントは、あなたのスレッドでの返信、あなたへのメンション、その他の方法であなたとやり取りすることはできません。"
@@ -1445,7 +1470,7 @@ msgstr "ブロックしてもこのラベラーがあなたのアカウントに
 msgid "Bluesky"
 msgstr "Bluesky"
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:686
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:752
 msgid "Bluesky cannot confirm the authenticity of the claimed date."
 msgstr "Blueskyでは、この投稿日時の信憑性を確認できません。"
 
@@ -1612,7 +1637,7 @@ msgstr "カメラ"
 #: src/screens/Settings/components/ChangeHandleDialog.tsx:88
 #: src/screens/Settings/components/ChangePasswordDialog.tsx:246
 #: src/screens/Settings/components/ChangePasswordDialog.tsx:252
-#: src/screens/Settings/Settings.tsx:273
+#: src/screens/Settings/Settings.tsx:282
 #: src/screens/Takendown.tsx:108
 #: src/screens/Takendown.tsx:111
 #: src/view/com/composer/Composer.tsx:1051
@@ -1719,7 +1744,7 @@ msgid "Changes saved"
 msgstr "変更を保存しました"
 
 #: src/lib/hooks/useNotificationHandler.ts:99
-#: src/Navigation.tsx:511
+#: src/Navigation.tsx:520
 #: src/view/shell/bottom-bar/BottomBar.tsx:221
 #: src/view/shell/desktop/LeftNav.tsx:608
 #: src/view/shell/Drawer.tsx:392
@@ -1745,7 +1770,7 @@ msgctxt "toast"
 msgid "Chat muted"
 msgstr "チャットをミュートしました"
 
-#: src/Navigation.tsx:521
+#: src/Navigation.tsx:530
 #: src/screens/Messages/components/InboxPreview.tsx:22
 msgid "Chat request inbox"
 msgstr "チャット要求の受信トレイ"
@@ -1757,7 +1782,7 @@ msgid "Chat requests"
 msgstr "チャットの要求"
 
 #: src/components/dms/ConvoMenu.tsx:75
-#: src/Navigation.tsx:516
+#: src/Navigation.tsx:525
 #: src/screens/Messages/ChatList.tsx:81
 #: src/screens/Messages/ChatList.tsx:85
 #: src/screens/Messages/ChatList.tsx:380
@@ -1836,11 +1861,11 @@ msgstr "パスワードを入力"
 msgid "Choose your username"
 msgstr "ユーザー名を選んでください"
 
-#: src/screens/Settings/Settings.tsx:474
+#: src/screens/Settings/Settings.tsx:483
 msgid "Clear all storage data"
 msgstr "すべてのストレージデータをクリア"
 
-#: src/screens/Settings/Settings.tsx:476
+#: src/screens/Settings/Settings.tsx:485
 msgid "Clear all storage data (restart after this)"
 msgstr "すべてのストレージデータをクリア（このあと再起動します）"
 
@@ -1884,6 +1909,16 @@ msgstr "クリックして {tag} のタグメニューを表示"
 #: src/components/dms/MessageItem.tsx:318
 msgid "Click to retry failed message"
 msgstr "送信失敗したメッセージを再送信"
+
+#: src/screens/Settings/Settings.tsx:221
+#: src/screens/Settings/Settings.tsx:224
+msgid "Client settings"
+msgstr ""
+
+#: src/Navigation.tsx:370
+#: src/screens/Settings/ClientSettings.tsx:28
+msgid "Client Settings"
+msgstr ""
 
 #: src/screens/Onboarding/index.tsx:63
 msgid "Climate"
@@ -2138,12 +2173,12 @@ msgstr "お問い合わせ"
 msgid "Content & Media"
 msgstr "コンテンツ＆メディア"
 
-#: src/screens/Settings/Settings.tsx:204
-#: src/screens/Settings/Settings.tsx:207
+#: src/screens/Settings/Settings.tsx:205
+#: src/screens/Settings/Settings.tsx:208
 msgid "Content and media"
 msgstr "コンテンツとメディア"
 
-#: src/Navigation.tsx:478
+#: src/Navigation.tsx:487
 msgid "Content and Media"
 msgstr "コンテンツとメディア"
 
@@ -2326,8 +2361,8 @@ msgstr "メッセージのテキストをコピー"
 msgid "Copy post at:// URI"
 msgstr "投稿のat:// URIをコピー"
 
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:517
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:519
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:533
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:535
 msgid "Copy post text"
 msgstr "投稿のテキストをコピー"
 
@@ -2401,7 +2436,7 @@ msgstr "スターターパックのQRコードを作成"
 
 #: src/components/StarterPack/ProfileStarterPacks.tsx:174
 #: src/components/StarterPack/ProfileStarterPacks.tsx:283
-#: src/Navigation.tsx:551
+#: src/Navigation.tsx:560
 msgid "Create a starter pack"
 msgstr "スターターパックを作成"
 
@@ -2527,7 +2562,7 @@ msgstr "生年月日"
 msgid "Deactivate account"
 msgstr "アカウントを無効化"
 
-#: src/screens/Settings/Settings.tsx:439
+#: src/screens/Settings/Settings.tsx:448
 msgid "Debug Moderation"
 msgstr "モデレーションをデバッグ"
 
@@ -2544,7 +2579,7 @@ msgid "Default icons"
 msgstr "デフォルトアイコン"
 
 #: src/components/dms/MessageContextMenu.tsx:185
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:788
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:804
 #: src/screens/Messages/components/ChatStatusInfo.tsx:55
 #: src/screens/ProfileList/components/MoreOptionsMenu.tsx:280
 #: src/screens/Settings/AppPasswords.tsx:212
@@ -2576,7 +2611,7 @@ msgstr "アプリパスワードを削除しますか？"
 msgid "Delete chat"
 msgstr "チャットを削除"
 
-#: src/screens/Settings/Settings.tsx:446
+#: src/screens/Settings/Settings.tsx:455
 msgid "Delete chat declaration record"
 msgstr "チャットの宣言レコードを削除"
 
@@ -2612,8 +2647,8 @@ msgstr "メッセージの宛先から自分を削除"
 msgid "Delete my account"
 msgstr "アカウントを削除"
 
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:769
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:771
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:785
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:787
 #: src/view/com/composer/Composer.tsx:970
 msgid "Delete post"
 msgstr "投稿を削除"
@@ -2631,11 +2666,11 @@ msgstr "スターターパックを削除しますか？"
 msgid "Delete this list?"
 msgstr "このリストを削除しますか？"
 
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:783
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:799
 msgid "Delete this post?"
 msgstr "この投稿を削除しますか？"
 
-#: src/components/Post/Embed/index.tsx:182
+#: src/components/Post/Embed/index.tsx:185
 msgid "Deleted"
 msgstr "削除されています"
 
@@ -2662,12 +2697,12 @@ msgstr "説明"
 msgid "Descriptive alt text"
 msgstr "説明的なALTテキスト"
 
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:654
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:664
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:670
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:680
 msgid "Detach quote"
 msgstr "引用を切り離す"
 
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:819
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:835
 msgid "Detach quote post?"
 msgstr "引用投稿を切り離しますか？"
 
@@ -2681,8 +2716,8 @@ msgctxt "toast"
 msgid "Developer mode enabled"
 msgstr "開発者モードを有効にしました"
 
-#: src/screens/Settings/Settings.tsx:255
-#: src/screens/Settings/Settings.tsx:258
+#: src/screens/Settings/Settings.tsx:264
+#: src/screens/Settings/Settings.tsx:267
 msgid "Developer options"
 msgstr "開発者用オプション"
 
@@ -2949,8 +2984,8 @@ msgstr "フィードを編集"
 msgid "Edit image"
 msgstr "画像を編集"
 
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:750
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:763
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:766
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:779
 msgid "Edit interaction settings"
 msgstr "反応関連の設定を編集"
 
@@ -2973,7 +3008,7 @@ msgstr "ライブステータスを編集"
 msgid "Edit moderation list"
 msgstr "モデレーションリストを編集"
 
-#: src/Navigation.tsx:326
+#: src/Navigation.tsx:327
 #: src/view/screens/Feeds.tsx:518
 msgid "Edit My Feeds"
 msgstr "マイフィードを編集"
@@ -3015,7 +3050,7 @@ msgstr "ユーザーリストを編集"
 msgid "Edit who can reply"
 msgstr "誰が返信できるのかを編集"
 
-#: src/Navigation.tsx:556
+#: src/Navigation.tsx:565
 msgid "Edit your starter pack"
 msgstr "スターターパックを編集"
 
@@ -3343,7 +3378,7 @@ msgstr "露骨な、または不愉快になる可能性のあるメディア。
 msgid "Explicit sexual images."
 msgstr "露骨な性的画像。"
 
-#: src/Navigation.tsx:721
+#: src/Navigation.tsx:730
 #: src/screens/Search/Shell.tsx:326
 #: src/view/shell/desktop/LeftNav.tsx:690
 #: src/view/shell/Drawer.tsx:340
@@ -3374,7 +3409,7 @@ msgstr "外部メディア"
 msgid "External media may allow websites to collect information about you and your device. No information is sent or requested until you press the \"play\" button."
 msgstr "外部メディアを有効にすると、それらのメディアのウェブサイトがあなたやお使いのデバイスに関する情報を収集する場合があります。その場合でも、あなたが「再生」ボタンを押すまで情報は送信されず、要求もされません。"
 
-#: src/Navigation.tsx:345
+#: src/Navigation.tsx:346
 #: src/screens/Settings/ExternalMediaPreferences.tsx:34
 msgid "External Media Preferences"
 msgstr "外部メディアの設定"
@@ -3578,7 +3613,7 @@ msgstr "メールの確認に失敗しました。後でもう一度お試しく
 msgid "Failed to verify handle. Please try again."
 msgstr "ハンドルの変更に失敗しました。もう一度試してください。"
 
-#: src/Navigation.tsx:286
+#: src/Navigation.tsx:287
 msgid "Feed"
 msgstr "フィード"
 
@@ -3607,13 +3642,13 @@ msgstr "フィードの切り替え"
 msgid "Feed unavailable"
 msgstr "フィードを利用できません"
 
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:290
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:308
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:298
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:316
 msgctxt "toast"
 msgid "Feedback sent to feed operator"
 msgstr "フィードの運営者にフィードバックを送りました"
 
-#: src/Navigation.tsx:536
+#: src/Navigation.tsx:545
 #: src/screens/SavedFeeds.tsx:107
 #: src/screens/Search/SearchResults.tsx:75
 #: src/screens/StarterPack/StarterPackScreen.tsx:192
@@ -3759,8 +3794,8 @@ msgstr "10アカウントをフォロー"
 msgid "Follow 7 accounts"
 msgstr "7アカウントをフォロー"
 
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:693
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:699
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:709
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:715
 #: src/view/com/profile/ProfileMenu.tsx:323
 #: src/view/com/profile/ProfileMenu.tsx:334
 msgid "Follow account"
@@ -3810,7 +3845,7 @@ msgstr "<0>{0}</0>と<1>{1}</1>がフォロー中"
 msgid "Followed by <0>{0}</0>, <1>{1}</1>, and {2, plural, one {# other} other {# others}}"
 msgstr "<0>{0}</0>、<1>{1}</1>および{2, plural, other {他#人}}がフォロー中"
 
-#: src/Navigation.tsx:240
+#: src/Navigation.tsx:241
 msgid "Followers of @{0} that you know"
 msgstr "あなたが知っている@{0}のフォロワー"
 
@@ -3849,7 +3884,7 @@ msgstr "{handle}をフォローしています"
 msgid "Following feed preferences"
 msgstr "Followingフィードの設定"
 
-#: src/Navigation.tsx:332
+#: src/Navigation.tsx:333
 #: src/screens/Settings/FollowingFeedPreferences.tsx:56
 msgid "Following Feed Preferences"
 msgstr "Followingフィードの設定"
@@ -4155,7 +4190,7 @@ msgstr "触覚フィードバック"
 msgid "Harassment, trolling, or intolerance"
 msgstr "嫌がらせ、荒らし、不寛容"
 
-#: src/Navigation.tsx:501
+#: src/Navigation.tsx:510
 msgid "Hashtag"
 msgstr "ハッシュタグ"
 
@@ -4203,7 +4238,7 @@ msgstr "非表示のリスト"
 #: src/components/moderation/ContentHider.tsx:219
 #: src/components/moderation/LabelPreference.tsx:140
 #: src/components/moderation/PostHider.tsx:150
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:799
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:815
 #: src/lib/moderation/useLabelBehaviorDescription.ts:18
 #: src/lib/moderation/useLabelBehaviorDescription.ts:23
 #: src/lib/moderation/useLabelBehaviorDescription.ts:28
@@ -4221,18 +4256,18 @@ msgstr "非表示"
 msgid "Hide customization options"
 msgstr "カスタマイズオプションを非表示"
 
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:611
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:617
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:627
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:633
 msgid "Hide post for me"
 msgstr "投稿を自分には非表示"
 
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:628
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:638
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:644
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:654
 msgid "Hide reply for everyone"
 msgstr "返信を全員に非表示"
 
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:610
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:616
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:626
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:632
 msgid "Hide reply for me"
 msgstr "返信を自分には非表示"
 
@@ -4240,12 +4275,12 @@ msgstr "返信を自分には非表示"
 msgid "Hide this card"
 msgstr "このカードを非表示"
 
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:794
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:810
 msgid "Hide this post?"
 msgstr "この投稿を非表示にしますか？"
 
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:794
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:829
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:810
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:845
 msgid "Hide this reply?"
 msgstr "この返信を非表示にしますか？"
 
@@ -4309,8 +4344,8 @@ msgstr "そのモデレーションサービスを読み込めませんでした
 msgid "Hold up! We’re gradually giving access to video, and you’re still waiting in line. Check back soon!"
 msgstr "待って！徐々にビデオへのアクセスを許可していますが、あなたの順番はまだです。しばらくしてもう一度確認を！"
 
-#: src/Navigation.tsx:716
-#: src/Navigation.tsx:736
+#: src/Navigation.tsx:725
+#: src/Navigation.tsx:745
 #: src/view/shell/bottom-bar/BottomBar.tsx:178
 #: src/view/shell/desktop/LeftNav.tsx:672
 #: src/view/shell/Drawer.tsx:366
@@ -4370,7 +4405,7 @@ msgstr "自分のドメインを持っていれば、ハンドルとして利用
 msgid "If you need to update your email, <0>click here</0>."
 msgstr "メールを更新する必要がある場合は、<0>ここ</0>をクリックしてください。"
 
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:785
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:801
 msgid "If you remove this post, you won't be able to recover it."
 msgstr "この投稿を削除すると、復元できなくなります。"
 
@@ -4518,7 +4553,7 @@ msgstr "無効な2要素認証の確認コードです。"
 msgid "Invalid handle. Please try a different one."
 msgstr "無効なハンドルです。他のものを試してください。"
 
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:379
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:387
 msgctxt "toast"
 msgid "Invalid interaction settings."
 msgstr "無効な反応関連の設定。"
@@ -4633,13 +4668,13 @@ msgstr "あなたのアカウントのラベル"
 msgid "Labels on your content"
 msgstr "あなたのコンテンツのラベル"
 
-#: src/Navigation.tsx:213
+#: src/Navigation.tsx:214
 msgid "Language Settings"
 msgstr "言語の設定"
 
 #: src/screens/Settings/LanguageSettings.tsx:78
-#: src/screens/Settings/Settings.tsx:228
-#: src/screens/Settings/Settings.tsx:231
+#: src/screens/Settings/Settings.tsx:237
+#: src/screens/Settings/Settings.tsx:240
 msgid "Languages"
 msgstr "言語"
 
@@ -4794,7 +4829,7 @@ msgstr "10投稿をいいね"
 msgid "Like 10 posts to train the Discover feed"
 msgstr "Discoverフィードを訓練するために10投稿をいいねする"
 
-#: src/Navigation.tsx:422
+#: src/Navigation.tsx:431
 msgid "Like notifications"
 msgstr "いいねの通知"
 
@@ -4806,8 +4841,8 @@ msgstr "このフィードをいいね"
 msgid "Like this labeler"
 msgstr "このラベラーをいいね"
 
-#: src/Navigation.tsx:291
-#: src/Navigation.tsx:296
+#: src/Navigation.tsx:292
+#: src/Navigation.tsx:297
 msgid "Liked by"
 msgstr "いいねしたユーザー"
 
@@ -4842,11 +4877,11 @@ msgstr "いいね"
 msgid "Likes of your reposts"
 msgstr "リポストへのいいね"
 
-#: src/Navigation.tsx:446
+#: src/Navigation.tsx:455
 msgid "Likes of your reposts notifications"
 msgstr "リポストへのいいねの通知"
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:469
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:523
 msgid "Likes on this post"
 msgstr "この投稿をいいねする"
 
@@ -4855,7 +4890,7 @@ msgstr "この投稿をいいねする"
 msgid "Linear"
 msgstr "リニア"
 
-#: src/Navigation.tsx:246
+#: src/Navigation.tsx:247
 msgid "List"
 msgstr "リスト"
 
@@ -4935,7 +4970,7 @@ msgctxt "toast"
 msgid "List unmuted"
 msgstr "リストのミュートを解除しました"
 
-#: src/Navigation.tsx:167
+#: src/Navigation.tsx:168
 #: src/view/screens/Lists.tsx:67
 #: src/view/screens/Profile.tsx:218
 #: src/view/screens/Profile.tsx:226
@@ -4988,7 +5023,7 @@ msgstr "最新の投稿を読み込む"
 msgid "Loading..."
 msgstr "読み込み中…"
 
-#: src/Navigation.tsx:316
+#: src/Navigation.tsx:317
 msgid "Log"
 msgstr "ログ"
 
@@ -5057,6 +5092,10 @@ msgstr "既読にする"
 msgid "Marked all as read"
 msgstr "すべて既読にしました"
 
+#: src/screens/Settings/ClientSettings.tsx:40
+msgid "Maximum number of nested quote posts to display. Quotes beyond this depth will not be shown."
+msgstr ""
+
 #: src/components/dialogs/EmailDialog/screens/VerificationReminder.tsx:90
 #: src/components/dialogs/EmailDialog/screens/VerificationReminder.tsx:97
 msgid "Maybe later"
@@ -5070,7 +5109,7 @@ msgstr "メディア"
 msgid "Media that may be disturbing or inappropriate for some audiences."
 msgstr "一部の閲覧者にとっては困惑する、あるいは不適切なメディアです。"
 
-#: src/Navigation.tsx:406
+#: src/Navigation.tsx:415
 msgid "Mention notifications"
 msgstr "メンションの通知"
 
@@ -5127,7 +5166,7 @@ msgstr "メッセージが長すぎます"
 msgid "Message options"
 msgstr "メッセージのオプション"
 
-#: src/Navigation.tsx:731
+#: src/Navigation.tsx:740
 msgid "Messages"
 msgstr "メッセージ"
 
@@ -5136,7 +5175,7 @@ msgctxt "Name of app icon variant"
 msgid "Midnight"
 msgstr "ミッドナイト"
 
-#: src/Navigation.tsx:470
+#: src/Navigation.tsx:479
 msgid "Miscellaneous notifications"
 msgstr "その他の通知"
 
@@ -5150,10 +5189,10 @@ msgstr "誤解を招くアカウント"
 msgid "Misleading Post"
 msgstr "誤解を招く投稿"
 
-#: src/Navigation.tsx:172
+#: src/Navigation.tsx:173
 #: src/screens/Moderation/index.tsx:99
-#: src/screens/Settings/Settings.tsx:188
-#: src/screens/Settings/Settings.tsx:191
+#: src/screens/Settings/Settings.tsx:189
+#: src/screens/Settings/Settings.tsx:192
 msgid "Moderation"
 msgstr "モデレーション"
 
@@ -5189,7 +5228,7 @@ msgstr "モデレーションリストを更新しました"
 msgid "Moderation lists"
 msgstr "モデレーションリスト"
 
-#: src/Navigation.tsx:177
+#: src/Navigation.tsx:178
 #: src/view/screens/ModerationModlists.tsx:67
 msgid "Moderation Lists"
 msgstr "モデレーションリスト"
@@ -5198,7 +5237,7 @@ msgstr "モデレーションリスト"
 msgid "moderation settings"
 msgstr "モデレーションの設定"
 
-#: src/Navigation.tsx:306
+#: src/Navigation.tsx:307
 msgid "Moderation states"
 msgstr "モデレーションのステータス"
 
@@ -5254,8 +5293,8 @@ msgstr "ミュート"
 msgid "Mute {tag}"
 msgstr "{tag} をミュート"
 
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:712
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:718
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:728
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:734
 #: src/view/com/profile/ProfileMenu.tsx:411
 #: src/view/com/profile/ProfileMenu.tsx:418
 msgid "Mute account"
@@ -5312,13 +5351,13 @@ msgstr "タグのみでこのワードをミュート"
 msgid "Mute this word until you unmute it"
 msgstr "このワードをミュート解除するまでミュート"
 
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:577
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:581
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:593
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:597
 msgid "Mute thread"
 msgstr "スレッドをミュート"
 
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:591
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:593
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:607
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:609
 msgid "Mute words & tags"
 msgstr "ワードとタグをミュート"
 
@@ -5326,7 +5365,7 @@ msgstr "ワードとタグをミュート"
 msgid "Muted accounts"
 msgstr "ミュート中のアカウント"
 
-#: src/Navigation.tsx:182
+#: src/Navigation.tsx:183
 #: src/view/screens/ModerationMutedAccounts.tsx:116
 msgid "Muted Accounts"
 msgstr "ミュート中のアカウント"
@@ -5454,7 +5493,7 @@ msgstr "新しいメールアドレス"
 msgid "New Feature"
 msgstr "新機能"
 
-#: src/Navigation.tsx:438
+#: src/Navigation.tsx:447
 msgid "New follower notifications"
 msgstr "新しいフォロワーの通知"
 
@@ -5713,7 +5752,7 @@ msgstr "なし"
 msgid "Not followed by anyone you're following"
 msgstr "フォローしている人は誰にもフォローしていません"
 
-#: src/Navigation.tsx:162
+#: src/Navigation.tsx:163
 #: src/view/screens/Profile.tsx:118
 msgid "Not Found"
 msgstr "見つかりません"
@@ -5742,8 +5781,8 @@ msgstr "何もありません"
 msgid "Nothing saved yet"
 msgstr "まだ何も保存されていません"
 
-#: src/Navigation.tsx:392
-#: src/Navigation.tsx:531
+#: src/Navigation.tsx:401
+#: src/Navigation.tsx:540
 #: src/view/screens/Notifications.tsx:135
 msgid "Notification settings"
 msgstr "通知設定"
@@ -5756,8 +5795,8 @@ msgstr "通知音"
 msgid "Notification Sounds"
 msgstr "通知音"
 
-#: src/Navigation.tsx:526
-#: src/Navigation.tsx:726
+#: src/Navigation.tsx:535
+#: src/Navigation.tsx:735
 #: src/screens/Notifications/ActivityList.tsx:29
 #: src/screens/Settings/NotificationSettings/ActivityNotificationSettings.tsx:92
 #: src/screens/Settings/NotificationSettings/index.tsx:92
@@ -5770,8 +5809,8 @@ msgstr "通知音"
 #: src/screens/Settings/NotificationSettings/ReplyNotificationSettings.tsx:30
 #: src/screens/Settings/NotificationSettings/RepostNotificationSettings.tsx:30
 #: src/screens/Settings/NotificationSettings/RepostsOnRepostsNotificationSettings.tsx:30
-#: src/screens/Settings/Settings.tsx:196
-#: src/screens/Settings/Settings.tsx:199
+#: src/screens/Settings/Settings.tsx:197
+#: src/screens/Settings/Settings.tsx:200
 #: src/view/screens/Notifications.tsx:129
 #: src/view/shell/bottom-bar/BottomBar.tsx:252
 #: src/view/shell/desktop/LeftNav.tsx:709
@@ -5821,7 +5860,7 @@ msgid "OK"
 msgstr "OK"
 
 #: src/screens/Login/PasswordUpdatedForm.tsx:37
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:691
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:757
 msgid "Okay"
 msgstr "OK"
 
@@ -5836,7 +5875,7 @@ msgstr "古い順に返信を表示"
 msgid "on<0><1/><2><3/></2></0>"
 msgstr "<0><1/><2><3/></2></0>"
 
-#: src/screens/Settings/Settings.tsx:372
+#: src/screens/Settings/Settings.tsx:381
 msgid "Onboarding reset"
 msgstr "オンボーディングのリセット"
 
@@ -5938,7 +5977,7 @@ msgstr "{niceUrl}へのリンクを開く"
 msgid "Open message options"
 msgstr "メッセージのオプションを開く"
 
-#: src/screens/Settings/Settings.tsx:437
+#: src/screens/Settings/Settings.tsx:446
 msgid "Open moderation debug page"
 msgstr "モデレーションデバッグページを開く"
 
@@ -5967,12 +6006,12 @@ msgstr "共有メニューを開く"
 msgid "Open starter pack menu"
 msgstr "スターターパックのメニューを開く"
 
-#: src/screens/Settings/Settings.tsx:430
-#: src/screens/Settings/Settings.tsx:444
+#: src/screens/Settings/Settings.tsx:439
+#: src/screens/Settings/Settings.tsx:453
 msgid "Open storybook page"
 msgstr "絵本のページを開く"
 
-#: src/screens/Settings/Settings.tsx:423
+#: src/screens/Settings/Settings.tsx:432
 msgid "Open system log"
 msgstr "システムのログを開く"
 
@@ -6161,11 +6200,11 @@ msgstr "ビデオを一時停止"
 msgid "People"
 msgstr "ユーザー"
 
-#: src/Navigation.tsx:233
+#: src/Navigation.tsx:234
 msgid "People followed by @{0}"
 msgstr "@{0}がフォロー中のユーザー"
 
-#: src/Navigation.tsx:226
+#: src/Navigation.tsx:227
 msgid "People following @{0}"
 msgstr "@{0}をフォロー中のユーザー"
 
@@ -6214,8 +6253,8 @@ msgstr "ホームにピン留め"
 msgid "Pin to Home"
 msgstr "ホームにピン留め"
 
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:485
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:492
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:493
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:500
 msgid "Pin to your profile"
 msgstr "プロフィールに固定"
 
@@ -6440,10 +6479,10 @@ msgstr "すべてポスト"
 msgid "Post blocked"
 msgstr "ブロックされた投稿"
 
-#: src/Navigation.tsx:259
-#: src/Navigation.tsx:266
-#: src/Navigation.tsx:273
-#: src/Navigation.tsx:280
+#: src/Navigation.tsx:260
+#: src/Navigation.tsx:267
+#: src/Navigation.tsx:274
+#: src/Navigation.tsx:281
 msgid "Post by @{0}"
 msgstr "@{0}による投稿"
 
@@ -6456,7 +6495,7 @@ msgstr "投稿を削除しました"
 msgid "Post failed to upload. Please check your Internet connection and try again."
 msgstr "投稿のアップロードに失敗しました。インターネット接続を確認し、再度試してください。"
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:133
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:135
 #: src/screens/PostThread/components/ThreadItemPost.tsx:111
 #: src/screens/PostThread/components/ThreadItemTreePost.tsx:107
 #: src/screens/VideoFeed/index.tsx:533
@@ -6477,7 +6516,7 @@ msgstr "あなたが非表示にした投稿"
 msgid "Post interaction settings"
 msgstr "投稿への反応の設定"
 
-#: src/Navigation.tsx:193
+#: src/Navigation.tsx:194
 #: src/screens/ModerationInteractionSettings/index.tsx:34
 msgid "Post Interaction Settings"
 msgstr "投稿への反応の設定"
@@ -6563,13 +6602,13 @@ msgstr "第一言語"
 msgid "Prioritize your Follows"
 msgstr "あなたのフォローを優先"
 
-#: src/screens/Settings/Settings.tsx:182
-#: src/screens/Settings/Settings.tsx:185
+#: src/screens/Settings/Settings.tsx:183
+#: src/screens/Settings/Settings.tsx:186
 msgid "Privacy and security"
 msgstr "プライバシーとセキュリティ"
 
-#: src/Navigation.tsx:377
-#: src/Navigation.tsx:385
+#: src/Navigation.tsx:386
+#: src/Navigation.tsx:394
 #: src/screens/Settings/ActivityPrivacySettings.tsx:40
 #: src/screens/Settings/PrivacyAndSecuritySettings.tsx:44
 msgid "Privacy and Security"
@@ -6673,7 +6712,11 @@ msgstr "QRコードをダウンロードしました！"
 msgid "QR code saved to your camera roll!"
 msgstr "QRコードをカメラロールに保存しました！"
 
-#: src/Navigation.tsx:414
+#: src/screens/Settings/ClientSettings.tsx:37
+msgid "Quote Depth"
+msgstr ""
+
+#: src/Navigation.tsx:423
 msgid "Quote notifications"
 msgstr "引用の通知"
 
@@ -6684,11 +6727,11 @@ msgstr "引用の通知"
 msgid "Quote post"
 msgstr "引用"
 
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:328
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:336
 msgid "Quote post was re-attached"
 msgstr "引用投稿が再び関連付けられました"
 
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:327
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:335
 msgid "Quote post was successfully detached"
 msgstr "引用投稿を切り離すことができました"
 
@@ -6710,7 +6753,7 @@ msgstr "引用の設定"
 msgid "Quotes"
 msgstr "引用"
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:453
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:507
 msgid "Quotes of this post"
 msgstr "この投稿を引用する"
 
@@ -6718,8 +6761,8 @@ msgstr "この投稿を引用する"
 msgid "Rate limit exceeded – you've tried to change your handle too many times in a short period. Please wait a minute before trying again."
 msgstr "レート制限を超えました - 短い時間でハンドルを何度も変更しようとしました。再度試す前にしばらく時間をおいてください。"
 
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:653
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:663
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:669
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:679
 msgid "Re-attach quote"
 msgstr "引用を再度関連付ける"
 
@@ -6822,7 +6865,7 @@ msgstr "会話を再読み込み"
 #: src/components/StarterPack/Wizard/WizardListCard.tsx:105
 #: src/components/StarterPack/Wizard/WizardListCard.tsx:112
 #: src/screens/Bookmarks/index.tsx:255
-#: src/screens/Settings/Settings.tsx:650
+#: src/screens/Settings/Settings.tsx:659
 #: src/view/com/modals/UserAddRemoveLists.tsx:235
 #: src/view/com/posts/PostFeedErrorMessage.tsx:228
 msgid "Remove"
@@ -6836,8 +6879,8 @@ msgstr "{displayName}をスターターパックから削除"
 msgid "Remove {historyItem}"
 msgstr "{historyItem}を削除"
 
-#: src/screens/Settings/Settings.tsx:629
-#: src/screens/Settings/Settings.tsx:632
+#: src/screens/Settings/Settings.tsx:638
+#: src/screens/Settings/Settings.tsx:641
 msgid "Remove account"
 msgstr "アカウント切替リストから取り除く"
 
@@ -6877,7 +6920,7 @@ msgstr "フィードを削除しますか？"
 msgid "Remove from my feeds"
 msgstr "マイフィードから削除"
 
-#: src/screens/Settings/Settings.tsx:642
+#: src/screens/Settings/Settings.tsx:651
 msgid "Remove from quick access?"
 msgstr "クイックアクセスから削除しますか？"
 
@@ -6940,11 +6983,11 @@ msgstr "認証を削除"
 msgid "Remove your verification for this account?"
 msgstr "このアカウントの認証を削除しますか？"
 
-#: src/components/Post/Embed/index.tsx:225
+#: src/components/Post/Embed/index.tsx:228
 msgid "Removed by author"
 msgstr "投稿者が削除しました"
 
-#: src/components/Post/Embed/index.tsx:223
+#: src/components/Post/Embed/index.tsx:226
 msgid "Removed by you"
 msgstr "あなたが削除しました"
 
@@ -7039,7 +7082,7 @@ msgstr "返信はスレッドの投稿者によって非表示に"
 msgid "Reply Hidden by You"
 msgstr "返信はあなたによって非表示に"
 
-#: src/Navigation.tsx:398
+#: src/Navigation.tsx:407
 msgid "Reply notifications"
 msgstr "返信の通知"
 
@@ -7055,12 +7098,12 @@ msgstr "返信の設定はスレッドの投稿者によって選択されてい
 msgid "Reply sorting"
 msgstr "返信を並び替え"
 
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:365
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:373
 msgctxt "toast"
 msgid "Reply visibility updated"
 msgstr "返信の表示設定を更新しました"
 
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:364
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:372
 msgid "Reply was successfully hidden"
 msgstr "返信を非表示にすることができました"
 
@@ -7103,8 +7146,8 @@ msgstr "リストを報告"
 msgid "Report message"
 msgstr "メッセージを報告"
 
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:738
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:740
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:754
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:756
 msgid "Report post"
 msgstr "投稿を報告"
 
@@ -7166,7 +7209,7 @@ msgstr "リポスト"
 msgid "Repost ({0, plural, one {# repost} other {# reposts}})"
 msgstr "リポストする（{0, plural, other {#件のリポスト}}）"
 
-#: src/Navigation.tsx:430
+#: src/Navigation.tsx:439
 msgid "Repost notifications"
 msgstr "リポストの通知"
 
@@ -7200,7 +7243,7 @@ msgstr "あなたのリポスト"
 msgid "Reposts"
 msgstr "リポスト"
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:435
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:489
 msgid "Reposts of this post"
 msgstr "この投稿をリポストする"
 
@@ -7210,7 +7253,7 @@ msgstr "この投稿をリポストする"
 msgid "Reposts of your reposts"
 msgstr "リポストのリポスト"
 
-#: src/Navigation.tsx:454
+#: src/Navigation.tsx:463
 msgid "Reposts of your reposts notifications"
 msgstr "リポストのリポストの通知"
 
@@ -7253,8 +7296,8 @@ msgstr "メール再送済"
 msgid "Resend Verification Email"
 msgstr "確認メールを再送済"
 
-#: src/screens/Settings/Settings.tsx:466
-#: src/screens/Settings/Settings.tsx:468
+#: src/screens/Settings/Settings.tsx:475
+#: src/screens/Settings/Settings.tsx:477
 msgid "Reset activity subscription nudge"
 msgstr "アクティビティ購読ナッジをリセット"
 
@@ -7262,8 +7305,8 @@ msgstr "アクティビティ購読ナッジをリセット"
 msgid "Reset code"
 msgstr "リセットコード"
 
-#: src/screens/Settings/Settings.tsx:451
-#: src/screens/Settings/Settings.tsx:453
+#: src/screens/Settings/Settings.tsx:460
+#: src/screens/Settings/Settings.tsx:462
 msgid "Reset onboarding state"
 msgstr "オンボーディングの状態をリセット"
 
@@ -7398,7 +7441,7 @@ msgid "Saved Feeds"
 msgstr "保存されたフィード"
 
 #: src/components/dialogs/nuxs/BookmarksAnnouncement.tsx:143
-#: src/Navigation.tsx:570
+#: src/Navigation.tsx:579
 #: src/screens/Bookmarks/index.tsx:55
 msgid "Saved Posts"
 msgstr "保存済投稿"
@@ -7441,7 +7484,7 @@ msgstr "一番上までスクロール"
 msgid "Search"
 msgstr "検索"
 
-#: src/Navigation.tsx:252
+#: src/Navigation.tsx:253
 #: src/screens/Profile/ProfileSearch.tsx:37
 msgid "Search @{0}'s posts"
 msgstr "@{0}の投稿を検索"
@@ -7797,8 +7840,8 @@ msgstr "アカウントを設定する"
 msgid "Sets email for password reset"
 msgstr "パスワードをリセットするためのメールアドレスを入力"
 
-#: src/Navigation.tsx:208
-#: src/screens/Settings/Settings.tsx:99
+#: src/Navigation.tsx:209
+#: src/screens/Settings/Settings.tsx:100
 #: src/view/shell/desktop/LeftNav.tsx:805
 #: src/view/shell/Drawer.tsx:535
 msgid "Settings"
@@ -7938,7 +7981,7 @@ msgstr "共有…"
 msgid "Share your favorite feed!"
 msgstr "お気に入りのフィードをシェアして！"
 
-#: src/Navigation.tsx:311
+#: src/Navigation.tsx:312
 msgid "Shared Preferences Tester"
 msgstr "Shared Preferencesのテスター"
 
@@ -7973,8 +8016,8 @@ msgstr "バッジの表示とフィードからのフィルタリング"
 msgid "Show customization options"
 msgstr "カスタマイズオプションを表示"
 
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:548
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:550
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:564
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:566
 msgid "Show less like this"
 msgstr "このような投稿の表示を減らす"
 
@@ -7986,14 +8029,21 @@ msgstr "とにかくリストを表示"
 msgid "Show More"
 msgstr "さらに表示"
 
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:540
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:542
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:556
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:558
 msgid "Show more like this"
 msgstr "このような投稿の表示を増やす"
 
 #: src/screens/PostThread/components/ThreadItemShowOtherReplies.tsx:14
 msgid "Show more replies"
 msgstr "さらに返信を表示"
+
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:519
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:525
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:649
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:655
+msgid "Show Original"
+msgstr ""
 
 #: src/screens/Settings/ThreadPreferences.tsx:127
 msgid "Show post replies in a threaded tree view"
@@ -8017,8 +8067,8 @@ msgstr "返信の表示方法"
 msgid "Show replies by people you follow before all other replies"
 msgstr "フォローしてる人の返信を他の人の返信より優先して表示"
 
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:627
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:637
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:643
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:653
 msgid "Show reply for everyone"
 msgstr "返信を全員に見せる"
 
@@ -8040,11 +8090,11 @@ msgstr "警告を表示"
 msgid "Show warning and filter from feeds"
 msgstr "警告の表示とフィードからのフィルタリング"
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:627
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:693
 msgid "Shows information about when this post was created"
 msgstr "この投稿がいつ作成されたかについての情報を表示する"
 
-#: src/screens/Settings/Settings.tsx:125
+#: src/screens/Settings/Settings.tsx:126
 msgid "Shows other accounts you can switch to"
 msgstr "切替可能な他のアカウントを表示"
 
@@ -8098,14 +8148,14 @@ msgstr "リストにないアカウントにサインイン"
 msgid "Sign in to Bluesky or create a new account"
 msgstr "Blueskyにサインイン または 新規アカウントの登録"
 
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:526
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:528
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:542
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:544
 msgid "Sign in to view post"
 msgstr "サインインして投稿を表示"
 
-#: src/screens/Settings/Settings.tsx:238
-#: src/screens/Settings/Settings.tsx:240
-#: src/screens/Settings/Settings.tsx:272
+#: src/screens/Settings/Settings.tsx:247
+#: src/screens/Settings/Settings.tsx:249
+#: src/screens/Settings/Settings.tsx:281
 #: src/screens/SignupQueued.tsx:93
 #: src/screens/SignupQueued.tsx:96
 #: src/screens/Takendown.tsx:94
@@ -8119,7 +8169,7 @@ msgstr "サインアウト"
 msgid "Sign Out"
 msgstr "サインアウト"
 
-#: src/screens/Settings/Settings.tsx:269
+#: src/screens/Settings/Settings.tsx:278
 #: src/view/shell/desktop/LeftNav.tsx:209
 msgid "Sign out?"
 msgstr "サインアウトしますか？"
@@ -8231,8 +8281,8 @@ msgstr "何か問題がありますか？お知らせください。"
 msgid "Sorry, we're unable to load account suggestions at this time."
 msgstr "申し訳ありません。現在、アカウントのおすすめを読み込むことができません。"
 
-#: src/App.native.tsx:128
-#: src/App.web.tsx:97
+#: src/App.native.tsx:129
+#: src/App.web.tsx:99
 msgid "Sorry! Your session expired. Please sign in again."
 msgstr "申し訳ありません！セッションの有効期限が切れました。もう一度サインインしてください。"
 
@@ -8293,8 +8343,8 @@ msgstr "ユーザーを追加して！"
 msgid "Start chat with {displayName}"
 msgstr "{displayName}とのチャットを開始"
 
-#: src/Navigation.tsx:541
-#: src/Navigation.tsx:546
+#: src/Navigation.tsx:550
+#: src/Navigation.tsx:555
 #: src/screens/StarterPack/Wizard/index.tsx:209
 msgid "Starter Pack"
 msgstr "スターターパック"
@@ -8334,12 +8384,12 @@ msgstr "ステータスページ"
 msgid "Step {0} of {1}"
 msgstr "ステップ {0} / {1}"
 
-#: src/screens/Settings/Settings.tsx:377
+#: src/screens/Settings/Settings.tsx:386
 msgid "Storage cleared, you need to restart the app now."
 msgstr "ストレージがクリアされたため、今すぐアプリを再起動する必要があります。"
 
-#: src/Navigation.tsx:301
-#: src/screens/Settings/Settings.tsx:432
+#: src/Navigation.tsx:302
+#: src/screens/Settings/Settings.tsx:441
 msgid "Storybook"
 msgstr "ストーリーブック"
 
@@ -8435,9 +8485,9 @@ msgstr "サンセット"
 msgid "Support"
 msgstr "サポート"
 
-#: src/screens/Settings/Settings.tsx:123
-#: src/screens/Settings/Settings.tsx:137
-#: src/screens/Settings/Settings.tsx:590
+#: src/screens/Settings/Settings.tsx:124
+#: src/screens/Settings/Settings.tsx:138
+#: src/screens/Settings/Settings.tsx:599
 #: src/view/shell/desktop/LeftNav.tsx:247
 msgid "Switch account"
 msgstr "アカウントを切り替える"
@@ -8465,7 +8515,7 @@ msgstr "システム"
 #: src/screens/Log.tsx:56
 #: src/screens/Settings/AboutSettings.tsx:107
 #: src/screens/Settings/AboutSettings.tsx:110
-#: src/screens/Settings/Settings.tsx:425
+#: src/screens/Settings/Settings.tsx:434
 msgid "System log"
 msgstr "システムログ"
 
@@ -8756,10 +8806,10 @@ msgstr "報告の送信に問題が発生しました。インターネットの
 msgid "There was an issue updating your feeds, please check your internet connection and try again."
 msgstr "フィードの更新中に問題が発生したので、インターネットへの接続を確認の上、もう一度試してください。"
 
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:411
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:424
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:434
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:453
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:419
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:432
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:442
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:461
 #: src/screens/PostThread/components/ThreadItemAnchorFollowButton.tsx:90
 #: src/screens/PostThread/components/ThreadItemAnchorFollowButton.tsx:101
 #: src/screens/Profile/Header/ProfileHeaderStandard.tsx:114
@@ -8950,7 +9000,7 @@ msgstr "このリストは空です。"
 msgid "This moderation service is unavailable. See below for more details. If this issue persists, contact us."
 msgstr "このモデレーションのサービスはご利用できません。詳細は以下をご覧ください。この問題が解決しない場合は、サポートへお問い合わせください。"
 
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:667
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:733
 msgid "This post claims to have been created on <0>{0}</0>, but was first seen by Bluesky on <1>{1}</1>."
 msgstr "<0>{0}</0>に投稿されたと表示されていますが、Blueskyに初めて登場したのは<1>{1}</1>です。"
 
@@ -8966,7 +9016,7 @@ msgstr "この投稿はログイン中のユーザーにのみ表示されます
 msgid "This post was deleted by its author"
 msgstr "この投稿は投稿者によって削除されました"
 
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:796
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:812
 msgid "This post will be hidden from feeds and threads. This cannot be undone."
 msgstr "この投稿はフィードとスレッドから非表示になります。元に戻すことはできません。"
 
@@ -8978,7 +9028,7 @@ msgstr "この投稿の投稿者は引用投稿を無効にしています。"
 msgid "This profile is only visible to logged-in users. It won't be visible to people who aren't signed in."
 msgstr "この投稿はサインインしているユーザーにのみ表示されます。サインインしていないユーザーには表示されません。"
 
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:831
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:847
 msgid "This reply will be sorted into a hidden section at the bottom of your thread and will mute notifications for subsequent replies - both for yourself and others."
 msgstr "この返信はスレッドの一番下にある非表示のセクションに移動され、その後のあなたや他のユーザー宛の返信の通知をミュートします。"
 
@@ -9042,11 +9092,11 @@ msgstr ""
 msgid "This will delete \"{0}\" from your muted words. You can always add it back later."
 msgstr "ミュートしたワードから「{0}」が削除されます。あとでいつでも戻すことができます。"
 
-#: src/screens/Settings/Settings.tsx:644
+#: src/screens/Settings/Settings.tsx:653
 msgid "This will remove @{0} from the quick access list."
 msgstr "クイックアクセスのリストから@{0}を削除します。"
 
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:821
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:837
 msgid "This will remove your post from this quote post for all users, and replace it with a placeholder."
 msgstr "これによってあなたの投稿が全員に見える引用投稿からは削除され、プレースホルダーに置き換えられます。"
 
@@ -9069,7 +9119,7 @@ msgstr "スレッドの設定"
 msgid "Threaded"
 msgstr "スレッド"
 
-#: src/Navigation.tsx:339
+#: src/Navigation.tsx:340
 msgid "Threads Preferences"
 msgstr "スレッドの設定"
 
@@ -9119,18 +9169,28 @@ msgstr "トップ"
 msgid "Top replies first"
 msgstr "トップの返信を最初に"
 
-#: src/Navigation.tsx:506
+#: src/Navigation.tsx:515
 msgid "Topic"
 msgstr "トピック"
 
 #: src/components/dms/MessageContextMenu.tsx:137
 #: src/components/dms/MessageContextMenu.tsx:139
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:509
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:511
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:589
-#: src/screens/PostThread/components/ThreadItemAnchor.tsx:592
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:520
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:526
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:650
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:657
 msgid "Translate"
 msgstr "翻訳"
+
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:445
+#: src/view/com/posts/PostFeedItem.tsx:516
+msgid "Translated from {0} to {1}"
+msgstr ""
+
+#: src/screens/PostThread/components/ThreadItemAnchor.tsx:447
+#: src/view/com/posts/PostFeedItem.tsx:518
+msgid "Translated to {0}"
+msgstr ""
 
 #: src/screens/Settings/ThreadPreferences.tsx:115
 #: src/screens/Settings/ThreadPreferences.tsx:120
@@ -9196,11 +9256,11 @@ msgstr "あなたのサービスに接続できません。インターネット
 msgid "Unable to delete"
 msgstr "削除できません"
 
-#: src/screens/Settings/Settings.tsx:491
+#: src/screens/Settings/Settings.tsx:500
 msgid "Unapply Pull Request"
 msgstr "プルリクエストを適用しない"
 
-#: src/screens/Settings/Settings.tsx:493
+#: src/screens/Settings/Settings.tsx:502
 msgid "Unapply Pull Request {currentChannel}"
 msgstr "プルリクエスト {currentChannel} を適用しない"
 
@@ -9270,8 +9330,8 @@ msgstr "フォローを解除"
 msgid "Unfollow {0}"
 msgstr "{0}のフォローを解除"
 
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:692
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:698
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:708
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:714
 #: src/view/com/profile/ProfileMenu.tsx:322
 #: src/view/com/profile/ProfileMenu.tsx:332
 msgid "Unfollow account"
@@ -9318,8 +9378,8 @@ msgstr "ミュートを解除"
 msgid "Unmute {tag}"
 msgstr "{tag} のミュートを解除"
 
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:711
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:717
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:727
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:733
 #: src/view/com/profile/ProfileMenu.tsx:410
 #: src/view/com/profile/ProfileMenu.tsx:416
 msgid "Unmute account"
@@ -9339,8 +9399,8 @@ msgstr "リストのミュートを解除"
 msgid "Unmute reposts from account"
 msgstr ""
 
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:577
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:581
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:593
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:597
 msgid "Unmute thread"
 msgstr "スレッドのミュートを解除"
 
@@ -9373,8 +9433,8 @@ msgstr "フィードのピン留めを外す"
 msgid "Unpin from home"
 msgstr "ホームからピン留めを解除"
 
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:484
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:491
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:492
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:499
 msgid "Unpin from profile"
 msgstr "プロフィールから固定を解除"
 
@@ -9395,8 +9455,8 @@ msgstr "フィードからピン留めを解除"
 msgid "Unpinned list"
 msgstr "リストのピン留めを解除しました"
 
-#: src/screens/Settings/Settings.tsx:458
-#: src/screens/Settings/Settings.tsx:460
+#: src/screens/Settings/Settings.tsx:467
+#: src/screens/Settings/Settings.tsx:469
 msgid "Unsnooze email reminder"
 msgstr "メールのリマインダーのスヌーズを解除"
 
@@ -9453,12 +9513,12 @@ msgstr "{domain}に更新"
 msgid "Update your email"
 msgstr "メールアドレスの更新"
 
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:332
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:340
 msgctxt "toast"
 msgid "Updating quote attachment failed"
 msgstr "引用の添付の更新に失敗しました"
 
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:384
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:392
 msgctxt "toast"
 msgid "Updating reply visibility failed"
 msgstr "返信の表示設定の更新に失敗しました"
@@ -9639,7 +9699,7 @@ msgstr "認証に失敗しました。再度試してください。"
 msgid "Verification settings"
 msgstr "認証設定"
 
-#: src/Navigation.tsx:201
+#: src/Navigation.tsx:202
 #: src/screens/Moderation/VerificationSettings.tsx:32
 msgid "Verification Settings"
 msgstr "認証設定"
@@ -9731,7 +9791,7 @@ msgstr "ビデオ"
 msgid "Video failed to process"
 msgstr "ビデオの処理に失敗"
 
-#: src/Navigation.tsx:562
+#: src/Navigation.tsx:571
 msgid "Video Feed"
 msgstr "ビデオフィード"
 
@@ -10228,11 +10288,11 @@ msgstr "はい、無効化します"
 msgid "Yes, delete this starter pack"
 msgstr "はい、このスターターパックを削除します"
 
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:824
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:840
 msgid "Yes, detach"
 msgstr "はい、切り離します"
 
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:834
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:850
 msgid "Yes, hide"
 msgstr "はい、非表示にします"
 
@@ -10318,7 +10378,7 @@ msgstr "アプリ内のチャット設定でチャット通知の音の有無を
 msgid "You can continue ongoing conversations regardless of which setting you choose."
 msgstr "どの設定を選択しても進行中の会話は続けることができます。"
 
-#: src/components/PostControls/PostMenu/PostMenuItems.tsx:371
+#: src/components/PostControls/PostMenu/PostMenuItems.tsx:379
 msgctxt "toast"
 msgid "You can hide a maximum of {MAX_HIDDEN_REPLIES} replies."
 msgstr "最大で{MAX_HIDDEN_REPLIES}件の返信を非表示にできます。"
@@ -10546,7 +10606,7 @@ msgstr "2要素認証メールを有効にする前に、メールアドレス�
 msgid "You previously deactivated @{0}."
 msgstr "以前、あなたは@{0}を無効化しました。"
 
-#: src/screens/Settings/Settings.tsx:388
+#: src/screens/Settings/Settings.tsx:397
 msgid "You probably want to restart the app now."
 msgstr "今すぐアプリを再起動したほうが良いでしょう。"
 
@@ -10558,7 +10618,7 @@ msgstr "あなたは{0}とリアクションしました"
 msgid "You reacted {0} to {1}"
 msgstr "あなたは{1}に{0}とリアクションしました"
 
-#: src/screens/Settings/Settings.tsx:270
+#: src/screens/Settings/Settings.tsx:279
 #: src/view/shell/desktop/LeftNav.tsx:210
 msgid "You will be signed out of all your accounts."
 msgstr "すべてのアカウントからサインアウトします。"
@@ -10750,7 +10810,7 @@ msgstr "Followingフィードは空です！もっと多くのユーザーをフ
 msgid "Your full handle will be <0>@{0}</0>"
 msgstr "フルハンドルは<0>@{0}</0>になります"
 
-#: src/Navigation.tsx:486
+#: src/Navigation.tsx:495
 #: src/screens/Search/modules/ExploreInterestsCard.tsx:67
 #: src/screens/Settings/ContentAndMediaSettings.tsx:92
 #: src/screens/Settings/ContentAndMediaSettings.tsx:95

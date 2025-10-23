@@ -94,6 +94,7 @@ import {AccountSettingsScreen} from '#/screens/Settings/AccountSettings'
 import {ActivityPrivacySettingsScreen} from '#/screens/Settings/ActivityPrivacySettings'
 import {AppearanceSettingsScreen} from '#/screens/Settings/AppearanceSettings'
 import {AppIconSettingsScreen} from '#/screens/Settings/AppIconSettings'
+import {ClientSettingsScreen} from '#/screens/Settings/ClientSettings'
 import {AppPasswordsScreen} from '#/screens/Settings/AppPasswords'
 import {ContentAndMediaSettingsScreen} from '#/screens/Settings/ContentAndMediaSettings'
 import {ExternalMediaPreferencesScreen} from '#/screens/Settings/ExternalMediaPreferences'
@@ -359,6 +360,14 @@ function commonScreens(Stack: typeof Flat, unreadCountLabel?: string) {
         getComponent={() => AppearanceSettingsScreen}
         options={{
           title: title(msg`Appearance`),
+          requireAuth: true,
+        }}
+      />
+      <Stack.Screen
+        name="ClientSettings"
+        getComponent={() => ClientSettingsScreen}
+        options={{
+          title: title(msg`Client Settings`),
           requireAuth: true,
         }}
       />
@@ -745,6 +754,10 @@ const FlatNavigator = () => {
  * to the navigation context.
  */
 
+// Store initial path for deferred navigation on web
+let initialWebPath: string | null = null
+let hasNavigatedToInitialPath = false
+
 const LINKING = {
   // TODO figure out what we are going to use
   // note: `bluesky://` is what is used in app.config.js
@@ -800,6 +813,12 @@ const LINKING = {
         },
       ])
     } else {
+      // On web: defer navigation to non-home routes until client is ready
+      // Store the initial path and navigate to it after initialization
+      if (!hasNavigatedToInitialPath && path !== '/' && name !== 'Home') {
+        initialWebPath = path
+        return buildStateObject('Flat', 'Home', {})
+      }
       const res = buildStateObject('Flat', name, params)
       return res
     }
@@ -1058,9 +1077,21 @@ function logModuleInitTime() {
   }
 }
 
+function navigateToInitialPath() {
+  if (!isNative && initialWebPath && !hasNavigatedToInitialPath) {
+    hasNavigatedToInitialPath = true
+    const [name, params] = router.matchPath(initialWebPath)
+    if (navigationRef.isReady()) {
+      // @ts-ignore
+      navigationRef.navigate(name, params)
+    }
+  }
+}
+
 export {
   FlatNavigator,
   navigate,
+  navigateToInitialPath,
   reset,
   resetToTab,
   RoutesContainer,
