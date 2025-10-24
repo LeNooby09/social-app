@@ -1,18 +1,21 @@
 import {useCallback, useMemo, useRef, useState} from 'react'
 import {useWindowDimensions, View} from 'react-native'
 import Animated, {useAnimatedStyle} from 'react-native-reanimated'
+import {type AppBskyFeedDefs, AppBskyFeedPost, moderatePost} from '@atproto/api'
 import {Trans} from '@lingui/macro'
+import {useQuery} from '@tanstack/react-query'
 
 import {useInitialNumToRender} from '#/lib/hooks/useInitialNumToRender'
 import {useOpenComposer} from '#/lib/hooks/useOpenComposer'
 import {useFeedFeedback} from '#/state/feed-feedback'
+import {useModerationOpts} from '#/state/preferences/moderation-opts'
 import {type ThreadViewOption} from '#/state/queries/preferences/useThreadPreferences'
 import {
   PostThreadContextProvider,
   type ThreadItem,
   usePostThread,
 } from '#/state/queries/usePostThread'
-import {useSession} from '#/state/session'
+import {useAgent, useSession} from '#/state/session'
 import {type OnPostSuccessData} from '#/state/shell/composer'
 import {useShellLayout} from '#/state/shell/shell-layout'
 import {useUnstablePostSource} from '#/state/unstable-post-source'
@@ -45,6 +48,132 @@ import {ListFooter} from '#/components/Lists'
 
 const PARENT_CHUNK_SIZE = 5
 const CHILDREN_CHUNK_SIZE = 50
+
+function BlockedThreadItemWithFallback({
+  item,
+  thread,
+  optimisticOnPostReply,
+}: {
+  item: Extract<ThreadItem, {type: 'threadPostBlocked'}>
+  thread: ReturnType<typeof usePostThread>
+  optimisticOnPostReply: (payload: OnPostSuccessData) => void
+}) {
+  const agent = useAgent()
+  const moderationOpts = useModerationOpts()
+  const blockedUri = item.uri
+
+  const {data: fetchedPost, isLoading} = useQuery({
+    queryKey: ['blocked-thread-fallback', blockedUri],
+    queryFn: async () => {
+      try {
+        const res = await agent.getPosts({uris: [blockedUri]})
+        if (res.success && res.data.posts[0]) {
+          return res.data.posts[0]
+        }
+        return null
+      } catch (error) {
+        return null
+      }
+    },
+    staleTime: 60000, // Cache for 1 minute
+    retry: false, // Don't retry if blocked
+  })
+
+  if (isLoading) {
+    return <ThreadItemPostTombstone type="blocked" />
+  }
+
+  if (fetchedPost && AppBskyFeedPost.isRecord(fetchedPost.record)) {
+    // Convert the fetched post to a ThreadItem format
+    const moderation = moderationOpts
+      ? moderatePost(fetchedPost, moderationOpts)
+      : undefined
+
+    // Find the blocked item's position in the thread to compute UI metadata
+    const itemIndex = thread.data.items.findIndex(
+      i => 'uri' in i && i.uri === item.uri,
+    )
+    const prevItem =
+      itemIndex > 0 ? thread.data.items[itemIndex - 1] : undefined
+    const nextItem =
+      itemIndex >= 0 && itemIndex < thread.data.items.length - 1
+        ? thread.data.items[itemIndex + 1]
+        : undefined
+
+    const prevItemDepth =
+      prevItem && 'depth' in prevItem ? prevItem.depth : undefined
+    const nextItemDepth =
+      nextItem && 'depth' in nextItem ? nextItem.depth : undefined
+
+    // Compute UI metadata using similar logic to getThreadPostUI
+    const repliesCount = fetchedPost.replyCount || 0
+    const showParentReplyLine = !!(
+      prevItemDepth !== undefined &&
+      prevItemDepth !== 0 &&
+      prevItemDepth < item.depth
+    )
+    const showChildReplyLine =
+      item.depth < 0 || (item.depth > 0 && repliesCount > 0)
+    const isLastChild = !nextItemDepth || nextItemDepth <= item.depth
+
+    const threadItem: Extract<ThreadItem, {type: 'threadPost'}> = {
+      type: 'threadPost',
+      key: item.key,
+      uri: fetchedPost.uri,
+      depth: item.depth,
+      value: {
+        post: {
+          ...fetchedPost,
+          record: fetchedPost.record,
+        } as AppBskyFeedDefs.PostView & {record: AppBskyFeedPost.Record},
+        moreParents: false,
+        moreReplies: 0,
+        opThread: false,
+        hiddenByThreadgate: false,
+        mutedByViewer: false,
+      },
+      isBlurred: false,
+      moderation: moderation!,
+      ui: {
+        isAnchor: item.depth === 0,
+        showParentReplyLine,
+        showChildReplyLine,
+        indent: item.depth,
+        isLastChild,
+        skippedIndentIndices: new Set(),
+        precedesChildReadMore: false,
+      },
+    }
+
+    // Render based on view type
+    if (thread.state.view === 'tree') {
+      return (
+        <ThreadItemTreePost
+          item={threadItem}
+          threadgateRecord={thread.data.threadgate?.record ?? undefined}
+          overrides={{
+            moderation: thread.state.otherItemsVisible && item.depth > 0,
+          }}
+          onPostSuccess={optimisticOnPostReply}
+        />
+      )
+    } else {
+      return (
+        <ThreadItemPost
+          item={threadItem}
+          threadgateRecord={thread.data.threadgate?.record ?? undefined}
+          overrides={{
+            moderation: thread.state.otherItemsVisible && item.depth > 0,
+          }}
+          onPostSuccess={optimisticOnPostReply}
+        />
+      )
+    }
+  }
+
+  // Viewer also can't see it - show blocked tombstone
+  return <ThreadItemPostTombstone type="blocked" />
+}
 
 export function PostThread({uri}: {uri: string}) {
   const {gtMobile} = useBreakpoints()
@@ -456,7 +585,13 @@ export function PostThread({uri}: {uri: string}) {
       } else if (item.type === 'readMoreUp') {
         return <ThreadItemReadMoreUp item={item} />
       } else if (item.type === 'threadPostBlocked') {
-        return <ThreadItemPostTombstone type="blocked" />
+        return (
+          <BlockedThreadItemWithFallback
+            item={item}
+            thread={thread}
+            optimisticOnPostReply={optimisticOnPostReply}
+          />
+        )
       } else if (item.type === 'threadPostNotFound') {
         return <ThreadItemPostTombstone type="not-found" />
       } else if (item.type === 'replyComposer') {
