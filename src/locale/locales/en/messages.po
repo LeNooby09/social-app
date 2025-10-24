@@ -183,8 +183,8 @@ msgstr ""
 msgid "{0}, a list by {1}"
 msgstr ""
 
-#: src/view/com/util/UserAvatar.tsx:590
-#: src/view/com/util/UserAvatar.tsx:608
+#: src/view/com/util/UserAvatar.tsx:591
+#: src/view/com/util/UserAvatar.tsx:609
 msgid "{0}'s avatar"
 msgstr ""
 
@@ -1426,7 +1426,7 @@ msgstr ""
 msgid "Block User"
 msgstr ""
 
-#: src/components/Post/Embed/index.tsx:200
+#: src/components/Post/Embed/index.tsx:304
 msgid "Blocked"
 msgstr ""
 
@@ -1983,12 +1983,12 @@ msgstr ""
 msgid "Close dialog"
 msgstr ""
 
-#: src/view/shell/index.web.tsx:100
+#: src/view/shell/index.web.tsx:120
 msgid "Close drawer menu"
 msgstr ""
 
 #: src/view/com/composer/text-input/web/EmojiPicker.web.tsx:136
-#: src/view/com/composer/text-input/web/EmojiPicker.web.tsx:172
+#: src/view/com/composer/text-input/web/EmojiPicker.web.tsx:173
 msgid "Close emoji picker"
 msgstr ""
 
@@ -2023,7 +2023,7 @@ msgid "Closes post composer and discards post draft"
 msgstr ""
 
 #: src/view/com/composer/text-input/web/EmojiPicker.web.tsx:137
-#: src/view/com/composer/text-input/web/EmojiPicker.web.tsx:173
+#: src/view/com/composer/text-input/web/EmojiPicker.web.tsx:174
 msgid "Closes the emoji picker"
 msgstr ""
 
@@ -2665,7 +2665,7 @@ msgstr ""
 msgid "Delete this post?"
 msgstr ""
 
-#: src/components/Post/Embed/index.tsx:185
+#: src/components/Post/Embed/index.tsx:186
 msgid "Deleted"
 msgstr ""
 
@@ -2964,8 +2964,8 @@ msgctxt "action"
 msgid "Edit"
 msgstr ""
 
-#: src/view/com/util/UserAvatar.tsx:452
-#: src/view/com/util/UserBanner.tsx:128
+#: src/view/com/util/UserAvatar.tsx:453
+#: src/view/com/util/UserBanner.tsx:129
 msgid "Edit avatar"
 msgstr ""
 
@@ -5014,6 +5014,7 @@ msgstr ""
 msgid "Load new posts"
 msgstr ""
 
+#: src/components/Post/Embed/index.tsx:261
 #: src/view/com/composer/text-input/mobile/Autocomplete.tsx:61
 msgid "Loading..."
 msgstr ""
@@ -6069,7 +6070,7 @@ msgstr ""
 msgid "Opens link {0}"
 msgstr ""
 
-#: src/view/com/util/UserAvatar.tsx:594
+#: src/view/com/util/UserAvatar.tsx:595
 msgid "Opens live status dialog"
 msgstr ""
 
@@ -6082,7 +6083,7 @@ msgid "Opens post language settings"
 msgstr ""
 
 #: src/view/com/notifications/NotificationFeedItem.tsx:905
-#: src/view/com/util/UserAvatar.tsx:612
+#: src/view/com/util/UserAvatar.tsx:613
 msgid "Opens this profile"
 msgstr ""
 
@@ -6883,13 +6884,13 @@ msgstr ""
 msgid "Remove attachment"
 msgstr ""
 
-#: src/view/com/util/UserAvatar.tsx:511
-#: src/view/com/util/UserAvatar.tsx:514
+#: src/view/com/util/UserAvatar.tsx:512
+#: src/view/com/util/UserAvatar.tsx:515
 msgid "Remove Avatar"
 msgstr ""
 
-#: src/view/com/util/UserBanner.tsx:195
-#: src/view/com/util/UserBanner.tsx:198
+#: src/view/com/util/UserBanner.tsx:196
+#: src/view/com/util/UserBanner.tsx:199
 msgid "Remove Banner"
 msgstr ""
 
@@ -6978,11 +6979,11 @@ msgstr ""
 msgid "Remove your verification for this account?"
 msgstr ""
 
-#: src/components/Post/Embed/index.tsx:228
+#: src/components/Post/Embed/index.tsx:225
 msgid "Removed by author"
 msgstr ""
 
-#: src/components/Post/Embed/index.tsx:226
+#: src/components/Post/Embed/index.tsx:223
 msgid "Removed by you"
 msgstr ""
 
@@ -9530,22 +9531,22 @@ msgstr ""
 msgid "Upload a text file to:"
 msgstr ""
 
-#: src/view/com/util/UserAvatar.tsx:482
-#: src/view/com/util/UserAvatar.tsx:485
-#: src/view/com/util/UserBanner.tsx:166
-#: src/view/com/util/UserBanner.tsx:169
+#: src/view/com/util/UserAvatar.tsx:483
+#: src/view/com/util/UserAvatar.tsx:486
+#: src/view/com/util/UserBanner.tsx:167
+#: src/view/com/util/UserBanner.tsx:170
 msgid "Upload from Camera"
 msgstr ""
 
-#: src/view/com/util/UserAvatar.tsx:499
-#: src/view/com/util/UserBanner.tsx:183
+#: src/view/com/util/UserAvatar.tsx:500
+#: src/view/com/util/UserBanner.tsx:184
 msgid "Upload from Files"
 msgstr ""
 
-#: src/view/com/util/UserAvatar.tsx:493
-#: src/view/com/util/UserAvatar.tsx:497
-#: src/view/com/util/UserBanner.tsx:177
-#: src/view/com/util/UserBanner.tsx:181
+#: src/view/com/util/UserAvatar.tsx:494
+#: src/view/com/util/UserAvatar.tsx:498
+#: src/view/com/util/UserBanner.tsx:178
+#: src/view/com/util/UserBanner.tsx:182
 msgid "Upload from Library"
 msgstr ""
 
