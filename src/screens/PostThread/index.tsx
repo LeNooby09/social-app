@@ -89,6 +89,33 @@ function BlockedThreadItemWithFallback({
       ? moderatePost(fetchedPost, moderationOpts)
       : undefined
 
+    // Find the blocked item's position in the thread to compute UI metadata
+    const itemIndex = thread.data.items.findIndex(
+      i => 'uri' in i && i.uri === item.uri,
+    )
+    const prevItem =
+      itemIndex > 0 ? thread.data.items[itemIndex - 1] : undefined
+    const nextItem =
+      itemIndex >= 0 && itemIndex < thread.data.items.length - 1
+        ? thread.data.items[itemIndex + 1]
+        : undefined
+
+    const prevItemDepth =
+      prevItem && 'depth' in prevItem ? prevItem.depth : undefined
+    const nextItemDepth =
+      nextItem && 'depth' in nextItem ? nextItem.depth : undefined
+
+    // Compute UI metadata using similar logic to getThreadPostUI
+    const repliesCount = fetchedPost.replyCount || 0
+    const showParentReplyLine = !!(
+      prevItemDepth !== undefined &&
+      prevItemDepth !== 0 &&
+      prevItemDepth < item.depth
+    )
+    const showChildReplyLine =
+      item.depth < 0 || (item.depth > 0 && repliesCount > 0)
+    const isLastChild = !nextItemDepth || nextItemDepth <= item.depth
+
     const threadItem: Extract<ThreadItem, {type: 'threadPost'}> = {
       type: 'threadPost',
       key: item.key,
@@ -108,11 +135,11 @@ function BlockedThreadItemWithFallback({
       isBlurred: false,
       moderation: moderation!,
       ui: {
-        isAnchor: false,
-        showParentReplyLine: false,
-        showChildReplyLine: false,
+        isAnchor: item.depth === 0,
+        showParentReplyLine,
+        showChildReplyLine,
         indent: item.depth,
-        isLastChild: false,
+        isLastChild,
         skippedIndentIndices: new Set(),
         precedesChildReadMore: false,
       },
