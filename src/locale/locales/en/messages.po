@@ -6456,7 +6456,7 @@ msgstr ""
 msgid "Porn"
 msgstr ""
 
-#: src/screens/PostThread/index.tsx:504
+#: src/screens/PostThread/index.tsx:639
 msgctxt "description"
 msgid "Post"
 msgstr ""
